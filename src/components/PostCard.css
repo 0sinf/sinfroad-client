@@ -20,6 +20,10 @@
   cursor: pointer;
 }
 
+.post__created {
+  color: #0000205a;
+}
+
 @media screen and (min-width: 1380px) {
   .post__card {
     width: 360px;
