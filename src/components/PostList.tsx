@@ -17,7 +17,6 @@ export function PostList() {
           key={idx}
           id={post.id}
           title={post.title}
-          contents={post.contents}
           created={post.created}
         />
       ));
