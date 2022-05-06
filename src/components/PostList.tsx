@@ -11,6 +11,7 @@ export function PostList() {
       if (response?.data.length === 0) {
         return <p>아직 아무런 글이 없어요</p>;
       }
+
       return (response?.data as Array<Post>).map((post, idx) => (
         <PostCard
           key={idx}

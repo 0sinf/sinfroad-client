@@ -1,0 +1,19 @@
+.post__image {
+  width: 100%;
+  height: 240px;
+  background-color: aqua;
+}
+.post__card {
+  margin: 16px;
+  padding: 4px;
+  width: 240px;
+  height: 300px;
+
+  border: 1px solid black;
+  border-radius: 4px;
+}
+
+.post__title {
+  font-size: 1.5em;
+  margin: 4px 0;
+}
