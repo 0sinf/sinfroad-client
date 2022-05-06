@@ -19,3 +19,14 @@
 
   cursor: pointer;
 }
+
+@media screen and (min-width: 1380px) {
+  .post__card {
+    width: 360px;
+    height: 420px;
+  }
+
+  .post__image {
+    height: 350px;
+  }
+}
