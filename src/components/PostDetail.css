@@ -1,5 +1,30 @@
 .post__detail {
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
+  align-items: center;
+}
+
+.post__detail-box {
   width: 80%;
+  margin-top: 16px;
+}
+
+.post__detail-title {
+  font-size: 2.5em;
+}
+
+.post__detail-created {
+  text-align: end;
+  color: #0000205a;
+}
+
+.post__detail-contents {
+  font-size: 2em;
+}
+
+@media screen and (min-width: 1100px) {
+  .post__detail-box {
+    width: 50%;
+  }
 }
