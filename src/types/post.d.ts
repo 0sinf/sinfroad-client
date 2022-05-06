@@ -5,9 +5,19 @@ export interface Post {
   address: string;
   created: string;
   updated: string;
+  images?: Image[];
+}
+
+export interface Image {
+  url: string;
 }
 
 export interface PostListRes {
   statusCode: number;
   data: Post[];
+}
+
+export interface PostRes {
+  statusCode: number;
+  data: Post;
 }

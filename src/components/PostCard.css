@@ -16,4 +16,6 @@
 .post__title {
   font-size: 1.5em;
   margin: 4px 0;
+
+  cursor: pointer;
 }
