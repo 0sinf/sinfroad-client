@@ -2,10 +2,12 @@ import "./PostCard.css";
 import { Post } from "../types/post";
 import { Link } from "react-router-dom";
 
-export function PostCard({ id, title, created }: Partial<Post>) {
+export function PostCard({ id, title, created, image }: Partial<Post>) {
   return (
     <div className="post__card">
-      <div className="post__image"></div>
+      <div className="post__image">
+        <img src={image} alt={title} />
+      </div>
       <div className="post__title">
         <Link to={`/posts/${id}`}>{title}</Link>
       </div>

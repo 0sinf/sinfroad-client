@@ -18,6 +18,7 @@ export function PostList() {
           id={post.id}
           title={post.title}
           created={post.created}
+          image={post.image}
         />
       ));
     }

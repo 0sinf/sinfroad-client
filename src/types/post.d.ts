@@ -6,6 +6,7 @@ export interface Post {
   created: string;
   updated: string;
   images?: Image[];
+  image?: string;
 }
 
 export interface Image {

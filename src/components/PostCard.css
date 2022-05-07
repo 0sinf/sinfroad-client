@@ -20,6 +20,10 @@
   cursor: pointer;
 }
 
+.post__image > img {
+  max-height: 100%;
+}
+
 .post__created {
   color: #0000205a;
 }
