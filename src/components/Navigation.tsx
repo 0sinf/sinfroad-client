@@ -7,6 +7,9 @@ export function Navigation() {
       <Link to="/" className="nav__items">
         Sinfroad
       </Link>
+      <Link to="/posts" className="nav__items">
+        <button className="button">글쓰기</button>
+      </Link>
     </nav>
   );
 }

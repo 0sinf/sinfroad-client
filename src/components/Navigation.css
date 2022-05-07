@@ -1,4 +1,6 @@
 .nav__box {
+  display: flex;
+  justify-content: space-between;
   padding: 16px 32px;
   height: 48px;
 }
