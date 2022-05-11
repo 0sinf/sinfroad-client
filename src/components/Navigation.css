@@ -1,0 +1,13 @@
+.nav {
+  display: flex;
+  flex-direction: row;
+
+  height: 52px;
+  padding: 12px 24px;
+
+  line-height: 52px;
+}
+
+.nav__items {
+  font-size: 2.5rem;
+}
