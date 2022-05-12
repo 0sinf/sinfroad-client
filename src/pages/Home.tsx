@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
+import "./Home.css";
 import { PostCard } from "../components/PostCard";
 
 export function Home() {
@@ -27,5 +28,5 @@ export function Home() {
     fetchPosts();
   }, []);
 
-  return <>{getPosts()}</>;
+  return <main className="main">{getPosts()}</main>;
 }

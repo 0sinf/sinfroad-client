@@ -3,7 +3,8 @@
   flex-direction: row;
 
   height: 52px;
-  padding: 12px 24px;
+
+  margin: 16px 24px;
 
   line-height: 52px;
 }
