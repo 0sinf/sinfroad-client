@@ -27,5 +27,6 @@ interface PostRes extends SuccessRes {
 
 interface FailRes {
   statusCode: number;
+  name: string;
   message: string;
 }
