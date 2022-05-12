@@ -1,3 +1,5 @@
+import "./PostCard.css";
+
 export function PostCard({ post }: { post: PostInList }) {
   const date = new Date(post.createdAt).toLocaleDateString("ko-KR");
 
