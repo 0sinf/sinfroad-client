@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
+import { PostCard } from "../components/PostCard";
 
 export function Home() {
   const [posts, setPosts] = useState<PostInList[]>();
@@ -8,6 +9,10 @@ export function Home() {
       console.log("Loading data...💾");
       return;
     }
+
+    return posts.map((post) => {
+      return <PostCard key={post.title} post={post} />;
+    });
   }, [posts]);
 
   useEffect(() => {
