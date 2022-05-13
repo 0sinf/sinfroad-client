@@ -11,8 +11,8 @@ export function Home() {
       return;
     }
 
-    return posts.map((post) => {
-      return <PostCard key={post.title} post={post} />;
+    return posts.map((post, idx) => {
+      return <PostCard key={idx} post={post} />;
     });
   }, [posts]);
 
