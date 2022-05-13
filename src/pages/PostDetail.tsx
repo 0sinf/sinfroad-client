@@ -16,7 +16,6 @@ export function PostDetail() {
   }, [post]);
 
   useEffect(() => {
-    console.log(id);
     async function fetchPost() {
       const res = await fetch(`http://localhost:3001/api/posts/${id}`, {
         method: "GET",
