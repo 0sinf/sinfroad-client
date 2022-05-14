@@ -4,6 +4,7 @@ export function Post({ post }: { post: Post }) {
   const date = new Date(post.createdAt).toLocaleDateString("ko-KR");
   return (
     <article className="post">
+      {/* TODO: To be carousel */}
       <figure className="post__img">
         <img src={post.images[0]} alt={post.title} />
       </figure>
