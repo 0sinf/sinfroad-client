@@ -1,14 +1,16 @@
+import "./Post.css";
+
 export function Post({ post }: { post: Post }) {
-  const date = new Date(post.createdAt).toLocaleString("ko-KR");
+  const date = new Date(post.createdAt).toLocaleDateString("ko-KR");
   return (
     <article className="post">
-      <figure className="">
+      <figure className="post__img">
         <img src={post.images[0]} alt={post.title} />
       </figure>
-      <div>
-        <div>{post.title}</div>
-        <div>{date}</div>
-        <div>{post.contents}</div>
+      <div className="post__description">
+        <header className="post__title">{post.title}</header>
+        <div className="post__date">{date}</div>
+        <div className="post__contents">{post.contents}</div>
       </div>
     </article>
   );
