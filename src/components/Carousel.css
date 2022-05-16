@@ -1,0 +1,17 @@
+.carousel {
+  transition: transform 0.5s;
+}
+
+.carousel__items {
+  height: 100%;
+  width: 100%;
+}
+
+.carousel__item > img {
+  width: 100%;
+  object-fit: none;
+}
+
+.non-scroll {
+  overflow: hidden;
+}
