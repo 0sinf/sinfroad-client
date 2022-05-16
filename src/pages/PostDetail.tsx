@@ -1,7 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect, useCallback } from "react";
 import { Post } from "../components/Post";
-import "./PostDetail.css";
 
 export function PostDetail() {
   const [post, setPost] = useState<Post>();
