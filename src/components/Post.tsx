@@ -5,9 +5,7 @@ export function Post({ post }: { post: Post }) {
   return (
     <article className="post">
       {/* TODO: To be carousel */}
-      <figure className="post__img">
-        <img src={post.images[0]} alt={post.title} />
-      </figure>
+
       <div className="post__description">
         <header className="post__title">{post.title}</header>
         <div className="post__date">{date}</div>
