@@ -7,7 +7,8 @@ export function Home() {
   const [posts, setPosts] = useState<PostInList[]>([]);
 
   const loader = useRef<HTMLDivElement>(null);
-  //TODO: page 계속 올라감
+
+  //TODO: page 계속 올라가는 문제
   async function fetchPosts() {
     const res = await fetch(
       `${import.meta.env.VITE_API_SERVER_URI}/posts?page=${page}`,
@@ -46,9 +47,13 @@ export function Home() {
 
   return (
     <main className="main">
-      {posts.map((post, idx) => {
-        return <PostCard key={idx} post={post} />;
-      })}
+      {posts.length ? (
+        posts.map((post, idx) => {
+          return <PostCard key={idx} post={post} />;
+        })
+      ) : (
+        <p>"Dev..."</p>
+      )}
       <div ref={loader} />
     </main>
   );
