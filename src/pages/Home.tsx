@@ -9,9 +9,12 @@ export function Home() {
   const loader = useRef<HTMLDivElement>(null);
   //TODO: page 계속 올라감
   async function fetchPosts() {
-    const res = await fetch(`http://localhost:3001/api/posts?page=${page}`, {
-      method: "GET",
-    });
+    const res = await fetch(
+      `${import.meta.env.VITE_API_SERVER_URI}/posts?page=${page}`,
+      {
+        method: "GET",
+      }
+    );
     const data = await res.json();
     setPosts((prev) => [...prev, ...data.posts]);
   }

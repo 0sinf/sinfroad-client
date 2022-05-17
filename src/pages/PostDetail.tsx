@@ -16,9 +16,12 @@ export function PostDetail() {
 
   useEffect(() => {
     async function fetchPost() {
-      const res = await fetch(`http://localhost:3001/api/posts/${id}`, {
-        method: "GET",
-      });
+      const res = await fetch(
+        `${import.meta.env.VITE_API_SERVER_URI}/posts/${id}`,
+        {
+          method: "GET",
+        }
+      );
       const data = await res.json();
       setPost(data.post);
     }
