@@ -7,7 +7,6 @@ export function Home() {
 
   const getPosts = useCallback(() => {
     if (!posts) {
-      console.log("Loading data...💾");
       return;
     }
 

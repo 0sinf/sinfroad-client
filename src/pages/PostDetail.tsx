@@ -8,7 +8,6 @@ export function PostDetail() {
 
   const getPost = useCallback(() => {
     if (!post) {
-      console.log("Loading data...💾");
       return;
     }
 
