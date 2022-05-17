@@ -7,7 +7,7 @@ export function Home() {
   const [posts, setPosts] = useState<PostInList[]>([]);
 
   const loader = useRef<HTMLDivElement>(null);
-
+  //TODO: page 계속 올라감
   async function fetchPosts() {
     const res = await fetch(`http://localhost:3001/api/posts?page=${page}`, {
       method: "GET",
