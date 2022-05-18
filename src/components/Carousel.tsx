@@ -54,12 +54,14 @@ export default function Carousel({ images }: { images: string[] }) {
       <button
         className="carousel__button carousel__button-left"
         aria-label="이전"
+        disabled={index === 0}
         onClick={() => handleClick("prev")}
       />
 
       <button
         className="carousel__button carousel__button-right"
         aria-label="다음"
+        disabled={index === images.length - 1}
         onClick={() => handleClick("next")}
       />
     </div>
