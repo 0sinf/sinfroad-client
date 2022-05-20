@@ -15,14 +15,17 @@ export default function Login() {
         headers: {
           "Content-Type": "application/json",
         },
+        credentials: "same-origin",
         body: JSON.stringify({ email, password }),
       }
     );
 
-    if (response.status !== 200) {
+    if (!response.ok) {
       //TODO: Toast message
       return;
     }
+
+    // TODO: 로그인 후 쿠키 받아서 저장
   }
 
   return (
