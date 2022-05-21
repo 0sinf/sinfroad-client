@@ -24,8 +24,9 @@ export default function Login() {
       //TODO: Toast message
       return;
     }
+    const data = await response.json();
 
-    // TODO: 로그인 후 쿠키 받아서 저장
+    // TODO: data에서 토큰 받아서 저장
   }
 
   return (
