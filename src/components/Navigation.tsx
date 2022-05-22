@@ -7,9 +7,6 @@ export function Navigation() {
       <Link to="/" className="nav__items">
         Sinfroad
       </Link>
-      <Link to="/login" className="nav__items">
-        Login
-      </Link>
     </nav>
   );
 }
