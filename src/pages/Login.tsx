@@ -26,8 +26,9 @@ export default function Login() {
     }
     const data = await response.json();
 
-    // TODO: data에서 토큰 받아서 저장
     window.localStorage.setItem("token", data.token);
+    setEmail("");
+    setPassword("");
   }
 
   return (
@@ -38,6 +39,7 @@ export default function Login() {
           <input
             type="email"
             name="email"
+            value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
         </div>
@@ -46,6 +48,7 @@ export default function Login() {
           <input
             type="password"
             name="password"
+            value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
