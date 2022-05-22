@@ -27,6 +27,7 @@ export default function Login() {
     const data = await response.json();
 
     // TODO: data에서 토큰 받아서 저장
+    window.localStorage.setItem("token", data.token);
   }
 
   return (
