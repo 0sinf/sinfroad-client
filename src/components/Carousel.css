@@ -40,6 +40,10 @@
   cursor: pointer;
 }
 
+.carousel__button:disabled {
+  cursor: auto;
+}
+
 .carousel__button-left {
   left: 0;
 }
