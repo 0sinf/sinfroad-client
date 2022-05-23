@@ -5,7 +5,6 @@ export function Post({ post }: { post: Post }) {
   const date = new Date(post.createdAt).toLocaleDateString("ko-KR");
   return (
     <article className="post">
-      {/* TODO: To be carousel */}
       <Carousel images={post.images} />
 
       <div className="post__description">

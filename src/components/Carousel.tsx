@@ -13,7 +13,6 @@ export default function Carousel({ images }: { images: string[] }) {
     return setIndex((x) => (x > 0 ? x - 1 : images.length - 1));
   }
 
-  //TODO: 캐러셀 사이즈 리사이징 문제로 절반만 넘어가는 버그
   const handleResize = () => {
     const { current } = container;
 
@@ -39,7 +38,6 @@ export default function Carousel({ images }: { images: string[] }) {
       <div
         className="carousel__slider"
         style={{
-          width: `${images.length}00%`,
           transform: `translate3d(${index * -containerWidth}px, 0, 0)`,
         }}
       >
