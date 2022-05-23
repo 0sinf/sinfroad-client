@@ -10,10 +10,12 @@ export function PostCard({ post }: { post: PostInList }) {
         <figure className="card__img">
           <img src={post.image} alt={post.title} />
         </figure>
-        <div className="card__description">
-          <div className="card__description-title">{post.title}</div>
-          <div className="card__description-date">{date}</div>
-        </div>
+        <header className="card__description">
+          <h2 className="card__title">{post.title}</h2>
+          <time className="card__date" dateTime={date}>
+            {date}
+          </time>
+        </header>
       </Link>
     </article>
   );

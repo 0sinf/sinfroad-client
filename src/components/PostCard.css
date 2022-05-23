@@ -23,11 +23,11 @@
   justify-content: flex-end;
 }
 
-.card__description-title {
+.card__title {
   font-size: 1.8rem;
 }
 
-.card__description-date {
+.card__date {
   font-size: 1.2rem;
   color: #a177af;
 }
