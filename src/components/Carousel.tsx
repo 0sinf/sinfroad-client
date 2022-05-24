@@ -7,10 +7,18 @@ export default function Carousel({ images }: { images: string[] }) {
   const container = useRef<HTMLDivElement>(null);
 
   function handleClick(direction: "prev" | "next") {
-    if (direction === "next") {
-      return setIndex((x) => (x < images.length - 1 ? x + 1 : 0));
+    if (direction === "next" && images.length - 1 <= index) {
+      return;
     }
-    return setIndex((x) => (x > 0 ? x - 1 : images.length - 1));
+
+    if (direction === "prev" && index <= 0) {
+      return;
+    }
+
+    if (direction === "next") {
+      return setIndex((x) => x + 1);
+    }
+    return setIndex((x) => x - 1);
   }
 
   const handleResize = () => {
@@ -33,6 +41,7 @@ export default function Carousel({ images }: { images: string[] }) {
     };
   }, []);
 
+  // FIXME: Add alt
   return (
     <div className="carousel" ref={container}>
       <div
