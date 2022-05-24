@@ -15,6 +15,7 @@ function App() {
         <Route path="/posts/:id" element={<PostDetail />}></Route>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/posts" element={<PostForm />}></Route>
+        <Route path="/posts/update/:id" element={<PostForm />} />
       </Routes>
     </div>
   );

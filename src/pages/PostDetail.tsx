@@ -1,6 +1,7 @@
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { useState, useEffect, useCallback } from "react";
 import { Post } from "../components/Post";
+import "./PostDetail.css";
 
 export function PostDetail() {
   const [post, setPost] = useState<Post>();
@@ -29,5 +30,16 @@ export function PostDetail() {
     fetchPost();
   }, []);
 
-  return <main className="main">{getPost()}</main>;
+  return (
+    <main className="main">
+      <div className="post__control">
+        <button>
+          <Link to={`/posts/update/${id}`} state={post}>
+            수정하기
+          </Link>
+        </button>
+      </div>
+      {getPost()}
+    </main>
+  );
 }

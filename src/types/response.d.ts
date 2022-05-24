@@ -1,5 +1,6 @@
 interface Post {
   id: string;
+  _id?: string;
   title: string;
   contents: string;
   address: string;

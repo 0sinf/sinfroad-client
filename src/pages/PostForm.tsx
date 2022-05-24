@@ -1,17 +1,19 @@
-import { useState, FormEvent, ChangeEvent } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState, FormEvent, ChangeEvent, useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export default function PostForm() {
   const [title, setTitle] = useState<string>("");
   const [contents, setContents] = useState<string>("");
   const [address, setAddress] = useState<string>("");
+  const [postId, setPostId] = useState<string>();
   const [images, setImages] = useState<File[]>([]);
 
   const go = useNavigate();
 
-  async function handleSubmit(event: FormEvent) {
-    event.preventDefault();
+  const location = useLocation();
+  const isUpdating = !!location.state;
 
+  async function createRequest() {
     if (images.length <= 0) {
       // TODO: toast message
       return;
@@ -45,6 +47,41 @@ export default function PostForm() {
     go("/");
   }
 
+  async function updateRequest() {
+    const response = await fetch(
+      `${import.meta.env.VITE_API_SERVER_URI}/posts/${postId}`,
+      {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          title,
+          contents,
+          address,
+        }),
+      }
+    );
+
+    if (!response.ok) {
+      // TODO: toast message
+      return;
+    }
+
+    go(`/posts/${postId}`);
+  }
+
+  async function handleSubmit(event: FormEvent) {
+    event.preventDefault();
+
+    if (isUpdating) {
+      updateRequest();
+      return;
+    }
+
+    createRequest();
+  }
+
   function handleChange(event: ChangeEvent<HTMLInputElement>) {
     setImages((x) => {
       if (!event.target.files) {
@@ -53,6 +90,19 @@ export default function PostForm() {
       return [...x, event.target.files[0]];
     });
   }
+
+  useEffect(() => {
+    const state = location.state as Post;
+
+    if (!isUpdating) {
+      return;
+    }
+
+    setTitle(state.title);
+    setContents(state.contents);
+    setAddress(state.address);
+    setPostId(state._id);
+  }, []);
 
   return (
     <>
@@ -90,13 +140,17 @@ export default function PostForm() {
           />
         </div>
 
-        <div className="form__box">
-          <label htmlFor="images">이미지</label>
-          <input type="file" name="images" onChange={handleChange} />
-          <input type="file" name="images" onChange={handleChange} />
-          <input type="file" name="images" onChange={handleChange} />
-          <input type="file" name="images" onChange={handleChange} />
-        </div>
+        {isUpdating ? (
+          <></>
+        ) : (
+          <div className="form__box">
+            <label htmlFor="images">이미지</label>
+            <input type="file" name="images" onChange={handleChange} />
+            <input type="file" name="images" onChange={handleChange} />
+            <input type="file" name="images" onChange={handleChange} />
+            <input type="file" name="images" onChange={handleChange} />
+          </div>
+        )}
 
         <button className="form__button" type="submit">
           작성하기

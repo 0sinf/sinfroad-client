@@ -1,0 +1,16 @@
+.post__control {
+  margin-left: auto;
+  margin-right: 1rem;
+}
+
+.post__control > button {
+  background-color: rgb(134, 99, 99);
+  border: none;
+  border-radius: 4px;
+  padding: 0.3rem;
+}
+
+.post__control > button > a {
+  font: 1.3rem bold;
+  color: #f0d9d9;
+}
