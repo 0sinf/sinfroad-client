@@ -2,8 +2,9 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
 
-  height: 90px;
+  height: 80px;
   width: 100%;
 
   margin: 16px 24px;
@@ -13,5 +14,10 @@
 
 .nav__items {
   font-size: 2.5rem;
+  padding: 0 16px;
+}
+
+.nav__items-small {
+  font-size: 1.3rem;
   padding: 0 16px;
 }

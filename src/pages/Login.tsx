@@ -1,9 +1,11 @@
 import "./Login.css";
 import { FormEvent, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Login() {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+  const go = useNavigate();
 
   async function handleSubmit(event: FormEvent) {
     event.preventDefault();
@@ -29,6 +31,7 @@ export default function Login() {
     window.localStorage.setItem("token", data.token);
     setEmail("");
     setPassword("");
+    go("/");
   }
 
   return (

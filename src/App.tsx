@@ -4,6 +4,7 @@ import { Navigation } from "./components/Navigation";
 import { Home } from "./pages/Home";
 import Login from "./pages/Login";
 import { PostDetail } from "./pages/PostDetail";
+import PostForm from "./pages/PostForm";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route path="/" element={<Home />}></Route>
         <Route path="/posts/:id" element={<PostDetail />}></Route>
         <Route path="/login" element={<Login />}></Route>
+        <Route path="/posts" element={<PostForm />}></Route>
       </Routes>
     </div>
   );
