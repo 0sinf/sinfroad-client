@@ -7,11 +7,14 @@ export function Post({ post }: { post: Post }) {
     <article className="post">
       <Carousel images={post.images} />
 
-      <div className="post__description">
-        <header className="post__title">{post.title}</header>
-        <div className="post__date">{date}</div>
+      <header className="post__description">
+        <h2 className="post__title">{post.title}</h2>
+        <time className="post__date" dateTime={post.createdAt}>
+          {date}
+        </time>
+        <div className="post__contents">{post.address}</div>
         <div className="post__contents">{post.contents}</div>
-      </div>
+      </header>
     </article>
   );
 }

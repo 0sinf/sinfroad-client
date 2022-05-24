@@ -2,6 +2,7 @@ interface Post {
   id: string;
   title: string;
   contents: string;
+  address: string;
   images: Array<string>;
   createdAt: string;
   updatedAt: string;
