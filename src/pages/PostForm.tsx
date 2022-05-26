@@ -13,6 +13,8 @@ export default function PostForm() {
   const location = useLocation();
   const isUpdating = !!location.state;
 
+  const token = window.localStorage.getItem("token");
+
   async function createRequest() {
     if (images.length <= 0) {
       // TODO: toast message
@@ -33,7 +35,7 @@ export default function PostForm() {
       {
         method: "POST",
         headers: {
-          authorization: `Bearer ${window.localStorage.getItem("token")}`,
+          authorization: `Bearer ${token}`,
         },
         body: formData,
       }
@@ -54,6 +56,7 @@ export default function PostForm() {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
+          authorization: `Bearer ${token}`,
         },
         body: JSON.stringify({
           title,

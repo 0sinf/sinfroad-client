@@ -7,6 +7,8 @@ export function PostDetail() {
   const [post, setPost] = useState<Post>();
   const { id } = useParams();
 
+  const token = window.localStorage.getItem("token");
+
   const go = useNavigate();
 
   const getPost = useCallback(() => {
@@ -40,7 +42,7 @@ export function PostDetail() {
       {
         method: "DELETE",
         headers: {
-          authorization: `Bearer ${window.localStorage.getItem("token")}`,
+          authorization: `Bearer ${token}`,
         },
       }
     );
@@ -56,15 +58,19 @@ export function PostDetail() {
 
   return (
     <main className="main">
-      <div className="post__control">
-        <button>
-          <Link to={`/posts/update/${id}`} state={post}>
-            수정하기
-          </Link>
-        </button>
+      {token ? (
+        <div className="post__control">
+          <button>
+            <Link to={`/posts/update/${id}`} state={post}>
+              수정하기
+            </Link>
+          </button>
 
-        <button onClick={handleClick}>삭제하기</button>
-      </div>
+          <button onClick={handleClick}>삭제하기</button>
+        </div>
+      ) : (
+        ""
+      )}
       {getPost()}
     </main>
   );
