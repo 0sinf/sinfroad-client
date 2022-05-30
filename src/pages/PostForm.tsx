@@ -1,5 +1,5 @@
 import { useState, FormEvent, ChangeEvent, useEffect } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Navigate, useLocation, useNavigate } from "react-router-dom";
 
 export default function PostForm() {
   const [title, setTitle] = useState<string>("");
@@ -14,6 +14,10 @@ export default function PostForm() {
   const isUpdating = !!location.state;
 
   const token = window.localStorage.getItem("token");
+
+  if (!token) {
+    return <Navigate to="/login" />;
+  }
 
   async function createRequest() {
     if (images.length <= 0) {
