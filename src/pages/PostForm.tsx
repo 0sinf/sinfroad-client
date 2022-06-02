@@ -1,5 +1,6 @@
 import { useState, FormEvent, ChangeEvent, useEffect } from "react";
 import { Navigate, useLocation, useNavigate } from "react-router-dom";
+import toast from "../utils/toast";
 
 export default function PostForm() {
   const [title, setTitle] = useState<string>("");
@@ -21,7 +22,7 @@ export default function PostForm() {
 
   async function createRequest() {
     if (images.length <= 0) {
-      // TODO: toast message
+      toast("이미지를 1개 이상 올려주세요.");
       return;
     }
 
@@ -46,7 +47,8 @@ export default function PostForm() {
     );
 
     if (!response.ok) {
-      // TODO: toast message
+      const data = await response.json();
+      toast(data.message);
       return;
     }
 

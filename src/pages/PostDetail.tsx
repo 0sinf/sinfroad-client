@@ -2,6 +2,7 @@ import { useParams, Link, useNavigate } from "react-router-dom";
 import { useState, useEffect, useCallback } from "react";
 import { Post } from "../components/Post";
 import "./PostDetail.css";
+import toast from "../utils/toast";
 
 export function PostDetail() {
   const [post, setPost] = useState<Post>();
@@ -51,7 +52,8 @@ export function PostDetail() {
     );
 
     if (!response.ok) {
-      // TODO: toast message
+      const data = await response.json();
+      toast(data.message);
       return;
     }
 
