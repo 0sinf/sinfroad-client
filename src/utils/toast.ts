@@ -1,3 +1,5 @@
+import "../css/toast.css";
+
 const time = 3000;
 
 export default function toast(msg: string) {
@@ -8,7 +10,15 @@ export default function toast(msg: string) {
 
   document.body.append(div);
 
+  div.style.transform = "translate(0, -100%)";
   setTimeout(() => {
-    div.remove();
+    div.addEventListener(
+      "transitionend",
+      () => {
+        div.remove();
+      },
+      { once: true }
+    );
+    div.removeAttribute("style");
   }, time);
 }
