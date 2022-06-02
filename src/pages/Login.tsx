@@ -1,6 +1,7 @@
 import "./Login.css";
 import { FormEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import toast from "../utils/toast";
 
 export default function Login() {
   const [email, setEmail] = useState<string>("");
@@ -23,7 +24,8 @@ export default function Login() {
     );
 
     if (!response.ok) {
-      //TODO: Toast message
+      const data = await response.json();
+      toast(data.message);
       return;
     }
     const data = await response.json();
