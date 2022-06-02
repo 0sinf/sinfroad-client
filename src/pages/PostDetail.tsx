@@ -34,8 +34,11 @@ export function PostDetail() {
     fetchPost();
   }, []);
 
-  async function handleClick() {
+  async function onDelete() {
     // TODO: confirm modal
+    if (!confirm("정말로 삭제하시겠습니까?")) {
+      return;
+    }
 
     const response = await fetch(
       `${import.meta.env.VITE_API_SERVER_URI}/posts/${id}`,
@@ -66,7 +69,7 @@ export function PostDetail() {
             </Link>
           </button>
 
-          <button onClick={handleClick}>삭제하기</button>
+          <button onClick={onDelete}>삭제하기</button>
         </div>
       ) : (
         ""
