@@ -3,12 +3,13 @@ import { useState, useEffect, useCallback } from "react";
 import { Post } from "../components/Post";
 import "./PostDetail.css";
 import toast from "../utils/toast";
+import { useStore } from "../store/index";
 
 export function PostDetail() {
   const [post, setPost] = useState<Post>();
   const { id } = useParams();
 
-  const token = window.localStorage.getItem("token");
+  const { token } = useStore();
 
   const go = useNavigate();
 
