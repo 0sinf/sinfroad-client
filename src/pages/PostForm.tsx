@@ -74,7 +74,8 @@ export default function PostForm() {
     );
 
     if (!response.ok) {
-      // TODO: toast message
+      const data = await response.json();
+      toast(data.message);
       return;
     }
 
