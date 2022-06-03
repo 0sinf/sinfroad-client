@@ -18,7 +18,8 @@
   font-size: 1.4rem;
 }
 
-.form__box > input {
+.form__box > input,
+.form__box > textarea {
   margin-top: 8px;
   padding: 12px;
 
