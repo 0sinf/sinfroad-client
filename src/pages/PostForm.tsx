@@ -1,6 +1,7 @@
 import { useState, FormEvent, ChangeEvent, useEffect } from "react";
 import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import toast from "../utils/toast";
+import { useStore } from "../store/index";
 
 export default function PostForm() {
   const [title, setTitle] = useState<string>("");
@@ -14,7 +15,7 @@ export default function PostForm() {
   const location = useLocation();
   const isUpdating = !!location.state;
 
-  const token = window.localStorage.getItem("token");
+  const { token } = useStore();
 
   if (!token) {
     return <Navigate to="/login" />;
