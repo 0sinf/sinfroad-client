@@ -27,4 +27,8 @@
   .post {
     flex-direction: column;
   }
+
+  .post__description {
+    width: 100%;
+  }
 }
