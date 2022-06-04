@@ -47,13 +47,15 @@ export function Home() {
 
   return (
     <main className="main">
-      {posts.length ? (
-        posts.map((post, idx) => {
-          return <PostCard key={idx} post={post} />;
-        })
-      ) : (
-        <p>"Dev..."</p>
-      )}
+      <div className="container">
+        {posts.length ? (
+          posts.map((post, idx) => {
+            return <PostCard key={idx} post={post} />;
+          })
+        ) : (
+          <p>"Dev..."</p>
+        )}
+      </div>
       <div ref={loader} />
     </main>
   );
