@@ -1,7 +1,8 @@
 .carousel {
   position: relative;
 
-  width: 100%;
+  width: 60%;
+  margin: 1rem;
   overflow: hidden;
 }
 
@@ -53,8 +54,10 @@
   right: 0;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 680px) {
   .carousel {
     height: fit-content;
+    width: 100%;
+    margin: 0;
   }
 }

@@ -1,6 +1,6 @@
 .post {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
 
   width: 100%;
 }
@@ -20,4 +20,10 @@
 .post__contents {
   font-size: 1.6rem;
   margin-top: 16px;
+}
+
+@media screen and (max-width: 680px) {
+  .post {
+    flex-direction: column;
+  }
 }
