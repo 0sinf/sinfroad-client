@@ -131,13 +131,12 @@ export default function PostForm() {
 
         <div className="form__box">
           <label htmlFor="contents">내용</label>
-          <input
-            type="text"
+          <textarea
             name="contents"
             value={contents}
             minLength={2}
             onChange={(e) => setContents(e.target.value)}
-          />
+          ></textarea>
         </div>
 
         <div className="form__box">

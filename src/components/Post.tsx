@@ -3,6 +3,11 @@ import "./Post.css";
 
 export function Post({ post }: { post: Post }) {
   const date = new Date(post.createdAt).toLocaleDateString("ko-KR");
+
+  const contents = post.contents
+    .split("\n")
+    .map((content, idx) => <p key={idx}>{content}</p>);
+
   return (
     <article className="post">
       <Carousel images={post.images} />
@@ -13,7 +18,7 @@ export function Post({ post }: { post: Post }) {
           {date}
         </time>
         <div className="post__contents">{post.address}</div>
-        <div className="post__contents">{post.contents}</div>
+        <div className="post__contents">{contents}</div>
       </header>
     </article>
   );
