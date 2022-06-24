@@ -96,34 +96,45 @@ export const posts = [
       page: 1,
       hasNext: false,
     };
-    res(ctx.status(200), ctx.json({ posts, pagination }));
+    return res(ctx.status(200), ctx.json({ posts, pagination }));
   }),
 
   rest.get(
     `${import.meta.env.VITE_API_SERVER_URI}/posts/:postId`,
     (_, res, ctx) => {
-      const post = {};
+      const post = {
+        id: "28e7cdd1-cf5b-453c-bb7c-291a4f2ca3b9",
+        title: "title-1",
+        contents: "contents-1",
+        address: "address-1",
+        images: [
+          "https://mp-seoul-image-production-s3.mangoplate.com/360830/1640124_1616941786815_18237?fit=around|738:738&crop=738:738;*,*&output-format=jpg&output-quality=80",
+        ],
+        created: new Date().toString(),
+        updated: new Date().toString(),
+      };
+      return res(ctx.status(200), ctx.json({ post }));
     }
   ),
 
   rest.post(`${import.meta.env.VITE_API_SERVER_URI}/posts`, (_, res, ctx) => {
-    res(
+    return res(
       ctx.status(201),
-      ctx.json({ id: "ade9dec7-b60b-4561-a067-ee882cb1385d" })
+      ctx.json({ id: "28e7cdd1-cf5b-453c-bb7c-291a4f2ca3b9" })
     );
   }),
 
   rest.patch(
     `${import.meta.env.VITE_API_SERVER_URI}/posts/:postId`,
     (_, res, ctx) => {
-      res(ctx.status(200), ctx.json({}));
+      return res(ctx.status(200), ctx.json({}));
     }
   ),
 
   rest.delete(
     `${import.meta.env.VITE_API_SERVER_URI}/posts/:postId`,
     (_, res, ctx) => {
-      res(ctx.status(200), ctx.json({}));
+      return res(ctx.status(200), ctx.json({}));
     }
   ),
 ];
