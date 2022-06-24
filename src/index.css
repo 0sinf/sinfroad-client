@@ -1,3 +1,21 @@
+:root {
+  /* margin size */
+  --margin-s: 1rem;
+  --margin-m: 1.2rem;
+  --margin-l: 1.4rem;
+
+  /* padding size */
+  --padding-s: 1rem;
+  --padding-m: 1.3rem;
+  --padding-l: 1.6rem;
+
+  /* font-size */
+  --font-size-xs: 1rem;
+  --font-size-s: 1.1rem;
+  --font-size-m: 1.2rem;
+  --font-size-l: 1.4rem;
+}
+
 * {
   margin: 0;
   padding: 0;
