@@ -53,7 +53,7 @@ export function Home() {
             return <PostCard key={idx} post={post} />;
           })
         ) : (
-          <p>"Dev..."</p>
+          <p>"Loading..."</p>
         )}
       </div>
       <div ref={loader} />
