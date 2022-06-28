@@ -1,29 +1,29 @@
-.post {
+.postcard {
   width: 30%;
   padding: var(--padding-s);
 }
 
-.post__img {
+.postcard__img {
   box-sizing: border-box;
   width: 100%;
 }
 
-.post__title {
+.postcard__title {
   font-size: var(--font-size-l);
 }
 
-.post__created {
+.postcard__created {
   color: var(--light-blue);
 }
 
 @media screen and (max-width: 980px) {
-  .post {
+  .postcard {
     width: 45%;
   }
 }
 
 @media screen and (max-width: 660px) {
-  .post {
+  .postcard {
     width: 100%;
   }
 }
