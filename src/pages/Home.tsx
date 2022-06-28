@@ -22,19 +22,21 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="container">
-      {loading ? (
-        <p>Loading ... </p>
-      ) : (
-        posts.map(({ title, created, images }) => (
-          <Postcard
-            key={title}
-            title={title}
-            created={created}
-            image={images[0]}
-          />
-        ))
-      )}
-    </div>
+    <main className="main">
+      <div className="container">
+        {loading ? (
+          <p>Loading ... </p>
+        ) : (
+          posts.map(({ title, created, images }) => (
+            <Postcard
+              key={title}
+              title={title}
+              created={created}
+              image={images[0]}
+            />
+          ))
+        )}
+      </div>
+    </main>
   );
 }
