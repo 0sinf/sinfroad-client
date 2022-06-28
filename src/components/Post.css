@@ -19,20 +19,18 @@
   padding: var(--padding-s);
 }
 
-.post__description-sub {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-
-  font-size: var(--font-size-m);
-
-  margin-bottom: var(--margin-s);
-}
-
 .post__title {
   font-size: var(--font-size-xl);
+}
 
-  margin-bottom: var(--margin-s);
+.post__address,
+.post__date {
+  font-size: var(--font-size-m);
+  margin-bottom: var(--margin-xs);
+}
+
+.post__date {
+  text-align: right;
 }
 
 .post__contents {

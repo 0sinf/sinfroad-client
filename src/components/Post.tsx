@@ -17,10 +17,8 @@ export default function Post({
       </figure>
       <article className="post__description">
         <h1 className="post__title">{title}</h1>
-        <div className="post__description-sub">
-          <div className="post__address">{address}</div>
-          <div className="post__date">{date}</div>
-        </div>
+        <div className="post__date">{date}</div>
+        <div className="post__address">{address}</div>
         <div className="post__contents">{contents}</div>
       </article>
     </div>

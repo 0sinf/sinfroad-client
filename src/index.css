@@ -1,5 +1,6 @@
 :root {
   /* margin size */
+  --margin-xs: 0.6rem;
   --margin-s: 1rem;
   --margin-m: 1.2rem;
   --margin-l: 1.4rem;
