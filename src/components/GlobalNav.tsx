@@ -8,8 +8,8 @@ export default function GlobalNav() {
         <Link to="/" className="nav__item">
           Sinfroad
         </Link>
-        {/* // FIXME: Fix url */}
-        <Link to="/" className="nav__item">
+        <Link to="/login" className="nav__item">
+          {/* // TODO: Use icon  */}
           Login
         </Link>
       </div>

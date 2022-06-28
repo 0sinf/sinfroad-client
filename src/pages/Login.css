@@ -1,0 +1,7 @@
+.google {
+  width: 100%;
+  height: 90%;
+
+  background: no-repeat center
+    url("../../public/images/btn_google_signin_light_normal_web@2x.png");
+}
