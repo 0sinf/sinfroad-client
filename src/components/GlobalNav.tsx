@@ -1,11 +1,17 @@
+import { Link } from "react-router-dom";
 import "./GlobalNav.css";
 
 export default function GlobalNav() {
   return (
     <div className="nav">
       <div className="nav__items">
-        <div className="nav__item">Sinfroad</div>
-        <div className="nav__item">Login</div>
+        <Link to="/" className="nav__item">
+          Sinfroad
+        </Link>
+        {/* // FIXME: Fix url */}
+        <Link to="/" className="nav__item">
+          Login
+        </Link>
       </div>
     </div>
   );

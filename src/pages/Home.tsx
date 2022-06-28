@@ -27,9 +27,10 @@ export default function Home() {
         {loading ? (
           <p>Loading ... </p>
         ) : (
-          posts.map(({ title, created, images }) => (
+          posts.map(({ id, title, created, images }) => (
             <Postcard
-              key={title}
+              key={id}
+              id={id}
               title={title}
               created={created}
               image={images[0]}
