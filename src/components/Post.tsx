@@ -13,6 +13,7 @@ export default function Post({
     <div className="post">
       <figure>
         {/* FIXME: Fix Carousel */}
+        {/* TODO: Fix setting size for other size images */}
         <img className="post__img" src={images[0]} alt={title} />
       </figure>
       <article className="post__description">
