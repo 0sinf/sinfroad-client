@@ -17,6 +17,7 @@ export default function Postcard({
   return (
     <div className="postcard">
       <Link to={`/posts/${id}`}>
+        {/* TODO: other size image can be aligned */}
         <figure>
           <img className="postcard__img" src={image} alt={title} />
         </figure>
