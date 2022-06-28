@@ -15,14 +15,14 @@ export default function Postcard({
   const date = new Date(created).toLocaleDateString("ko-KR");
 
   return (
-    <div className="post">
+    <div className="postcard">
       <Link to={`/posts/${id}`}>
         <figure>
-          <img className="post__img" src={image} alt={title} />
+          <img className="postcard__img" src={image} alt={title} />
         </figure>
-        <article className="post__description">
-          <h2 className="post__title">{title}</h2>
-          <div className="post__created">{date}</div>
+        <article className="postcard__description">
+          <h2 className="postcard__title">{title}</h2>
+          <div className="postcard__created">{date}</div>
         </article>
       </Link>
     </div>
