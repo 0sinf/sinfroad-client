@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import { Post } from "../@types/posts";
+import Postcard from "../components/Postcard";
+
+import "./Home.css";
 
 export default function Home() {
-  // TODO: Write Post card
-
   const [posts, setPosts] = useState<Array<Post>>([]);
   const [loading, setLoading] = useState(true);
 
@@ -21,12 +22,22 @@ export default function Home() {
   }, []);
 
   return (
-    <>
-      {loading ? (
-        <p>Loading ... </p>
-      ) : (
-        posts.map((post) => <div key={post.title}>{post.title}</div>)
-      )}
-    </>
+    <main className="main">
+      <div className="container">
+        {loading ? (
+          <p>Loading ... </p>
+        ) : (
+          posts.map(({ id, title, created, images }) => (
+            <Postcard
+              key={id}
+              id={id}
+              title={title}
+              created={created}
+              image={images[0]}
+            />
+          ))
+        )}
+      </div>
+    </main>
   );
 }
