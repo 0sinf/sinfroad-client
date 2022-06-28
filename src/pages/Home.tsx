@@ -2,8 +2,6 @@ import { useEffect, useState } from "react";
 import { Post } from "../@types/posts";
 import Postcard from "../components/Postcard";
 
-import "./Home.css";
-
 export default function Home() {
   const [posts, setPosts] = useState<Array<Post>>([]);
   const [loading, setLoading] = useState(true);
