@@ -9,7 +9,7 @@ export default function GlobalNav() {
           Sinfroad
         </Link>
         {/* // FIXME: Fix url */}
-        <Link to="/" className="nav__item">
+        <Link to="/login" className="nav__item">
           Login
         </Link>
       </div>
