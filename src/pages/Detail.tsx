@@ -20,5 +20,11 @@ export default function Detail() {
     getPost();
   }, []);
 
-  return <div>{loading ? <p>Loading ... </p> : post?.title}</div>;
+  return (
+    <main className="main">
+      <div className="container">
+        {loading ? <p>Loading ... </p> : post?.title}
+      </div>
+    </main>
+  );
 }
