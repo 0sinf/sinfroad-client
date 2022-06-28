@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Post } from "../@types/posts";
+import Postcard from "../components/Postcard";
 
 export default function Home() {
   // TODO: Write Post card
@@ -25,7 +26,14 @@ export default function Home() {
       {loading ? (
         <p>Loading ... </p>
       ) : (
-        posts.map((post) => <div key={post.title}>{post.title}</div>)
+        posts.map(({ title, created, images }) => (
+          <Postcard
+            key={title}
+            title={title}
+            created={created}
+            image={images[0]}
+          />
+        ))
       )}
     </>
   );
