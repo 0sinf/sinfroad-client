@@ -1,11 +1,17 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useParams } from "react-router-dom";
-import { Post } from "../@types/posts";
+import { IPost } from "../@types/posts";
+import Post from "../components/Post";
 
 export default function Detail() {
   const id = useParams();
-  const [post, setPost] = useState<Post>();
+  const [post, setPost] = useState<IPost>();
   const [loading, setLoading] = useState(true);
+
+  const writePost = () => {
+    if (!post) return;
+    return <Post post={post} />;
+  };
 
   const getPost = async () => {
     const data = await (
@@ -23,7 +29,7 @@ export default function Detail() {
   return (
     <main className="main">
       <div className="container">
-        {loading ? <p>Loading ... </p> : post?.title}
+        {loading ? <p>Loading ... </p> : writePost()}
       </div>
     </main>
   );

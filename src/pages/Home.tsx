@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { Post } from "../@types/posts";
+import { IPost } from "../@types/posts";
 import Postcard from "../components/Postcard";
 
 export default function Home() {
-  const [posts, setPosts] = useState<Array<Post>>([]);
+  const [posts, setPosts] = useState<Array<IPost>>([]);
   const [loading, setLoading] = useState(true);
 
   const getPosts = async () => {
