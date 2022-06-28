@@ -2,9 +2,9 @@ import { useEffect, useState } from "react";
 import { Post } from "../@types/posts";
 import Postcard from "../components/Postcard";
 
-export default function Home() {
-  // TODO: Write Post card
+import "./Home.css";
 
+export default function Home() {
   const [posts, setPosts] = useState<Array<Post>>([]);
   const [loading, setLoading] = useState(true);
 
@@ -22,7 +22,7 @@ export default function Home() {
   }, []);
 
   return (
-    <>
+    <div className="container">
       {loading ? (
         <p>Loading ... </p>
       ) : (
@@ -35,6 +35,6 @@ export default function Home() {
           />
         ))
       )}
-    </>
+    </div>
   );
 }

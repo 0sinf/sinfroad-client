@@ -1,3 +1,5 @@
+import "./Postcard.css";
+
 export default function Postcard({
   title,
   created,
@@ -11,11 +13,13 @@ export default function Postcard({
 
   return (
     <div className="post">
-      <figure className="post__img">
-        <img src={image} alt={title} />
+      <figure>
+        <img className="post__img" src={image} alt={title} />
       </figure>
-      <h2 className="post__title">{title}</h2>
-      <div className="post__created">{date}</div>
+      <article className="post__description">
+        <h2 className="post__title">{title}</h2>
+        <div className="post__created">{date}</div>
+      </article>
     </div>
   );
 }
