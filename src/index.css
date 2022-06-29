@@ -38,6 +38,10 @@
   color: inherit;
 }
 
+html::-webkit-scrollbar {
+  display: none;
+}
+
 html,
 body,
 #root,
