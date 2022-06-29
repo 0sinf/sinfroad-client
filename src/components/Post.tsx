@@ -1,6 +1,7 @@
 import { IPost } from "../@types/posts";
 
 import "./Post.css";
+import Carousel from "./Carousel";
 
 export default function Post({
   post: { title, contents, address, created, updated, images },
@@ -11,11 +12,8 @@ export default function Post({
 
   return (
     <div className="post">
-      <figure>
-        {/* FIXME: Fix Carousel */}
-        {/* TODO: Fix setting size for other size images */}
-        <img className="post__img" src={images[0]} alt={title} />
-      </figure>
+      <Carousel title={title} images={images} />
+
       <article className="post__description">
         <h1 className="post__title">{title}</h1>
         <div className="post__date">{date}</div>

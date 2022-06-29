@@ -1,0 +1,19 @@
+.carousel {
+  width: clamp(0px, 100%, 740px);
+  overflow: hidden;
+}
+
+.carousel__container {
+  display: flex;
+}
+
+.carousel__item {
+  display: flex;
+}
+
+.carousel__img {
+  box-sizing: border-box;
+  width: 100%;
+
+  object-fit: contain;
+}

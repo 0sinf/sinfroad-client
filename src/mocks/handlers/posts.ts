@@ -110,6 +110,7 @@ export const posts = [
         images: [
           "https://thumbs.dreamstime.com/b/closeup-internet-url-address-10171215.jpg",
           "https://mp-seoul-image-production-s3.mangoplate.com/360830/1640124_1616941786815_18237?fit=around|738:738&crop=738:738;*,*&output-format=jpg&output-quality=80",
+          "https://mp-seoul-image-production-s3.mangoplate.com/360830/1640124_1616941786815_18237?fit=around|738:738&crop=738:738;*,*&output-format=jpg&output-quality=80",
         ],
         created: new Date().toString(),
         updated: new Date().toString(),
