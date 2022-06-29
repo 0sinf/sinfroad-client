@@ -1,4 +1,4 @@
 import { setupWorker } from "msw";
-import { posts, auths } from "./handlers";
+import { posts } from "./handlers";
 
-export const worker = setupWorker(...posts, ...auths);
+export const worker = setupWorker(...posts);
