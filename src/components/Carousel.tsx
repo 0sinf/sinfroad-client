@@ -1,4 +1,5 @@
 import "./Carousel.css";
+import { ButtonHTMLAttributes, useState } from "react";
 
 export default function Carousel({
   images,
@@ -10,11 +11,33 @@ export default function Carousel({
   const containerWidth = 100 * images.length;
   const itemWidth = 100 / images.length;
 
+  const [index, setIndex] = useState(0);
+  const [leftMargin, setLeftMargin] = useState(0);
+
+  const handleClick = (direction: "prev" | "next") => {
+    if (direction === "prev" && index <= 0) {
+      return;
+    }
+
+    if (direction === "next" && images.length - 1 <= index) {
+      return;
+    }
+
+    if (direction === "next") {
+      setIndex((x) => x + 1);
+      setLeftMargin((x) => x - 100);
+      return;
+    }
+
+    setIndex((x) => x - 1);
+    setLeftMargin((x) => x + 100);
+  };
+
   return (
     <div className="carousel">
       <div
         className="carousel__container"
-        style={{ width: `${containerWidth}%` }}
+        style={{ width: `${containerWidth}%`, marginLeft: `${leftMargin}%` }}
       >
         {images.map((image) => (
           <figure
@@ -26,6 +49,16 @@ export default function Carousel({
           </figure>
         ))}
       </div>
+      <button
+        className="carousel__btn carousel__btn-left"
+        onClick={() => handleClick("prev")}
+        disabled={index <= 0}
+      ></button>
+      <button
+        className="carousel__btn carousel__btn-right"
+        onClick={() => handleClick("next")}
+        disabled={images.length - 1 <= index}
+      ></button>
     </div>
   );
 }

@@ -1,10 +1,13 @@
 .carousel {
   width: clamp(0px, 100%, 740px);
   overflow: hidden;
+  position: relative;
 }
 
 .carousel__container {
   display: flex;
+
+  transition: margin ease 0.5s;
 }
 
 .carousel__item {
@@ -17,4 +20,27 @@
   width: 100%;
 
   object-fit: contain;
+}
+
+.carousel__btn {
+  position: absolute;
+  top: 0;
+
+  opacity: 0;
+  width: 10%;
+  height: 100%;
+
+  cursor: pointer;
+}
+
+.carousel__btn:disabled {
+  cursor: auto;
+}
+
+.carousel__btn-left {
+  left: 0;
+}
+
+.carousel__btn-right {
+  right: 0;
 }
