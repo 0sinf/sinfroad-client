@@ -49,6 +49,7 @@ export default function Carousel({
           </figure>
         ))}
       </div>
+      {/* FIXME: Fix button to icon */}
       <button
         className="carousel__btn carousel__btn-left"
         onClick={() => handleClick("prev")}
