@@ -27,10 +27,6 @@ export default function Detail() {
   }, []);
 
   return (
-    <main className="main">
-      <div className="container">
-        {loading ? <p>Loading ... </p> : writePost()}
-      </div>
-    </main>
+    <main className="main">{loading ? <p>Loading ... </p> : writePost()}</main>
   );
 }

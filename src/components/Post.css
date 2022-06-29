@@ -2,30 +2,33 @@
   display: flex;
   flex-direction: row;
 
-  width: 100%;
+  width: clamp(0px, 100%, 1100px);
   padding: var(--padding-s);
 }
 
 .post > figure {
-  width: 50%;
+  height: 100%;
+  background-color: black;
+  border-radius: var(--border-radius-s);
 }
 
 .post__img {
   width: 100%;
+  border-radius: var(--border-radius-s);
 }
 
 .post__description {
-  width: 50%;
+  width: 330px;
   padding: var(--padding-s);
 }
 
 .post__title {
-  font-size: var(--font-size-xl);
+  font-size: var(--font-size-l);
 }
 
 .post__address,
 .post__date {
-  font-size: var(--font-size-m);
+  font-size: var(--font-size-s);
   margin-bottom: var(--margin-xs);
 }
 
@@ -34,7 +37,7 @@
 }
 
 .post__contents {
-  font-size: var(--font-size-l);
+  font-size: var(--font-size-m);
 
   margin-bottom: var(--margin-s);
 }
