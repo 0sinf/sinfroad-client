@@ -38,13 +38,15 @@
   color: inherit;
 }
 
+html::-webkit-scrollbar {
+  display: none;
+}
+
 html,
 body,
 #root,
 .App {
   height: 100%;
-
-  overflow: hidden;
 }
 
 a {
