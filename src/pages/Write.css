@@ -1,4 +1,42 @@
 .write__container {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form {
+  width: 80%;
+}
+
+.form__box {
+  display: flex;
+  flex-direction: column;
+
+  margin-bottom: var(--margin-l);
+}
+
+.form__textarea,
+.form__input {
+  font-size: var(--font-size-s);
+  padding: var(--padding-s);
+  margin-top: var(--margin-s);
+
+  border: 1px solid var(--light-blue);
+  border-radius: var(--border-radius-s);
+}
+
+.form__textarea {
+  height: calc(var(--font-size-xl) * 2);
+}
+
+.form__button {
+  font-size: var(--font-size-s);
+  padding: var(--padding-s);
+
+  background-color: var(--light-blue);
+
+  border: 1px solid var(--light-blue);
+  border-radius: var(--border-radius-s);
+
+  cursor: pointer;
 }
