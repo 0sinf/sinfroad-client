@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { IPost } from "../@types/posts";
+import { getPost } from "../api/posts";
 import Post from "../components/Post";
 
 export default function Detail() {
-  const id = useParams();
+  const { id } = useParams();
   const [post, setPost] = useState<IPost>();
   const [loading, setLoading] = useState(true);
 
@@ -13,17 +14,20 @@ export default function Detail() {
     return <Post post={post} />;
   };
 
-  const getPost = async () => {
-    const data = await (
-      await fetch(`${import.meta.env.VITE_API_SERVER_URI}/posts/${id}`)
-    ).json();
+  const callPost = async () => {
+    if (!id) {
+      // TODO: Error message
+      return;
+    }
+
+    const data = await getPost(id);
 
     setPost(data.post);
     setLoading(false);
   };
 
   useEffect(() => {
-    getPost();
+    callPost();
   }, []);
 
   return (

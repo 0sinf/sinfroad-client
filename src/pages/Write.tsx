@@ -2,6 +2,7 @@ import { ChangeEvent, FormEvent, useState, useEffect } from "react";
 import "./Write.css";
 import useAuthStore from "../store/useAuthStore";
 import { useNavigate } from "react-router-dom";
+import { createPost } from "../api/posts";
 
 export default function Write() {
   const [title, setTitle] = useState<string>("");
@@ -24,16 +25,7 @@ export default function Write() {
     formData.set("address", address);
     images.forEach((image) => formData.append("images", image));
 
-    const response = await fetch(
-      `${import.meta.env.VITE_API_SERVER_URI}/posts`,
-      {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-        body: formData,
-      }
-    );
+    const response = await createPost(formData, token);
 
     if (!response.ok) {
       // TODO: error message

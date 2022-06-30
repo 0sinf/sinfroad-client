@@ -1,5 +1,6 @@
 import create from "zustand";
 import { AuthStore } from "../@types/AuthStore";
+import { getUser } from "../api/users";
 import parseCookie from "../utils/parse-cookie";
 
 const useAuthStore = create<AuthStore>((set) => ({
@@ -16,15 +17,7 @@ const useAuthStore = create<AuthStore>((set) => ({
       return;
     }
 
-    fetch(`${import.meta.env.VITE_API_SERVER_URI}/users`, {
-      headers: { Authorization: `Bearer ${savedToken || cookieToken}` },
-    })
-      .then((response) => {
-        if (!response.ok) {
-          return;
-        }
-        return response.json();
-      })
+    getUser(savedToken, cookieToken)
       .then((data) => set((x) => ({ ...x, user: data.user })))
       .catch(() => {});
   },
