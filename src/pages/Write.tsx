@@ -1,10 +1,15 @@
+import { FormEvent } from "react";
 import "./Write.css";
 
 export default function Write() {
+  const onSubmit = (event: FormEvent) => {
+    event.preventDefault();
+  };
+
   return (
     <main className="write__container">
       <h1>새 글 작성하기</h1>
-      <form className="form">
+      <form className="form" onSubmit={onSubmit}>
         <div className="form__box">
           <label htmlFor="title">
             <h2>Title</h2>
