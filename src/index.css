@@ -1,9 +1,9 @@
 :root {
   /* margin size */
-  --margin-xs: 0.6rem;
-  --margin-s: 1rem;
-  --margin-m: 1.2rem;
-  --margin-l: 1.4rem;
+  --margin-xs: 0.8rem;
+  --margin-s: 1.2rem;
+  --margin-m: 1.6rem;
+  --margin-l: 2rem;
 
   /* padding size */
   --padding-s: 1rem;
@@ -58,6 +58,10 @@ li,
 ol,
 ul {
   list-style: none;
+}
+
+textarea {
+  resize: none;
 }
 
 .main {
