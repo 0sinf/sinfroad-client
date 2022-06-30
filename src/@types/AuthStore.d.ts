@@ -1,4 +1,8 @@
+import { IUser } from "./users";
+
 export interface AuthStore {
-  token?: string;
   initialize: () => void;
+  token?: string;
+  user?: IUser;
+  setUser: () => void;
 }

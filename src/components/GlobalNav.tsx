@@ -4,11 +4,12 @@ import useAuthStore from "../store/useAuthStore";
 import deleteCookie from "../utils/delete-cookie";
 
 export default function GlobalNav() {
-  const token = useAuthStore.getState().token;
+  const { user, setUser } = useAuthStore();
 
   const onDeleteUser = () => {
     localStorage.removeItem("access-token");
     deleteCookie();
+    setUser();
     window.location.reload();
   };
 
@@ -19,7 +20,12 @@ export default function GlobalNav() {
           Sinfroad
         </Link>
         {/* // TODO: Use icon  */}
-        {token ? (
+        {user?.role === "ADMIN" && (
+          <Link to="/posts" className="nav__item">
+            새 글 쓰기
+          </Link>
+        )}
+        {user ? (
           <Link to="/" className="nav__item" onClick={onDeleteUser}>
             Logout
           </Link>

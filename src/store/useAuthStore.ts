@@ -12,9 +12,24 @@ const useAuthStore = create<AuthStore>((set) => ({
       localStorage.setItem("access-token", cookieToken);
     }
 
-    // TODO: Get user information
+    if (!savedToken && !cookieToken) {
+      return;
+    }
 
-    return;
+    fetch(`${import.meta.env.VITE_API_SERVER_URI}/users`, {
+      headers: { Authorization: `Bearer ${savedToken || cookieToken}` },
+    })
+      .then((response) => {
+        if (!response.ok) {
+          return;
+        }
+        return response.json();
+      })
+      .then((data) => set((x) => ({ ...x, user: data.user })))
+      .catch(() => {});
+  },
+  setUser: (user = undefined) => {
+    set((x) => ({ ...x, user }));
   },
 }));
 
