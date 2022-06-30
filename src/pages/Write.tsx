@@ -1,4 +1,4 @@
-import { FormEvent } from "react";
+import { ChangeEvent, FormEvent } from "react";
 import "./Write.css";
 
 export default function Write() {
@@ -6,10 +6,12 @@ export default function Write() {
     event.preventDefault();
   };
 
+  const onChange = (event: ChangeEvent) => {};
+
   return (
     <main className="write__container">
       <h1>새 글 작성하기</h1>
-      <form className="form" onSubmit={onSubmit}>
+      <form className="form" method="POST" onSubmit={onSubmit}>
         <div className="form__box">
           <label htmlFor="title">
             <h2>Title</h2>
@@ -35,6 +37,17 @@ export default function Write() {
             type="text"
             id="address"
             name="address"
+          />
+        </div>
+        <div className="form__box">
+          <label htmlFor="image">
+            <h2>Images</h2>
+          </label>
+          <input
+            className="form__input-image"
+            type="file"
+            id="image"
+            onChange={onChange}
           />
         </div>
         <button className="form__button" type="submit">
