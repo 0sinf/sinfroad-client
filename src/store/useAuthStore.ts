@@ -21,7 +21,11 @@ const useAuthStore = create<AuthStore>((set) => ({
         }
         return response.json();
       })
-      .then((data) => set((x) => ({ ...x, user: data.user })));
+      .then((data) => set((x) => ({ ...x, user: data.user })))
+      .catch(() => {});
+  },
+  setUser: (user = undefined) => {
+    set((x) => ({ ...x, user }));
   },
 }));
 

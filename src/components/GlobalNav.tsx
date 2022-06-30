@@ -4,11 +4,12 @@ import useAuthStore from "../store/useAuthStore";
 import deleteCookie from "../utils/delete-cookie";
 
 export default function GlobalNav() {
-  const { user } = useAuthStore();
+  const { user, setUser } = useAuthStore();
 
   const onDeleteUser = () => {
     localStorage.removeItem("access-token");
     deleteCookie();
+    setUser();
     window.location.reload();
   };
 
