@@ -12,6 +12,10 @@ const useAuthStore = create<AuthStore>((set) => ({
       localStorage.setItem("access-token", cookieToken);
     }
 
+    if (!savedToken && !cookieToken) {
+      return;
+    }
+
     fetch(`${import.meta.env.VITE_API_SERVER_URI}/users`, {
       headers: { Authorization: `Bearer ${savedToken || cookieToken}` },
     })
