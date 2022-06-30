@@ -12,6 +12,8 @@ const useAuthStore = create<AuthStore>((set) => ({
       localStorage.setItem("access-token", cookieToken);
     }
 
+    // TODO: Get user information
+
     return;
   },
 }));
