@@ -1,15 +1,46 @@
-import { ChangeEvent, FormEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useState, useEffect } from "react";
 import "./Write.css";
+import useAuthStore from "../store/useAuthStore";
+import { useNavigate } from "react-router-dom";
 
 export default function Write() {
   const [title, setTitle] = useState<string>("");
-  const [contents, setContents] = useState<string>();
+  const [contents, setContents] = useState<string>("");
   const [address, setAddress] = useState<string>("");
   const [images, setImages] = useState<File[]>([]);
 
-  const onSubmit = (event: FormEvent) => {
+  const go = useNavigate();
+  const { token } = useAuthStore();
+
+  const onSubmit = async (event: FormEvent) => {
     event.preventDefault();
-    console.log(title, contents, address, images);
+
+    // TODO: Check images length
+
+    const formData = new FormData();
+
+    formData.set("title", title);
+    formData.set("contents", contents);
+    formData.set("address", address);
+    images.forEach((image) => formData.append("images", image));
+
+    const response = await fetch(
+      `${import.meta.env.VITE_API_SERVER_URI}/posts`,
+      {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        body: formData,
+      }
+    );
+
+    if (!response.ok) {
+      // TODO: error message
+      return;
+    }
+
+    go("/");
   };
 
   const onChangeImage = (event: ChangeEvent<HTMLInputElement>) => {
@@ -20,6 +51,13 @@ export default function Write() {
     const file = event.target.files.item(0) as File;
     setImages((x) => [...x, file]);
   };
+
+  useEffect(() => {
+    if (!token) {
+      // TODO: error message
+      go("/login");
+    }
+  }, []);
 
   return (
     <main className="write__container">

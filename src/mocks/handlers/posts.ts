@@ -118,7 +118,11 @@ export const posts = [
     }
   ),
 
-  rest.post(`${import.meta.env.VITE_API_SERVER_URI}/posts`, (_, res, ctx) => {
+  rest.post(`${import.meta.env.VITE_API_SERVER_URI}/posts`, (req, res, ctx) => {
+    if (req.headers.get("authorization")?.split("Bearer ")[1] === "undefined") {
+      return res(ctx.status(401));
+    }
+
     return res(
       ctx.status(201),
       ctx.json({ id: "28e7cdd1-cf5b-453c-bb7c-291a4f2ca3b9" })
