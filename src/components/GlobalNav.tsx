@@ -48,7 +48,6 @@ export default function GlobalNav({
           </div>
         )}
         {/* // TODO: Use icon  */}
-        {/* // TODO: Add Sidebar */}
       </div>
     </div>
   );
