@@ -2,9 +2,10 @@ import { useRef, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import useAuthStore from "../store/useAuthStore";
 import deleteCookie from "../utils/delete-cookie";
+import { GlobalNavProps } from "../@types/GlobalNav";
 import "./GlobalNav.css";
 
-export default function GlobalNav() {
+export default function GlobalNav({ setShowSidebar }: GlobalNavProps) {
   const { user, setUser } = useAuthStore();
 
   const [navWidth, setNavWidth] = useState<number>(0);
@@ -25,6 +26,10 @@ export default function GlobalNav() {
     }
 
     setNavWidth(current.offsetWidth);
+  };
+
+  const onClick = () => {
+    setShowSidebar((x: boolean) => !x);
   };
 
   useEffect(() => {
@@ -56,7 +61,7 @@ export default function GlobalNav() {
           </div>
         ) : (
           <div className="nav__item">
-            <button>=</button>
+            <button onClick={onClick}>=</button>
           </div>
         )}
         {/* // TODO: Use icon  */}
