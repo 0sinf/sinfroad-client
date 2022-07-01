@@ -37,6 +37,30 @@ export function Input({
   );
 }
 
+export function InputFile({
+  type,
+  name,
+  onChange,
+}: {
+  type: string;
+  name: string;
+  onChange: (event: ChangeEvent<HTMLInputElement>) => void;
+}) {
+  return (
+    <div className="input__container">
+      <label htmlFor={name}>
+        <h2>{name}</h2>
+      </label>
+      <input
+        className="input-image"
+        type={type}
+        id={name}
+        onChange={onChange}
+      />
+    </div>
+  );
+}
+
 export function Textarea({
   name,
   text,

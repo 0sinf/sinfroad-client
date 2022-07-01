@@ -2,7 +2,7 @@ import { ChangeEvent, FormEvent, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import useAuthStore from "../store/useAuthStore";
 import { createPost } from "../api/posts";
-import { Input, Textarea } from "../components/Input";
+import { Input, InputFile, Textarea } from "../components/Input";
 import "./Write.css";
 
 export default function Write() {
@@ -63,12 +63,14 @@ export default function Write() {
           placeholder="Write title"
           setValue={setTitle}
         />
+
         <Textarea
           name="contents"
           text={contents}
           placeholder="Write contents"
           setValue={setContents}
         />
+
         <Input
           type="text"
           name="address"
@@ -76,17 +78,9 @@ export default function Write() {
           placeholder="Write address"
           setValue={setAddress}
         />
-        <div className="form__box">
-          <label htmlFor="image">
-            <h2>Images</h2>
-          </label>
-          <input
-            className="form__input-image"
-            type="file"
-            id="image"
-            onChange={onChangeImage}
-          />
-        </div>
+
+        <InputFile type="file" name="image" onChange={onChangeImage} />
+
         <button className="form__button" type="submit">
           작성하기
         </button>
