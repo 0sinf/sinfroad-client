@@ -16,24 +16,20 @@ export default function GlobalNav() {
   return (
     <div className="nav">
       <div className="nav__items">
-        <Link to="/" className="nav__item">
+        <Link to="/" className="nav__item--head">
           Sinfroad
         </Link>
+        <div className="nav__item">
+          {user?.role === "ADMIN" && <Link to="/posts">새 글 쓰기</Link>}
+          {user ? (
+            <Link to="/" onClick={onDeleteUser}>
+              Logout
+            </Link>
+          ) : (
+            <Link to="/login">Login</Link>
+          )}
+        </div>
         {/* // TODO: Use icon  */}
-        {user?.role === "ADMIN" && (
-          <Link to="/posts" className="nav__item">
-            새 글 쓰기
-          </Link>
-        )}
-        {user ? (
-          <Link to="/" className="nav__item" onClick={onDeleteUser}>
-            Logout
-          </Link>
-        ) : (
-          <Link to="/login" className="nav__item">
-            Login
-          </Link>
-        )}
       </div>
     </div>
   );
