@@ -5,6 +5,7 @@
   margin-bottom: var(--margin-l);
 }
 
+.textarea,
 .input {
   font-size: var(--font-size-s);
   padding: var(--padding-s);
@@ -12,4 +13,8 @@
 
   border: 1px solid var(--light-blue);
   border-radius: var(--border-radius-s);
+}
+
+.textarea {
+  height: calc(var(--font-size-xl) * 2);
 }
