@@ -1,0 +1,15 @@
+.input__container {
+  display: flex;
+  flex-direction: column;
+
+  margin-bottom: var(--margin-l);
+}
+
+.input {
+  font-size: var(--font-size-s);
+  padding: var(--padding-s);
+  margin-top: var(--margin-s);
+
+  border: 1px solid var(--light-blue);
+  border-radius: var(--border-radius-s);
+}
