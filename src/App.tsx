@@ -8,6 +8,7 @@ import { useState, useRef, useEffect } from "react";
 
 function App() {
   const [isMobile, setIsMobile] = useState<boolean>(false);
+  const [showSidebar, setShowSidebar] = useState<boolean>(false);
   const app = useRef<HTMLDivElement>(null);
 
   const handleResize = () => {
@@ -32,8 +33,8 @@ function App() {
 
   return (
     <div className="App" ref={app}>
-      <GlobalNav isMobile={isMobile} />
-      {isMobile && "sidebar"}
+      <GlobalNav isMobile={isMobile} setShowSidebar={setShowSidebar} />
+      {showSidebar && "sidebar"}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/posts" element={<Write />} />

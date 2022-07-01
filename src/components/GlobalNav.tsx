@@ -4,7 +4,10 @@ import deleteCookie from "../utils/delete-cookie";
 import { GlobalNavProps } from "../@types/GlobalNav";
 import "./GlobalNav.css";
 
-export default function GlobalNav({ isMobile }: GlobalNavProps) {
+export default function GlobalNav({
+  isMobile,
+  setShowSidebar,
+}: GlobalNavProps) {
   const { user, setUser } = useAuthStore();
 
   const onDeleteUser = () => {
@@ -12,6 +15,14 @@ export default function GlobalNav({ isMobile }: GlobalNavProps) {
     deleteCookie();
     setUser();
     window.location.reload();
+  };
+
+  const handleClick = () => {
+    if (!setShowSidebar) {
+      return;
+    }
+
+    setShowSidebar((x) => !x);
   };
 
   return (
@@ -22,7 +33,7 @@ export default function GlobalNav({ isMobile }: GlobalNavProps) {
         </Link>
         {isMobile ? (
           <div className="nav__item">
-            {/* <button onClick={onClick}>=</button> */}
+            <button onClick={handleClick}>=</button>
           </div>
         ) : (
           <div className="nav__item">
