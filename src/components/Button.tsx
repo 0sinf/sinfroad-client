@@ -7,12 +7,14 @@ export default function Button({
   btnStyle = "primary",
   disabled,
   size = "medium",
+  onClick,
 }: ButtonProps) {
   return (
     <button
       className={`button button--${btnStyle} button--${size}`}
       type={type}
       disabled={disabled}
+      onClick={onClick}
     >
       {value}
     </button>

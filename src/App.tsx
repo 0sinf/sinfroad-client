@@ -35,7 +35,7 @@ function App() {
   return (
     <div className="App" ref={app}>
       <GlobalNav isMobile={isMobile} setShowSidebar={setShowSidebar} />
-      {showSidebar && <Sidebar />}
+      {showSidebar && <Sidebar setShowSidebar={setShowSidebar} />}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/posts" element={<Write />} />

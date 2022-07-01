@@ -2,9 +2,10 @@ import { Link } from "react-router-dom";
 import Button from "./Button";
 import useAuthStore from "../store/useAuthStore";
 import deleteCookie from "../utils/delete-cookie";
+import { SidebarProps } from "../@types/Sidebar";
 import "./Sidebar.css";
 
-export default function Sidebar() {
+export default function Sidebar({ setShowSidebar }: SidebarProps) {
   const { user, setUser } = useAuthStore();
 
   const handleLogout = () => {
@@ -14,10 +15,15 @@ export default function Sidebar() {
     window.location.reload();
   };
 
+  const handleClick = () => {
+    setShowSidebar((x) => !x);
+  };
+
   return (
     <div className="sidebar">
       {/* FIXME: Fix icon */}
-      <Button value="X"></Button>
+      <Button onClick={handleClick} value="X"></Button>
+
       <ul className="sidebar__items">
         {user?.role === "ADMIN" && (
           <Link className="sidebar__item" to="/posts">
