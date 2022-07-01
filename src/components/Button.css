@@ -1,0 +1,17 @@
+.button {
+  font-size: var(--font-size-xs);
+  padding: var(--padding-s);
+
+  border: 1px solid var(--light-blue);
+  border-radius: var(--border-radius-s);
+
+  cursor: pointer;
+}
+
+.button--primary {
+  background-color: var(--light-blue);
+}
+
+.button--secondary {
+  background-color: var(--yellow-green);
+}
