@@ -15,7 +15,7 @@ export default function Write() {
   const go = useNavigate();
   const { token } = useAuthStore();
 
-  const onSubmit = async (event: FormEvent) => {
+  const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
 
     // TODO: Check images length
@@ -37,7 +37,7 @@ export default function Write() {
     go("/");
   };
 
-  const onChangeImage = (event: ChangeEvent<HTMLInputElement>) => {
+  const handleChangeImage = (event: ChangeEvent<HTMLInputElement>) => {
     if (!event.target.files) {
       return;
     }
@@ -56,7 +56,7 @@ export default function Write() {
   return (
     <main className="write__container">
       <h1>새 글 작성하기</h1>
-      <form className="form" method="POST" onSubmit={onSubmit}>
+      <form className="form" method="POST" onSubmit={handleSubmit}>
         <Input
           type="text"
           name="title"
@@ -80,7 +80,7 @@ export default function Write() {
           setValue={setAddress}
         />
 
-        <Input type="file" name="image" onUpload={onChangeImage} />
+        <Input type="file" name="image" handleUpload={handleChangeImage} />
 
         <Button value="작성하기" type="submit" />
       </form>

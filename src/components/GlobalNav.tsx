@@ -10,7 +10,7 @@ export default function GlobalNav({
 }: GlobalNavProps) {
   const { user, setUser } = useAuthStore();
 
-  const onDeleteUser = () => {
+  const handleLogout = () => {
     localStorage.removeItem("access-token");
     deleteCookie();
     setUser();
@@ -39,7 +39,7 @@ export default function GlobalNav({
           <div className="nav__item">
             {user?.role === "ADMIN" && <Link to="/posts">새 글 쓰기</Link>}
             {user ? (
-              <Link to="/" onClick={onDeleteUser}>
+              <Link to="/" onClick={handleLogout}>
                 Logout
               </Link>
             ) : (
