@@ -1,10 +1,10 @@
 import GlobalNav from "./components/GlobalNav";
 import { Routes, Route } from "react-router-dom";
+import { useState, useRef, useEffect } from "react";
 import Home from "./pages/Home";
 import Detail from "./pages/Detail";
 import Login from "./pages/Login";
 import Write from "./pages/Write";
-import { useState, useRef, useEffect } from "react";
 
 function App() {
   const [isMobile, setIsMobile] = useState<boolean>(false);
