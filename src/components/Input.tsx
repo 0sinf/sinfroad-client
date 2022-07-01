@@ -1,4 +1,4 @@
-import { ChangeEvent, InputHTMLAttributes } from "react";
+import { ChangeEvent } from "react";
 import "./Input.css";
 
 export default function Input({
@@ -22,7 +22,7 @@ export default function Input({
   return (
     <div className="input__container">
       <label htmlFor={name}>
-        <h2>Title</h2>
+        <h2>{name}</h2>
       </label>
       <input
         className="input"

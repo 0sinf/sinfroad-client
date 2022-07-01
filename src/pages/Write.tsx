@@ -1,8 +1,9 @@
 import { ChangeEvent, FormEvent, useState, useEffect } from "react";
-import "./Write.css";
-import useAuthStore from "../store/useAuthStore";
 import { useNavigate } from "react-router-dom";
+import useAuthStore from "../store/useAuthStore";
 import { createPost } from "../api/posts";
+import Input from "../components/Input";
+import "./Write.css";
 
 export default function Write() {
   const [title, setTitle] = useState<string>("");
@@ -55,20 +56,13 @@ export default function Write() {
     <main className="write__container">
       <h1>새 글 작성하기</h1>
       <form className="form" method="POST" onSubmit={onSubmit}>
-        <div className="form__box">
-          <label htmlFor="title">
-            <h2>Title</h2>
-          </label>
-          <input
-            className="form__input"
-            type="text"
-            id="title"
-            name="title"
-            placeholder="Write title"
-            value={title}
-            onChange={(event) => setTitle(event.target.value)}
-          />
-        </div>
+        <Input
+          type="text"
+          name="title"
+          text={title}
+          placeholder="Write title"
+          setValue={setTitle}
+        />
         <div className="form__box">
           <label htmlFor="contents">
             <h2>Contents</h2>
@@ -82,20 +76,13 @@ export default function Write() {
             onChange={(event) => setContents(event.target.value)}
           ></textarea>
         </div>
-        <div className="form__box">
-          <label htmlFor="address">
-            <h2>Address</h2>
-          </label>
-          <input
-            className="form__input"
-            type="text"
-            id="address"
-            name="address"
-            placeholder="Write address"
-            value={address}
-            onChange={(event) => setAddress(event.target.value)}
-          />
-        </div>
+        <Input
+          type="text"
+          name="address"
+          text={address}
+          placeholder="Write address"
+          setValue={setAddress}
+        />
         <div className="form__box">
           <label htmlFor="image">
             <h2>Images</h2>
