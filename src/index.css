@@ -6,6 +6,7 @@
   --margin-l: 2rem;
 
   /* padding size */
+  --padding-xs: 0.6rem;
   --padding-s: 1rem;
   --padding-m: 1.3rem;
   --padding-l: 1.6rem;
@@ -14,8 +15,8 @@
   --border-radius-s: 4px;
 
   /* font-size */
-  --font-size-xs: 1.2rem;
-  --font-size-s: 1.4rem;
+  --font-size-xs: 1rem;
+  --font-size-s: 1.3rem;
   --font-size-m: 1.6rem;
   --font-size-l: 2rem;
   --font-size-xl: 3rem;

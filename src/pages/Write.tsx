@@ -82,7 +82,7 @@ export default function Write() {
 
         <Input type="file" name="image" onUpload={onChangeImage} />
 
-        <Button style="primary" value="작성하기" type="submit" />
+        <Button value="작성하기" type="submit" />
       </form>
     </main>
   );

@@ -17,8 +17,8 @@ export default function Post({
 
       <article className="post__description">
         <div className="post__control">
-          <Button value="수정하기" type="button" style="primary" />
-          <Button value="삭제하기" type="button" style="secondary" />
+          <Button value="수정하기" size="small" />
+          <Button value="삭제하기" btnStyle="secondary" size="small" />
         </div>
         <h1 className="post__title">{title}</h1>
         <div className="post__date">{date}</div>
