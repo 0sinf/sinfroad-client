@@ -55,11 +55,12 @@ export default function GlobalNav() {
             )}
           </div>
         ) : (
-          ""
-          // TODO: Add hamburger
-          // TODO: Add hidden window
+          <div className="nav__item">
+            <button>=</button>
+          </div>
         )}
         {/* // TODO: Use icon  */}
+        {/* // TODO: Add Sidebar */}
       </div>
     </div>
   );
