@@ -8,7 +8,10 @@ export function Input({
   value,
   placeholder,
   setValue,
+  onUpload,
 }: InputProps) {
+  const isUploading = type === "file";
+
   const onChange = (event: ChangeEvent<HTMLInputElement>) => {
     if (!setValue) {
       return;
@@ -23,31 +26,24 @@ export function Input({
       <label htmlFor={name}>
         <h2>{name}</h2>
       </label>
-      <input
-        className="input"
-        type={type}
-        id={name}
-        name={name}
-        placeholder={placeholder}
-        value={value}
-        onChange={onChange}
-      />
-    </div>
-  );
-}
-
-export function InputFile({ type, name, onChange }: InputProps) {
-  return (
-    <div className="input__container">
-      <label htmlFor={name}>
-        <h2>{name}</h2>
-      </label>
-      <input
-        className="input-image"
-        type={type}
-        id={name}
-        onChange={onChange}
-      />
+      {isUploading ? (
+        <input
+          className="input-image"
+          type={type}
+          id={name}
+          onChange={onUpload}
+        />
+      ) : (
+        <input
+          className="input"
+          type={type}
+          id={name}
+          name={name}
+          placeholder={placeholder}
+          value={value}
+          onChange={onChange}
+        />
+      )}
     </div>
   );
 }

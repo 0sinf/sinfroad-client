@@ -2,7 +2,7 @@ import { ChangeEvent, FormEvent, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import useAuthStore from "../store/useAuthStore";
 import { createPost } from "../api/posts";
-import { Input, InputFile, Textarea } from "../components/Input";
+import { Input, Textarea } from "../components/Input";
 import "./Write.css";
 
 export default function Write() {
@@ -79,7 +79,7 @@ export default function Write() {
           setValue={setAddress}
         />
 
-        <InputFile type="file" name="image" onChange={onChangeImage} />
+        <Input type="file" name="image" onUpload={onChangeImage} />
 
         <button className="form__button" type="submit">
           작성하기
