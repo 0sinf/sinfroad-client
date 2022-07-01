@@ -1,20 +1,19 @@
 import { ChangeEvent } from "react";
 import "./Input.css";
+import { InputProps, TextAreaProps } from "../@types/Input";
 
 export function Input({
   type,
   name,
-  text,
+  value,
   placeholder,
   setValue,
-}: {
-  type: string;
-  name: string;
-  text: string;
-  placeholder: string;
-  setValue: (value: string) => void;
-}) {
+}: InputProps) {
   const onChange = (event: ChangeEvent<HTMLInputElement>) => {
+    if (!setValue) {
+      return;
+    }
+
     const value = event.target.value;
     setValue(value);
   };
@@ -30,22 +29,14 @@ export function Input({
         id={name}
         name={name}
         placeholder={placeholder}
-        value={text}
+        value={value}
         onChange={onChange}
       />
     </div>
   );
 }
 
-export function InputFile({
-  type,
-  name,
-  onChange,
-}: {
-  type: string;
-  name: string;
-  onChange: (event: ChangeEvent<HTMLInputElement>) => void;
-}) {
+export function InputFile({ type, name, onChange }: InputProps) {
   return (
     <div className="input__container">
       <label htmlFor={name}>
@@ -63,15 +54,10 @@ export function InputFile({
 
 export function Textarea({
   name,
-  text,
+  value,
   placeholder,
   setValue,
-}: {
-  name: string;
-  text: string;
-  placeholder: string;
-  setValue: (value: string) => void;
-}) {
+}: TextAreaProps) {
   const onChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
     const value = event.target.value;
     setValue(value);
@@ -87,7 +73,7 @@ export function Textarea({
         id={name}
         name={name}
         placeholder={placeholder}
-        value={text}
+        value={value}
         onChange={onChange}
       ></textarea>
     </div>

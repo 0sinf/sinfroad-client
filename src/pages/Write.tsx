@@ -59,23 +59,23 @@ export default function Write() {
         <Input
           type="text"
           name="title"
-          text={title}
           placeholder="Write title"
+          value={title}
           setValue={setTitle}
         />
 
         <Textarea
           name="contents"
-          text={contents}
           placeholder="Write contents"
+          value={contents}
           setValue={setContents}
         />
 
         <Input
           type="text"
           name="address"
-          text={address}
           placeholder="Write address"
+          value={address}
           setValue={setAddress}
         />
 
