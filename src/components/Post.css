@@ -31,7 +31,7 @@
   font-size: var(--font-size-s);
   margin-bottom: var(--margin-xs);
 }
-
+.post__control,
 .post__date {
   text-align: right;
 }

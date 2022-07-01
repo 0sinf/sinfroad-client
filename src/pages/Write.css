@@ -7,15 +7,3 @@
 .form {
   width: 80%;
 }
-
-.form__button {
-  font-size: var(--font-size-xs);
-  padding: var(--padding-s);
-
-  background-color: var(--light-blue);
-
-  border: 1px solid var(--light-blue);
-  border-radius: var(--border-radius-s);
-
-  cursor: pointer;
-}

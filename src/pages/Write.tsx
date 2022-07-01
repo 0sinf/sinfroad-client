@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import useAuthStore from "../store/useAuthStore";
 import { createPost } from "../api/posts";
 import { Input, Textarea } from "../components/Input";
+import Button from "../components/Button";
 import "./Write.css";
 
 export default function Write() {
@@ -81,9 +82,7 @@ export default function Write() {
 
         <Input type="file" name="image" onUpload={onChangeImage} />
 
-        <button className="form__button" type="submit">
-          작성하기
-        </button>
+        <Button value="작성하기" type="submit" />
       </form>
     </main>
   );
