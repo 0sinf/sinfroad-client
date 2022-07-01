@@ -1,3 +1,3 @@
 export interface GlobalNavProps {
-  setShowSidebar?: Dispatch<SetStateAction<boolean>>;
+  isMobile?: boolean;
 }

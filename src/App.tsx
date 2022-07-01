@@ -4,15 +4,36 @@ import Home from "./pages/Home";
 import Detail from "./pages/Detail";
 import Login from "./pages/Login";
 import Write from "./pages/Write";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 
 function App() {
-  const [showSidebar, setShowSidebar] = useState<boolean>(false);
+  const [isMobile, setIsMobile] = useState<boolean>(false);
+  const app = useRef<HTMLDivElement>(null);
+
+  const handleResize = () => {
+    const { current } = app;
+
+    if (!current) {
+      return;
+    }
+
+    setIsMobile(current.offsetWidth < 660);
+  };
+
+  useEffect(() => {
+    handleResize();
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   return (
-    <div className="App">
-      <GlobalNav setShowSidebar={setShowSidebar} />
-      {showSidebar && "sidebar"}
+    <div className="App" ref={app}>
+      <GlobalNav isMobile={isMobile} />
+      {isMobile && "sidebar"}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/posts" element={<Write />} />

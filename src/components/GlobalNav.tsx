@@ -1,15 +1,11 @@
-import { useRef, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import useAuthStore from "../store/useAuthStore";
 import deleteCookie from "../utils/delete-cookie";
 import { GlobalNavProps } from "../@types/GlobalNav";
 import "./GlobalNav.css";
 
-export default function GlobalNav({ setShowSidebar }: GlobalNavProps) {
+export default function GlobalNav({ isMobile }: GlobalNavProps) {
   const { user, setUser } = useAuthStore();
-
-  const [navWidth, setNavWidth] = useState<number>(0);
-  const nav = useRef<HTMLDivElement>(null);
 
   const onDeleteUser = () => {
     localStorage.removeItem("access-token");
@@ -18,37 +14,17 @@ export default function GlobalNav({ setShowSidebar }: GlobalNavProps) {
     window.location.reload();
   };
 
-  const onResize = () => {
-    const { current } = nav;
-
-    if (!current) {
-      return;
-    }
-
-    setNavWidth(current.offsetWidth);
-  };
-
-  const onClick = () => {
-    setShowSidebar((x: boolean) => !x);
-  };
-
-  useEffect(() => {
-    onResize();
-
-    window.addEventListener("resize", onResize, { passive: true });
-
-    return () => {
-      window.removeEventListener("resize", onResize);
-    };
-  }, []);
-
   return (
-    <div className="nav" ref={nav}>
+    <div className="nav">
       <div className="nav__items">
         <Link to="/" className="nav__item--head">
           Sinfroad
         </Link>
-        {navWidth > 660 ? (
+        {isMobile ? (
+          <div className="nav__item">
+            {/* <button onClick={onClick}>=</button> */}
+          </div>
+        ) : (
           <div className="nav__item">
             {user?.role === "ADMIN" && <Link to="/posts">새 글 쓰기</Link>}
             {user ? (
@@ -58,10 +34,6 @@ export default function GlobalNav({ setShowSidebar }: GlobalNavProps) {
             ) : (
               <Link to="/login">Login</Link>
             )}
-          </div>
-        ) : (
-          <div className="nav__item">
-            <button onClick={onClick}>=</button>
           </div>
         )}
         {/* // TODO: Use icon  */}
