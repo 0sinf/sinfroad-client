@@ -8,7 +8,7 @@ export function Input({
   value,
   placeholder,
   setValue,
-  onUpload,
+  handleUpload,
 }: InputProps) {
   const isUploading = type === "file";
 
@@ -31,7 +31,7 @@ export function Input({
           className="input-image"
           type={type}
           id={name}
-          onChange={onUpload}
+          onChange={handleUpload}
         />
       ) : (
         <input
