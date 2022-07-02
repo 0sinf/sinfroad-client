@@ -7,6 +7,7 @@ import { SidebarProps } from "../@types/Sidebar";
 import "./Sidebar.css";
 
 export default function Sidebar({ showSidebar, setShowSidebar }: SidebarProps) {
+  // TODO: Should be closed when do anything
   const { user, setUser } = useAuthStore();
   const sidebar = useRef<HTMLDivElement>(null);
 
@@ -22,6 +23,7 @@ export default function Sidebar({ showSidebar, setShowSidebar }: SidebarProps) {
   };
 
   const handleSidebar = () => {
+    // TODO: Is it correct?
     const { current } = sidebar;
 
     if (!current) {
@@ -43,6 +45,7 @@ export default function Sidebar({ showSidebar, setShowSidebar }: SidebarProps) {
       {/* FIXME: Fix icon */}
       <Button onClick={handleClick} value="X"></Button>
 
+      {/* FIXME: duplicate with nav */}
       <ul className="sidebar__items">
         {user?.role === "ADMIN" && (
           <Link className="sidebar__item" to="/posts">
