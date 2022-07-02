@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
+import { useEffect, useRef } from "react";
 import Button from "./Button";
 import useAuthStore from "../store/useAuthStore";
 import deleteCookie from "../utils/delete-cookie";
 import { SidebarProps } from "../@types/Sidebar";
 import "./Sidebar.css";
-import { useEffect, useRef } from "react";
 
 export default function Sidebar({ showSidebar, setShowSidebar }: SidebarProps) {
   const { user, setUser } = useAuthStore();
