@@ -4,9 +4,11 @@ import useAuthStore from "../store/useAuthStore";
 import deleteCookie from "../utils/delete-cookie";
 import { SidebarProps } from "../@types/Sidebar";
 import "./Sidebar.css";
+import { useEffect, useRef } from "react";
 
-export default function Sidebar({ setShowSidebar }: SidebarProps) {
+export default function Sidebar({ showSidebar, setShowSidebar }: SidebarProps) {
   const { user, setUser } = useAuthStore();
+  const sidebar = useRef<HTMLDivElement>(null);
 
   const handleLogout = () => {
     localStorage.removeItem("access-token");
@@ -19,8 +21,23 @@ export default function Sidebar({ setShowSidebar }: SidebarProps) {
     setShowSidebar((x) => !x);
   };
 
+  useEffect(() => {
+    const { current } = sidebar;
+
+    if (!current) {
+      return;
+    }
+
+    if (showSidebar) {
+      current.style.left = "40%";
+      return;
+    }
+
+    current.style.left = "100%";
+  }, [showSidebar]);
+
   return (
-    <div className="sidebar">
+    <div className="sidebar" ref={sidebar}>
       {/* FIXME: Fix icon */}
       <Button onClick={handleClick} value="X"></Button>
 
