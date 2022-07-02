@@ -21,7 +21,7 @@ export default function Sidebar({ showSidebar, setShowSidebar }: SidebarProps) {
     setShowSidebar((x) => !x);
   };
 
-  useEffect(() => {
+  const handleSidebar = () => {
     const { current } = sidebar;
 
     if (!current) {
@@ -34,7 +34,9 @@ export default function Sidebar({ showSidebar, setShowSidebar }: SidebarProps) {
     }
 
     current.style.left = "100%";
-  }, [showSidebar]);
+  };
+
+  useEffect(handleSidebar, [showSidebar]);
 
   return (
     <div className="sidebar" ref={sidebar}>
