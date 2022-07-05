@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import { useEffect, useRef } from "react";
 import Button from "./Button";
 import useAuthStore from "../store/useAuthStore";
 import deleteCookie from "../utils/delete-cookie";
@@ -9,7 +8,6 @@ import "./Drawer.css";
 export default function Drawer({ showSidebar, setShowSidebar }: DrawerProps) {
   // TODO: Should be closed when do anything
   const { user, setUser } = useAuthStore();
-  const sidebar = useRef<HTMLDivElement>(null);
 
   const handleLogout = () => {
     localStorage.removeItem("access-token");
@@ -22,42 +20,24 @@ export default function Drawer({ showSidebar, setShowSidebar }: DrawerProps) {
     setShowSidebar((x) => !x);
   };
 
-  const handleSidebar = () => {
-    // TODO: Is it correct?
-    const { current } = sidebar;
-
-    if (!current) {
-      return;
-    }
-
-    if (showSidebar) {
-      current.style.left = "40%";
-      return;
-    }
-
-    current.style.left = "100%";
-  };
-
-  useEffect(handleSidebar, [showSidebar]);
-
   return (
-    <div className="sidebar" ref={sidebar}>
+    <div className={`drawer ${showSidebar ? "drawer--reveal" : ""}`}>
       {/* FIXME: Fix icon */}
-      <Button onClick={handleClick} value="X"></Button>
+      <Button onClick={handleClick} value="X" />
 
       {/* FIXME: duplicate with nav */}
-      <ul className="sidebar__items">
+      <ul className="drawer__items">
         {user?.role === "ADMIN" && (
-          <Link className="sidebar__item" to="/posts">
+          <Link className="drawer__item" to="/posts">
             새 글 쓰기
           </Link>
         )}
         {user ? (
-          <Link className="sidebar__item" to="/" onClick={handleLogout}>
+          <Link className="drawer__item" to="/" onClick={handleLogout}>
             Logout
           </Link>
         ) : (
-          <Link className="sidebar__item" to="/login">
+          <Link className="drawer__item" to="/login">
             Login
           </Link>
         )}
