@@ -5,7 +5,7 @@ import deleteCookie from "../utils/delete-cookie";
 import { DrawerProps } from "../@types/Drawer";
 import "./Drawer.css";
 
-export default function Drawer({ showSidebar, setShowSidebar }: DrawerProps) {
+export default function Drawer({ showDrawer, setShowDrawer }: DrawerProps) {
   // TODO: Should be closed when do anything
   const { user, setUser } = useAuthStore();
 
@@ -17,11 +17,11 @@ export default function Drawer({ showSidebar, setShowSidebar }: DrawerProps) {
   };
 
   const handleClick = () => {
-    setShowSidebar((x) => !x);
+    setShowDrawer((prev) => !prev);
   };
 
   return (
-    <div className={`drawer ${showSidebar ? "drawer--reveal" : ""}`}>
+    <div className={`drawer ${showDrawer ? "drawer--reveal" : ""}`}>
       {/* FIXME: Fix icon */}
       <Button onClick={handleClick} value="X" />
 

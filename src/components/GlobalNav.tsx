@@ -5,7 +5,7 @@ import deleteCookie from "../utils/delete-cookie";
 import { GlobalNavProps } from "../@types/GlobalNav";
 import "./GlobalNav.css";
 
-export default function GlobalNav({ setShowSidebar }: GlobalNavProps) {
+export default function GlobalNav({ setShowDrawer }: GlobalNavProps) {
   const [isMobile, setIsMobile] = useState<boolean>(false);
   const { user, setUser } = useAuthStore();
   const nav = useRef<HTMLDivElement>(null);
@@ -18,11 +18,11 @@ export default function GlobalNav({ setShowSidebar }: GlobalNavProps) {
   };
 
   const handleClick = () => {
-    if (!setShowSidebar) {
+    if (!setShowDrawer) {
       return;
     }
 
-    setShowSidebar((x) => !x);
+    setShowDrawer((prev) => !prev);
   };
 
   const handleResize = () => {

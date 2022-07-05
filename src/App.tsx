@@ -1,6 +1,6 @@
 import GlobalNav from "./components/GlobalNav";
 import { Routes, Route } from "react-router-dom";
-import { useState, useRef, useEffect } from "react";
+import { useState } from "react";
 import Home from "./pages/Home";
 import Detail from "./pages/Detail";
 import Login from "./pages/Login";
@@ -8,12 +8,12 @@ import Write from "./pages/Write";
 import Drawer from "./components/Drawer";
 
 function App() {
-  const [showSidebar, setShowSidebar] = useState<boolean>(false);
+  const [showDrawer, setShowDrawer] = useState<boolean>(false);
 
   return (
     <div className="App">
-      <GlobalNav setShowSidebar={setShowSidebar} />
-      <Drawer showSidebar={showSidebar} setShowSidebar={setShowSidebar} />
+      <GlobalNav setShowDrawer={setShowDrawer} />
+      <Drawer showDrawer={showDrawer} setShowDrawer={setShowDrawer} />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/posts" element={<Write />} />
