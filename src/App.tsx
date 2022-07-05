@@ -8,36 +8,12 @@ import Write from "./pages/Write";
 import Drawer from "./components/Drawer";
 
 function App() {
-  const [isMobile, setIsMobile] = useState<boolean>(false);
   const [showSidebar, setShowSidebar] = useState<boolean>(false);
-  const app = useRef<HTMLDivElement>(null);
-
-  const handleResize = () => {
-    const { current } = app;
-
-    if (!current) {
-      return;
-    }
-
-    setIsMobile(current.offsetWidth < 660);
-  };
-
-  useEffect(() => {
-    handleResize();
-
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
 
   return (
-    <div className="App" ref={app}>
-      <GlobalNav isMobile={isMobile} setShowSidebar={setShowSidebar} />
-      {isMobile && (
-        <Drawer showSidebar={showSidebar} setShowSidebar={setShowSidebar} />
-      )}
+    <div className="App">
+      <GlobalNav setShowSidebar={setShowSidebar} />
+      <Drawer showSidebar={showSidebar} setShowSidebar={setShowSidebar} />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/posts" element={<Write />} />
