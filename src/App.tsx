@@ -5,7 +5,7 @@ import Home from "./pages/Home";
 import Detail from "./pages/Detail";
 import Login from "./pages/Login";
 import Write from "./pages/Write";
-import Sidebar from "./components/Sidebar";
+import Drawer from "./components/Drawer";
 
 function App() {
   const [isMobile, setIsMobile] = useState<boolean>(false);
@@ -36,7 +36,7 @@ function App() {
     <div className="App" ref={app}>
       <GlobalNav isMobile={isMobile} setShowSidebar={setShowSidebar} />
       {isMobile && (
-        <Sidebar showSidebar={showSidebar} setShowSidebar={setShowSidebar} />
+        <Drawer showSidebar={showSidebar} setShowSidebar={setShowSidebar} />
       )}
       <Routes>
         <Route path="/" element={<Home />} />

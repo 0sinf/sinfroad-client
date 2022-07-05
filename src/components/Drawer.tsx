@@ -3,10 +3,10 @@ import { useEffect, useRef } from "react";
 import Button from "./Button";
 import useAuthStore from "../store/useAuthStore";
 import deleteCookie from "../utils/delete-cookie";
-import { SidebarProps } from "../@types/Sidebar";
-import "./Sidebar.css";
+import { DrawerProps } from "../@types/Drawer";
+import "./Drawer.css";
 
-export default function Sidebar({ showSidebar, setShowSidebar }: SidebarProps) {
+export default function Drawer({ showSidebar, setShowSidebar }: DrawerProps) {
   // TODO: Should be closed when do anything
   const { user, setUser } = useAuthStore();
   const sidebar = useRef<HTMLDivElement>(null);
