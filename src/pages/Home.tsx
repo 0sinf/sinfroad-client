@@ -7,15 +7,17 @@ export default function Home() {
   const [posts, setPosts] = useState<Array<IPost>>([]);
   const [loading, setLoading] = useState(true);
 
-  const callPosts = async () => {
+  const getPostsRequest = async () => {
     const data = await getPosts();
 
     setPosts(data.posts);
     setLoading(false);
   };
 
+  // TODO: pagination
+
   useEffect(() => {
-    callPosts();
+    getPostsRequest();
   }, []);
 
   return (
