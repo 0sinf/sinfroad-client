@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { XSquare } from "react-bootstrap-icons";
 import Button from "./Button";
 import useAuthStore from "../store/useAuthStore";
 import deleteCookie from "../utils/delete-cookie";
@@ -23,7 +24,7 @@ export default function Drawer({ showDrawer, setShowDrawer }: DrawerProps) {
   return (
     <div className={`drawer ${showDrawer ? "drawer--reveal" : ""}`}>
       {/* FIXME: Fix icon */}
-      <Button onClick={handleClick} value="X" />
+      <XSquare className="drawer__close" onClick={handleClick} />
 
       {/* FIXME: duplicate with nav */}
       <ul className="drawer__items">

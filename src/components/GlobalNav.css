@@ -11,17 +11,17 @@
   align-items: center;
 }
 
-.nav__item--head {
+.nav__head {
   font-size: var(--font-size-l);
   padding: var(--padding-s) var(--padding-l);
 }
 
-.nav__item {
+.nav__control {
   display: flex;
 }
 
-.nav__item > a,
-.nav__item > button {
+.nav__item {
+  display: flex;
   font-size: var(--font-size-s);
   margin-right: var(--margin-s);
 }
