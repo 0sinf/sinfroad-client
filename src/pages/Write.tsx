@@ -17,7 +17,7 @@ export default function Write() {
   const location = useLocation();
   const isUpdating = !!location.state;
 
-  const { user, token } = useAuthStore();
+  const { token } = useAuthStore();
   const go = useNavigate();
 
   const handleSubmit = async (event: FormEvent) => {
@@ -37,12 +37,26 @@ export default function Write() {
     }
 
     const file = event.target.files.item(0) as File;
+
+    if (!file) {
+      return;
+    }
+
+    if (!file.type.match(/\/(jpg|jpeg|png)$/)) {
+      // TODO: Error
+      return;
+    }
+
     setImages((x) => [...x, file]);
   };
 
   const createPostReqeust = async () => {
-    // TODO: Check images length
     const formData = new FormData();
+
+    if (images.length < 1 || images.length > 4) {
+      // TODO: Error
+      return;
+    }
 
     formData.set("title", title);
     formData.set("contents", contents);
@@ -77,7 +91,7 @@ export default function Write() {
   };
 
   useEffect(() => {
-    if (!user) {
+    if (!token) {
       // TODO: error message
       go("/login");
     }
