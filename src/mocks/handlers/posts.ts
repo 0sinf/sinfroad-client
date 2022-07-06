@@ -1,4 +1,18 @@
 import { rest } from "msw";
+import { IPost } from "../../@types/posts";
+
+const post = {
+  id: "28e7cdd1-cf5b-453c-bb7c-291a4f2ca3b9",
+  title: "title-1",
+  contents: "contents-1",
+  address: "address-1",
+  images: [
+    "https://thumbs.dreamstime.com/b/closeup-internet-url-address-10171215.jpg",
+    "https://mp-seoul-image-production-s3.mangoplate.com/360830/1640124_1616941786815_18237?fit=around|738:738&crop=738:738;*,*&output-format=jpg&output-quality=80",
+  ],
+  created: new Date().toString(),
+  updated: new Date().toString(),
+};
 
 export const posts = [
   rest.get(`${import.meta.env.VITE_API_SERVER_URI}/posts`, (_, res, ctx) => {
@@ -102,18 +116,6 @@ export const posts = [
   rest.get(
     `${import.meta.env.VITE_API_SERVER_URI}/posts/:postId`,
     (_, res, ctx) => {
-      const post = {
-        id: "28e7cdd1-cf5b-453c-bb7c-291a4f2ca3b9",
-        title: "title-1",
-        contents: "contents-1",
-        address: "address-1",
-        images: [
-          "https://thumbs.dreamstime.com/b/closeup-internet-url-address-10171215.jpg",
-          "https://mp-seoul-image-production-s3.mangoplate.com/360830/1640124_1616941786815_18237?fit=around|738:738&crop=738:738;*,*&output-format=jpg&output-quality=80",
-        ],
-        created: new Date().toString(),
-        updated: new Date().toString(),
-      };
       return res(ctx.status(200), ctx.json({ post }));
     }
   ),
@@ -131,7 +133,19 @@ export const posts = [
 
   rest.patch(
     `${import.meta.env.VITE_API_SERVER_URI}/posts/:postId`,
-    (_, res, ctx) => {
+    (req, res, ctx) => {
+      if (
+        req.headers.get("authorization")?.split("Bearer ")[1] === "undefined"
+      ) {
+        return res(ctx.status(401));
+      }
+
+      const { title, contents, address } = req.body as IPost;
+
+      post.title = title;
+      post.contents = contents;
+      post.address = address;
+
       return res(ctx.status(200), ctx.json({}));
     }
   ),
