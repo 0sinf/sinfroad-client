@@ -30,7 +30,7 @@ export default function Home() {
               id={id}
               title={title}
               created={created}
-              image={images[0]}
+              image={images[0].url}
             />
           ))
         )}
