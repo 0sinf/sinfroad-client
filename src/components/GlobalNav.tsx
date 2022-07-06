@@ -2,7 +2,7 @@ import { useRef, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import {
   BoxArrowRight,
-  BoxArrowLeft,
+  BoxArrowInRight,
   List,
   PencilSquare,
 } from "react-bootstrap-icons";
@@ -73,7 +73,7 @@ export default function GlobalNav({ setShowDrawer }: GlobalNavProps) {
                 </Link>
               ) : (
                 <Link className="nav__item" to="/login">
-                  <BoxArrowLeft />
+                  <BoxArrowInRight />
                 </Link>
               )}
             </>
