@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Image } from "../@types/posts";
 import "./Carousel.css";
+import { CaretLeftFill, CaretRightFill } from "react-bootstrap-icons";
 
 export default function Carousel({
   images,
@@ -50,17 +51,18 @@ export default function Carousel({
           </figure>
         ))}
       </div>
-      {/* FIXME: Fix button to icon */}
-      <button
-        className="carousel__btn carousel__btn-left"
+
+      <CaretLeftFill
+        className={`carousel__btn${index < 1 ? "--disabled" : ""}`}
         onClick={() => handleClick("prev")}
-        disabled={index <= 0}
-      ></button>
-      <button
-        className="carousel__btn carousel__btn-right"
+      />
+
+      <CaretRightFill
+        className={`carousel__btn${
+          index >= images.length - 1 ? "--disabled" : ""
+        } carousel__btn-right`}
         onClick={() => handleClick("next")}
-        disabled={images.length - 1 <= index}
-      ></button>
+      />
     </div>
   );
 }
