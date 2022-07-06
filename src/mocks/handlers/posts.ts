@@ -139,11 +139,22 @@ const listOfPost = [
 
 export const posts = [
   rest.get(`${import.meta.env.VITE_API_SERVER_URI}/posts`, (req, res, ctx) => {
+    const page = Number(req.url.searchParams.get("page")) || 1;
+    const perPage = 10;
+    const total = listOfPost.length;
+    const start = (page - 1) * perPage;
+    const end = start + perPage <= total ? start + perPage : total;
+    const hasNext = start + perPage < total;
+    const posts = listOfPost.slice(start, end);
+
     const pagination = {
-      page: 1,
-      hasNext: false,
+      page,
+      hasNext,
     };
-    return res(ctx.status(200), ctx.json({ posts: listOfPost, pagination }));
+
+    console.log(pagination);
+
+    return res(ctx.status(200), ctx.json({ posts, pagination }));
   }),
 
   rest.get(
