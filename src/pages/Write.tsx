@@ -37,6 +37,12 @@ export default function Write() {
     }
 
     const file = event.target.files.item(0) as File;
+
+    if (!file.name.match(/(jpg|jpeg|png)$/)) {
+      // TODO: Error
+      return;
+    }
+
     setImages((x) => [...x, file]);
   };
 
