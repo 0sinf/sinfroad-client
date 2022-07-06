@@ -1,11 +1,12 @@
+import { useState } from "react";
+import { Image } from "../@types/posts";
 import "./Carousel.css";
-import { ButtonHTMLAttributes, useState } from "react";
 
 export default function Carousel({
   images,
   title,
 }: {
-  images: string[];
+  images: Image[];
   title: string;
 }) {
   const containerWidth = 100 * images.length;
@@ -41,11 +42,11 @@ export default function Carousel({
       >
         {images.map((image) => (
           <figure
-            key={image}
+            key={image.url}
             className="carousel__item"
             style={{ width: `${itemWidth}%` }}
           >
-            <img className="carousel__img" src={image} alt={title} />
+            <img className="carousel__img" src={image.url} alt={title} />
           </figure>
         ))}
       </div>

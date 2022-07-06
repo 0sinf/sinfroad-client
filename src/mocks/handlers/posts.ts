@@ -8,8 +8,14 @@ const listOfPost = [
     contents: "contents-1",
     address: "address-1",
     images: [
-      "https://mp-seoul-image-production-s3.mangoplate.com/360830/1640124_1616941786815_18237?fit=around|738:738&crop=738:738;*,*&output-format=jpg&output-quality=80",
-      "https://thumbs.dreamstime.com/b/closeup-internet-url-address-10171215.jpg",
+      {
+        id: "mock-image-id1",
+        url: "https://mp-seoul-image-production-s3.mangoplate.com/360830/1640124_1616941786815_18237?fit=around|738:738&crop=738:738;*,*&output-format=jpg&output-quality=80",
+      },
+      {
+        id: "mock-image-id2",
+        url: "https://thumbs.dreamstime.com/b/closeup-internet-url-address-10171215.jpg",
+      },
     ],
     created: new Date().toString(),
     updated: new Date().toString(),
@@ -20,7 +26,10 @@ const listOfPost = [
     contents: "contents-2",
     address: "address-2",
     images: [
-      "https://thumbs.dreamstime.com/b/closeup-internet-url-address-10171215.jpg",
+      {
+        id: "mock-image-id2",
+        url: "https://thumbs.dreamstime.com/b/closeup-internet-url-address-10171215.jpg",
+      },
     ],
     created: new Date().toString(),
     updated: new Date().toString(),
@@ -31,7 +40,10 @@ const listOfPost = [
     contents: "contents-3",
     address: "address-3",
     images: [
-      "https://mp-seoul-image-production-s3.mangoplate.com/360830/1640124_1616941786815_18237?fit=around|738:738&crop=738:738;*,*&output-format=jpg&output-quality=80",
+      {
+        id: "mock-image-id1",
+        url: "https://mp-seoul-image-production-s3.mangoplate.com/360830/1640124_1616941786815_18237?fit=around|738:738&crop=738:738;*,*&output-format=jpg&output-quality=80",
+      },
     ],
     created: new Date().toString(),
     updated: new Date().toString(),
@@ -42,7 +54,10 @@ const listOfPost = [
     contents: "contents-4",
     address: "address-4",
     images: [
-      "https://mp-seoul-image-production-s3.mangoplate.com/360830/1640124_1616941786815_18237?fit=around|738:738&crop=738:738;*,*&output-format=jpg&output-quality=80",
+      {
+        id: "mock-image-id1",
+        url: "https://mp-seoul-image-production-s3.mangoplate.com/360830/1640124_1616941786815_18237?fit=around|738:738&crop=738:738;*,*&output-format=jpg&output-quality=80",
+      },
     ],
     created: new Date().toString(),
     updated: new Date().toString(),
@@ -53,7 +68,10 @@ const listOfPost = [
     contents: "contents-5",
     address: "address-5",
     images: [
-      "https://mp-seoul-image-production-s3.mangoplate.com/360830/1640124_1616941786815_18237?fit=around|738:738&crop=738:738;*,*&output-format=jpg&output-quality=80",
+      {
+        id: "mock-image-id1",
+        url: "https://mp-seoul-image-production-s3.mangoplate.com/360830/1640124_1616941786815_18237?fit=around|738:738&crop=738:738;*,*&output-format=jpg&output-quality=80",
+      },
     ],
     created: new Date().toString(),
     updated: new Date().toString(),
@@ -64,7 +82,10 @@ const listOfPost = [
     contents: "contents-6",
     address: "address-6",
     images: [
-      "https://mp-seoul-image-production-s3.mangoplate.com/360830/1640124_1616941786815_18237?fit=around|738:738&crop=738:738;*,*&output-format=jpg&output-quality=80",
+      {
+        id: "mock-image-id1",
+        url: "https://mp-seoul-image-production-s3.mangoplate.com/360830/1640124_1616941786815_18237?fit=around|738:738&crop=738:738;*,*&output-format=jpg&output-quality=80",
+      },
     ],
     created: new Date().toString(),
     updated: new Date().toString(),
@@ -75,7 +96,10 @@ const listOfPost = [
     contents: "contents-7",
     address: "address-7",
     images: [
-      "https://mp-seoul-image-production-s3.mangoplate.com/360830/1640124_1616941786815_18237?fit=around|738:738&crop=738:738;*,*&output-format=jpg&output-quality=80",
+      {
+        id: "mock-image-id1",
+        url: "https://mp-seoul-image-production-s3.mangoplate.com/360830/1640124_1616941786815_18237?fit=around|738:738&crop=738:738;*,*&output-format=jpg&output-quality=80",
+      },
     ],
     created: new Date().toString(),
     updated: new Date().toString(),
@@ -86,7 +110,10 @@ const listOfPost = [
     contents: "contents-8",
     address: "address-8",
     images: [
-      "https://mp-seoul-image-production-s3.mangoplate.com/360830/1640124_1616941786815_18237?fit=around|738:738&crop=738:738;*,*&output-format=jpg&output-quality=80",
+      {
+        id: "mock-image-id1",
+        url: "https://mp-seoul-image-production-s3.mangoplate.com/360830/1640124_1616941786815_18237?fit=around|738:738&crop=738:738;*,*&output-format=jpg&output-quality=80",
+      },
     ],
     created: new Date().toString(),
     updated: new Date().toString(),
@@ -97,7 +124,10 @@ const listOfPost = [
     contents: "contents-9",
     address: "address-9",
     images: [
-      "https://mp-seoul-image-production-s3.mangoplate.com/360830/1640124_1616941786815_18237?fit=around|738:738&crop=738:738;*,*&output-format=jpg&output-quality=80",
+      {
+        id: "mock-image-id1",
+        url: "https://mp-seoul-image-production-s3.mangoplate.com/360830/1640124_1616941786815_18237?fit=around|738:738&crop=738:738;*,*&output-format=jpg&output-quality=80",
+      },
     ],
     created: new Date().toString(),
     updated: new Date().toString(),
@@ -108,7 +138,10 @@ const listOfPost = [
     contents: "contents-10",
     address: "address-10",
     images: [
-      "https://mp-seoul-image-production-s3.mangoplate.com/360830/1640124_1616941786815_18237?fit=around|738:738&crop=738:738;*,*&output-format=jpg&output-quality=80",
+      {
+        id: "mock-image-id1",
+        url: "https://mp-seoul-image-production-s3.mangoplate.com/360830/1640124_1616941786815_18237?fit=around|738:738&crop=738:738;*,*&output-format=jpg&output-quality=80",
+      },
     ],
     created: new Date().toString(),
     updated: new Date().toString(),
@@ -119,7 +152,10 @@ const listOfPost = [
     contents: "contents-11",
     address: "address-11",
     images: [
-      "https://mp-seoul-image-production-s3.mangoplate.com/360830/1640124_1616941786815_18237?fit=around|738:738&crop=738:738;*,*&output-format=jpg&output-quality=80",
+      {
+        id: "mock-image-id1",
+        url: "https://mp-seoul-image-production-s3.mangoplate.com/360830/1640124_1616941786815_18237?fit=around|738:738&crop=738:738;*,*&output-format=jpg&output-quality=80",
+      },
     ],
     created: new Date().toString(),
     updated: new Date().toString(),
@@ -130,7 +166,10 @@ const listOfPost = [
     contents: "contents-12",
     address: "address-12",
     images: [
-      "https://mp-seoul-image-production-s3.mangoplate.com/360830/1640124_1616941786815_18237?fit=around|738:738&crop=738:738;*,*&output-format=jpg&output-quality=80",
+      {
+        id: "mock-image-id1",
+        url: "https://mp-seoul-image-production-s3.mangoplate.com/360830/1640124_1616941786815_18237?fit=around|738:738&crop=738:738;*,*&output-format=jpg&output-quality=80",
+      },
     ],
     created: new Date().toString(),
     updated: new Date().toString(),
