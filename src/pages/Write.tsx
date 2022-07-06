@@ -41,8 +41,12 @@ export default function Write() {
   };
 
   const createPostReqeust = async () => {
-    // TODO: Check images length
     const formData = new FormData();
+
+    if (images.length < 1 || images.length > 4) {
+      // TODO: Error
+      return;
+    }
 
     formData.set("title", title);
     formData.set("contents", contents);
