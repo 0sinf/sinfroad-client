@@ -24,4 +24,6 @@
   display: flex;
   font-size: var(--font-size-s);
   margin-right: var(--margin-s);
+
+  cursor: pointer;
 }
