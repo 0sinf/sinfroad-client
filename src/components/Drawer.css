@@ -7,20 +7,30 @@
   width: 280px;
   transition: transform 0.25s ease;
   background-color: white;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
 }
 
 .drawer--reveal {
   transform: translateX(-280px);
 }
 
-.drawer__items {
-  display: flex;
-  flex-direction: column;
+.drawer__close {
+  font-size: var(--font-size-m);
+  margin: var(--margin-m) var(--margin-s);
+}
 
-  margin-top: var(--margin-s);
+.drawer__items {
+  width: 100%;
 }
 
 .drawer__item {
   font-size: var(--font-size-s);
   padding: var(--padding-xs);
+  margin-top: var(--margin-s);
+  width: 100%;
+
+  border-bottom: solid 1px var(--light-blue);
 }
