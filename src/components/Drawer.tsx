@@ -1,13 +1,10 @@
 import { Link } from "react-router-dom";
-import { XSquare } from "react-bootstrap-icons";
-import Button from "./Button";
 import useAuthStore from "../store/useAuthStore";
 import deleteCookie from "../utils/delete-cookie";
 import { DrawerProps } from "../@types/Drawer";
 import "./Drawer.css";
 
 export default function Drawer({ showDrawer, setShowDrawer }: DrawerProps) {
-  // TODO: Should be closed when do anything
   const { user, setUser } = useAuthStore();
 
   const handleLogout = () => {
@@ -22,11 +19,10 @@ export default function Drawer({ showDrawer, setShowDrawer }: DrawerProps) {
   };
 
   return (
-    <div className={`drawer ${showDrawer ? "drawer--reveal" : ""}`}>
-      {/* FIXME: Fix icon */}
-      <XSquare className="drawer__close" onClick={handleClick} />
-
-      {/* FIXME: duplicate with nav */}
+    <div
+      className={`drawer ${showDrawer ? "drawer--reveal" : ""}`}
+      onClick={handleClick}
+    >
       <ul className="drawer__items">
         {user?.role === "ADMIN" && (
           <Link className="drawer__item" to="/posts">
