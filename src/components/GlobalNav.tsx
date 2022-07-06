@@ -1,5 +1,11 @@
 import { useRef, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import {
+  BoxArrowRight,
+  BoxArrowLeft,
+  List,
+  PencilSquare,
+} from "react-bootstrap-icons";
 import useAuthStore from "../store/useAuthStore";
 import deleteCookie from "../utils/delete-cookie";
 import { GlobalNavProps } from "../@types/GlobalNav";
@@ -48,26 +54,31 @@ export default function GlobalNav({ setShowDrawer }: GlobalNavProps) {
   return (
     <div className="nav" ref={nav}>
       <div className="nav__items">
-        <Link to="/" className="nav__item--head">
+        <Link to="/" className="nav__head">
           Sinfroad
         </Link>
-        {isMobile ? (
-          <div className="nav__item">
-            <button onClick={handleClick}>=</button>
-          </div>
-        ) : (
-          <div className="nav__item">
-            {user?.role === "ADMIN" && <Link to="/posts">새 글 쓰기</Link>}
-            {user ? (
-              <Link to="/" onClick={handleLogout}>
-                Logout
-              </Link>
-            ) : (
-              <Link to="/login">Login</Link>
-            )}
-          </div>
-        )}
-        {/* // TODO: Use icon  */}
+        <div className="nav__control">
+          {isMobile ? (
+            <List className="nav__item" onClick={handleClick} />
+          ) : (
+            <>
+              {user?.role === "ADMIN" && (
+                <Link className="nav__item" to="/posts">
+                  <PencilSquare />
+                </Link>
+              )}
+              {user ? (
+                <Link className="nav__item" to="/" onClick={handleLogout}>
+                  <BoxArrowRight />
+                </Link>
+              ) : (
+                <Link className="nav__item" to="/login">
+                  <BoxArrowLeft />
+                </Link>
+              )}
+            </>
+          )}
+        </div>
       </div>
     </div>
   );
