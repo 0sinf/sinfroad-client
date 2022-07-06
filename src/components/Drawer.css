@@ -24,6 +24,7 @@
 
 .drawer__items {
   width: 100%;
+  margin-top: var(--margin-xl);
 }
 
 .drawer__item {
