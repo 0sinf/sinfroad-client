@@ -16,8 +16,9 @@ function App() {
       <Drawer showDrawer={showDrawer} setShowDrawer={setShowDrawer} />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/posts" element={<Write />} />
         <Route path="/posts/:id" element={<Detail />} />
+        <Route path="/posts" element={<Write />} />
+        <Route path="/posts/update/:id" element={<Write />} />
         <Route path="/login" element={<Login />} />
       </Routes>
     </div>
