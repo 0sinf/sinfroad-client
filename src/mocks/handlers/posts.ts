@@ -205,7 +205,11 @@ export const posts = [
 
   rest.delete(
     `${import.meta.env.VITE_API_SERVER_URI}/posts/:postId`,
-    (_, res, ctx) => {
+    (req, res, ctx) => {
+      const { postId } = req.params;
+      const idx = listOfPost.findIndex((p) => p.id === postId);
+      posts.splice(idx, 1);
+
       return res(ctx.status(200), ctx.json({}));
     }
   ),
