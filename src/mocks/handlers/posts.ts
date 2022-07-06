@@ -191,8 +191,6 @@ export const posts = [
       hasNext,
     };
 
-    console.log(pagination);
-
     return res(ctx.status(200), ctx.json({ posts, pagination }));
   }),
 
