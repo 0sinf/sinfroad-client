@@ -28,3 +28,27 @@ export async function createPost(
 
   return response;
 }
+
+export async function updatePost(
+  id: string,
+  body: {
+    title: string;
+    contents: string;
+    address: string;
+  },
+  token?: string
+) {
+  const response = await fetch(
+    `${import.meta.env.VITE_API_SERVER_URI}/posts/${id}`,
+    {
+      method: "PATCH",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(body),
+    }
+  );
+
+  return response;
+}
