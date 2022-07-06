@@ -18,7 +18,3 @@
 .textarea {
   height: calc(var(--font-size-xl) * 2);
 }
-
-.input-image {
-  visibility: hidden;
-}

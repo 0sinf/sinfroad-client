@@ -17,7 +17,7 @@ export default function Write() {
   const location = useLocation();
   const isUpdating = !!location.state;
 
-  const { user, token } = useAuthStore();
+  const { token } = useAuthStore();
   const go = useNavigate();
 
   const handleSubmit = async (event: FormEvent) => {
@@ -38,7 +38,11 @@ export default function Write() {
 
     const file = event.target.files.item(0) as File;
 
-    if (!file.name.match(/(jpg|jpeg|png)$/)) {
+    if (!file) {
+      return;
+    }
+
+    if (!file.type.match(/\/(jpg|jpeg|png)$/)) {
       // TODO: Error
       return;
     }
@@ -87,7 +91,7 @@ export default function Write() {
   };
 
   useEffect(() => {
-    if (!user) {
+    if (!token) {
       // TODO: error message
       go("/login");
     }
