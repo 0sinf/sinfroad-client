@@ -208,7 +208,7 @@ export const posts = [
     (req, res, ctx) => {
       const { postId } = req.params;
       const idx = listOfPost.findIndex((p) => p.id === postId);
-      posts.splice(idx, 1);
+      listOfPost.splice(idx, 1);
 
       return res(ctx.status(200), ctx.json({}));
     }
