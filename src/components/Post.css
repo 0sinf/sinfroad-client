@@ -31,9 +31,14 @@
   font-size: var(--font-size-s);
   margin-bottom: var(--margin-xs);
 }
-.post__control,
+
 .post__date {
   text-align: right;
+}
+
+.post__control {
+  display: flex;
+  justify-content: flex-end;
 }
 
 .post__contents {
