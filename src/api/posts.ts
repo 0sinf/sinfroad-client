@@ -1,6 +1,6 @@
-export async function getPosts() {
+export async function getPosts(page: number) {
   const data = await (
-    await fetch(`${import.meta.env.VITE_API_SERVER_URI}/posts`)
+    await fetch(`${import.meta.env.VITE_API_SERVER_URI}/posts?page=${page}`)
   ).json();
 
   return data;
