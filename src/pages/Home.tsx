@@ -12,6 +12,7 @@ export default function Home() {
 
   const loader = useRef<HTMLDivElement>(null);
 
+  // FIXME: hasNext is falsy, page don't increase.
   const getPostsRequest = async (page: number) => {
     const { posts, pagination } = await getPosts(page);
 
@@ -22,10 +23,19 @@ export default function Home() {
 
   const handleObserver = useCallback((entries: IntersectionObserverEntry[]) => {
     const target = entries[0];
+
     if (target.isIntersecting) {
       setPage((prev) => prev + 1);
     }
   }, []);
+
+  useEffect(() => {
+    if (!hasNext) {
+      return;
+    }
+
+    getPostsRequest(page);
+  }, [page]);
 
   useEffect(() => {
     if (!loader.current) {
@@ -40,14 +50,6 @@ export default function Home() {
 
     observer.observe(loader.current);
   }, []);
-
-  useEffect(() => {
-    if (!hasNext) {
-      return;
-    }
-
-    getPostsRequest(page);
-  }, [page]);
 
   return (
     <main className="main">
