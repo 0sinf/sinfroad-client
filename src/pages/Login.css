@@ -1,39 +1,7 @@
-.form {
-  display: flex;
-  flex-direction: column;
-
-  width: 70%;
-}
-
-.form__box {
+.google {
   width: 100%;
+  height: 90%;
 
-  display: flex;
-  flex-direction: column;
-
-  margin-top: 16px;
-}
-
-.form__box > label {
-  font-size: 1.4rem;
-}
-
-.form__box > input,
-.form__box > textarea {
-  margin-top: 8px;
-  padding: 12px;
-
-  font-size: 1.2rem;
-}
-
-.form__button {
-  margin-top: 32px;
-  padding: 12px;
-
-  font: 1.4rem bold;
-  color: #f0d9d9;
-  background-color: rgb(134, 99, 99);
-  border: none;
-
-  cursor: pointer;
+  background: no-repeat center
+    url("../../public/images/btn_google_signin_light_normal_web@2x.png");
 }

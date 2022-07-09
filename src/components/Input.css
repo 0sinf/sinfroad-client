@@ -1,0 +1,20 @@
+.input__container {
+  display: flex;
+  flex-direction: column;
+
+  margin-bottom: var(--margin-l);
+}
+
+.textarea,
+.input {
+  font-size: var(--font-size-s);
+  padding: var(--padding-s);
+  margin-top: var(--margin-s);
+
+  border: 1px solid var(--light-blue);
+  border-radius: var(--border-radius-s);
+}
+
+.textarea {
+  height: calc(var(--font-size-xl) * 2);
+}

@@ -1,63 +1,42 @@
 .carousel {
-  position: relative;
-
-  width: 60%;
-  margin: 1rem;
+  width: clamp(0px, 100%, 740px);
   overflow: hidden;
+  position: relative;
 }
 
-.carousel__slider {
+.carousel__container {
   display: flex;
 
-  height: 100%;
-
-  transition: transform 0.5s;
-}
-
-.carousel__items {
-  flex-shrink: 0;
-  height: 100%;
-  width: 100%;
+  transition: margin ease 0.5s;
 }
 
 .carousel__item {
-  height: 100%;
+  display: flex;
+  background-color: black;
 }
 
-.carousel__item > img {
+.carousel__img {
+  box-sizing: border-box;
   width: 100%;
-  height: 100%;
+
   object-fit: contain;
 }
 
-.carousel__button {
+.carousel__btn {
   position: absolute;
   top: 0;
-  height: 100%;
-  width: 50%;
 
-  border: none;
-  background: none;
+  opacity: 0.3;
+  width: 10%;
+  height: 100%;
 
   cursor: pointer;
 }
 
-.carousel__button:disabled {
-  cursor: auto;
-}
-
-.carousel__button-left {
-  left: 0;
-}
-
-.carousel__button-right {
+.carousel__btn-right {
   right: 0;
 }
 
-@media screen and (max-width: 680px) {
-  .carousel {
-    height: fit-content;
-    width: 100%;
-    margin: 0;
-  }
+.carousel__btn--disabled {
+  display: none;
 }

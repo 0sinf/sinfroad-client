@@ -1,74 +1,66 @@
-import { useState, useRef, useEffect } from "react";
+import { useState } from "react";
+import { Image } from "../@types/posts";
 import "./Carousel.css";
+import { CaretLeftFill, CaretRightFill } from "react-bootstrap-icons";
 
-export default function Carousel({ images }: { images: string[] }) {
-  const [index, setIndex] = useState<number>(0);
-  const [containerWidth, setContainerWidth] = useState<number>(0);
-  const container = useRef<HTMLDivElement>(null);
+export default function Carousel({
+  images,
+  title,
+}: {
+  images: Image[];
+  title: string;
+}) {
+  const containerWidth = 100 * images.length;
+  const itemWidth = 100 / images.length;
 
-  function handleClick(direction: "prev" | "next") {
-    if (direction === "next" && images.length - 1 <= index) {
-      return;
-    }
+  const [index, setIndex] = useState(0);
+  const [leftMargin, setLeftMargin] = useState(0);
 
+  const handleClick = (direction: "prev" | "next") => {
     if (direction === "prev" && index <= 0) {
       return;
     }
 
-    if (direction === "next") {
-      return setIndex((x) => x + 1);
-    }
-    return setIndex((x) => x - 1);
-  }
-
-  const handleResize = () => {
-    const { current } = container;
-
-    if (!current) {
+    if (direction === "next" && images.length - 1 <= index) {
       return;
     }
 
-    setContainerWidth(current.offsetWidth);
+    if (direction === "next") {
+      setIndex((x) => x + 1);
+      setLeftMargin((x) => x - 100);
+      return;
+    }
+
+    setIndex((x) => x - 1);
+    setLeftMargin((x) => x + 100);
   };
 
-  useEffect(() => {
-    handleResize();
-
-    window.addEventListener("resize", handleResize, { passive: true });
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
-
-  // FIXME: Add alt
   return (
-    <div className="carousel" ref={container}>
+    <div className="carousel">
       <div
-        className="carousel__slider"
-        style={{
-          transform: `translate3d(${index * -containerWidth}px, 0, 0)`,
-        }}
+        className="carousel__container"
+        style={{ width: `${containerWidth}%`, marginLeft: `${leftMargin}%` }}
       >
-        {images.map((image, idx) => (
-          <div className="carousel__items" key={idx}>
-            <figure className="carousel__item">
-              <img src={image} />
-            </figure>
-          </div>
+        {images.map((image) => (
+          <figure
+            key={image.url}
+            className="carousel__item"
+            style={{ width: `${itemWidth}%` }}
+          >
+            <img className="carousel__img" src={image.url} alt={title} />
+          </figure>
         ))}
       </div>
-      <button
-        className="carousel__button carousel__button-left"
-        aria-label="이전"
-        disabled={index === 0}
+
+      <CaretLeftFill
+        className={`carousel__btn${index < 1 ? "--disabled" : ""}`}
         onClick={() => handleClick("prev")}
       />
 
-      <button
-        className="carousel__button carousel__button-right"
-        aria-label="다음"
-        disabled={index === images.length - 1}
+      <CaretRightFill
+        className={`carousel__btn${
+          index >= images.length - 1 ? "--disabled" : ""
+        } carousel__btn-right`}
         onClick={() => handleClick("next")}
       />
     </div>
