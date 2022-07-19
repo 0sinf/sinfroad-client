@@ -43,8 +43,9 @@
 
 .post__contents {
   font-size: var(--font-size-m);
-
   margin-bottom: var(--margin-s);
+
+  white-space: pre-line;
 }
 
 @media screen and (max-width: 900px) {
