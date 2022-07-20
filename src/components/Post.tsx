@@ -6,6 +6,7 @@ import Button from "./Button";
 import useAuthStore from "../store/useAuthStore";
 import { deletePost } from "../api/posts";
 import "./Post.css";
+import toast from "../utils/toast";
 
 export default function Post({ post }: { post: IPost }) {
   const { token, user } = useAuthStore();
@@ -24,7 +25,8 @@ export default function Post({ post }: { post: IPost }) {
     const response = await deletePost(id, token);
 
     if (!response.ok) {
-      // TODO: Error
+      const data = await response.json();
+      toast(data.body.message);
       return;
     }
 

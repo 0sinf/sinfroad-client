@@ -3,7 +3,7 @@
   flex-direction: row;
 
   width: clamp(0px, 100%, 1100px);
-  padding: var(--padding-s);
+  padding: var(--padding-s) 0;
 }
 
 .post > figure {
@@ -42,7 +42,7 @@
 }
 
 .post__contents {
-  font-size: var(--font-size-m);
+  font-size: var(--font-size-s);
   margin-bottom: var(--margin-s);
 
   white-space: pre-line;
