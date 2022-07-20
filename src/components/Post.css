@@ -42,7 +42,7 @@
 }
 
 .post__contents {
-  font-size: var(--font-size-m);
+  font-size: var(--font-size-s);
   margin-bottom: var(--margin-s);
 
   white-space: pre-line;
