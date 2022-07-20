@@ -151,6 +151,14 @@ export default function Write() {
         ) : (
           <Button value="작성하기" type="submit" />
         )}
+        <Button
+          value="취소하기"
+          type="button"
+          btnStyle="secondary"
+          onClick={() => {
+            go(id ? `/posts/${id}` : "/");
+          }}
+        />
       </form>
     </main>
   );
