@@ -5,7 +5,7 @@ import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 import useAuthStore from "./store/useAuthStore";
 
-import "./index.css";
+import "./css/index.css";
 
 async function prepare() {
   if (import.meta.env.DEV) {
