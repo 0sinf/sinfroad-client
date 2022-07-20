@@ -6,6 +6,7 @@ import { Input, Textarea } from "../components/Input";
 import Button from "../components/Button";
 import { IPost } from "../@types/posts";
 import "./Write.css";
+import toast from "../utils/toast";
 
 export default function Write() {
   const { id } = useParams();
@@ -43,7 +44,7 @@ export default function Write() {
     }
 
     if (!file.type.match(/\/(jpg|jpeg|png)$/)) {
-      // TODO: Error
+      toast("Check your images ext name");
       return;
     }
 
@@ -53,8 +54,13 @@ export default function Write() {
   const createPostReqeust = async () => {
     const formData = new FormData();
 
-    if (images.length < 1 || images.length > 4) {
-      // TODO: Error
+    if (images.length < 1) {
+      toast("Count of images should be more than 1");
+      return;
+    }
+
+    if (images.length > 4) {
+      toast("Count of images should be less than 5");
       return;
     }
 
@@ -66,7 +72,7 @@ export default function Write() {
     const response = await createPost(formData, token);
 
     if (!response.ok) {
-      // TODO: error message
+      toast((await response.json()).body.message);
       return;
     }
 
@@ -75,7 +81,7 @@ export default function Write() {
 
   const updatePostRequest = async () => {
     if (!id) {
-      // TODO: Error message
+      toast("Doesn't exist post!");
       return;
     }
 
@@ -83,7 +89,7 @@ export default function Write() {
     const response = await updatePost(id, body, token);
 
     if (!response.ok) {
-      // TODO: Error message
+      toast((await response.json()).body.message);
       return;
     }
 
@@ -92,7 +98,7 @@ export default function Write() {
 
   useEffect(() => {
     if (!token) {
-      // TODO: error message
+      toast("Should be signed");
       go("/login");
     }
 
