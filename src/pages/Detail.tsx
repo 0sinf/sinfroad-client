@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { IPost } from "../@types/posts";
 import { getPost } from "../api/posts";
 import Post from "../components/Post";
+import toast from "../utils/toast";
 
 export default function Detail() {
   const { id } = useParams();
@@ -16,7 +17,7 @@ export default function Detail() {
 
   const callPost = async () => {
     if (!id) {
-      // TODO: Error message
+      toast("Doesn't exist post!");
       return;
     }
 

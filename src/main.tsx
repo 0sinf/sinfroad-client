@@ -1,11 +1,10 @@
-import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 
 import App from "./App";
 import useAuthStore from "./store/useAuthStore";
 
-import "./index.css";
+import "./css/index.css";
 
 async function prepare() {
   if (import.meta.env.DEV) {
@@ -20,10 +19,8 @@ prepare().then(() => {
   useAuthStore.getState().initialize();
 
   ReactDOM.createRoot(document.getElementById("root")!).render(
-    // <React.StrictMode>
     <BrowserRouter>
       <App />
     </BrowserRouter>
-    // </React.StrictMode>
   );
 });
