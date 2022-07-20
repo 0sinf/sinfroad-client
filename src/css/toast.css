@@ -1,0 +1,12 @@
+.toast {
+  position: fixed;
+  right: var(--margin-m);
+
+  padding: var(--padding-s);
+  border-radius: var(--border-radius-s);
+
+  font-size: var(--font-size-xs);
+  background-color: var(--green);
+
+  transition: transform ease 2s;
+}
