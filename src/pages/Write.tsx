@@ -82,7 +82,7 @@ export default function Write() {
     const response = await createPost(formData, token);
 
     if (!response.ok) {
-      toast((await response.json()).body.message);
+      toast((await response.json()).message);
       return;
     }
 
@@ -99,7 +99,7 @@ export default function Write() {
     const response = await updatePost(id, body, token);
 
     if (!response.ok) {
-      toast((await response.json()).body.message);
+      toast((await response.json()).message);
       return;
     }
 
