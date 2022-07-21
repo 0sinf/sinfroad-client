@@ -5,8 +5,8 @@ import { createPost, updatePost } from "../api/posts";
 import { Input, Textarea } from "../components/Input";
 import Button from "../components/Button";
 import { IPost } from "../@types/posts";
-import "./Write.css";
 import toast from "../utils/toast";
+import "./Write.css";
 
 export default function Write() {
   const { id } = useParams();
@@ -140,9 +140,20 @@ export default function Write() {
           setValue={setAddress}
         />
 
-        {isUpdating ? (
-          ""
-        ) : (
+        <div className="preview">
+          {!isUpdating &&
+            images.length > 0 &&
+            images.map((image) => (
+              <img
+                className="preview__image"
+                key={image.name}
+                src={URL.createObjectURL(image)}
+                alt={image.name}
+              />
+            ))}
+        </div>
+
+        {!isUpdating && (
           <Input type="file" name="image" handleUpload={handleChangeImage} />
         )}
 
