@@ -26,7 +26,7 @@ export default function Post({ post }: { post: IPost }) {
 
     if (!response.ok) {
       const data = await response.json();
-      toast(data.body.message);
+      toast(data.message);
       return;
     }
 
