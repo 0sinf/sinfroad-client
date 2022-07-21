@@ -52,6 +52,15 @@ export default function Write() {
     setImages((x) => [...x, file]);
   };
 
+  const handleRemoveImage = (image: File, url: string) => {
+    setImages((curr) => {
+      const newImages = curr.filter((i) => i.name !== image.name);
+      return newImages;
+    });
+
+    URL.revokeObjectURL(url);
+  };
+
   const createPostReqeust = async () => {
     const formData = new FormData();
 
@@ -144,7 +153,9 @@ export default function Write() {
         {!isUpdating && (
           <Input type="file" name="image" handleUpload={handleChangeImage} />
         )}
-        {!isUpdating && images.length > 0 && <Preview images={images} />}
+        {!isUpdating && images.length > 0 && (
+          <Preview images={images} handleRemoveImage={handleRemoveImage} />
+        )}
 
         {isUpdating ? (
           <Button value="수정하기" type="submit" />
