@@ -7,14 +7,3 @@
 .form {
   width: 80%;
 }
-
-.preview {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.preview__image {
-  width: 50%;
-  box-sizing: border-box;
-  object-fit: contain;
-}

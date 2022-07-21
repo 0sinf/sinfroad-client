@@ -4,6 +4,7 @@ import useAuthStore from "../store/useAuthStore";
 import { createPost, updatePost } from "../api/posts";
 import { Input, Textarea } from "../components/Input";
 import Button from "../components/Button";
+import Preview from "../components/Preivew";
 import { IPost } from "../@types/posts";
 import toast from "../utils/toast";
 import "./Write.css";
@@ -140,22 +141,10 @@ export default function Write() {
           setValue={setAddress}
         />
 
-        <div className="preview">
-          {!isUpdating &&
-            images.length > 0 &&
-            images.map((image) => (
-              <img
-                className="preview__image"
-                key={image.name}
-                src={URL.createObjectURL(image)}
-                alt={image.name}
-              />
-            ))}
-        </div>
-
         {!isUpdating && (
           <Input type="file" name="image" handleUpload={handleChangeImage} />
         )}
+        {!isUpdating && images.length > 0 && <Preview images={images} />}
 
         {isUpdating ? (
           <Button value="수정하기" type="submit" />
