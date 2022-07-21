@@ -1,0 +1,23 @@
+.preview {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: var(--margin-s);
+}
+
+.preview__container {
+  display: flex;
+  width: 50%;
+}
+
+.preview__image {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.preview__button {
+  position: absolute;
+  font-size: var(--font-size-s);
+
+  color: red;
+  cursor: pointer;
+}

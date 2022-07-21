@@ -4,9 +4,10 @@ import useAuthStore from "../store/useAuthStore";
 import { createPost, updatePost } from "../api/posts";
 import { Input, Textarea } from "../components/Input";
 import Button from "../components/Button";
+import Preview from "../components/Preivew";
 import { IPost } from "../@types/posts";
-import "./Write.css";
 import toast from "../utils/toast";
+import "./Write.css";
 
 export default function Write() {
   const { id } = useParams();
@@ -49,6 +50,15 @@ export default function Write() {
     }
 
     setImages((x) => [...x, file]);
+  };
+
+  const handleRemoveImage = (image: File, url: string) => {
+    setImages((curr) => {
+      const newImages = curr.filter((i) => i.name !== image.name);
+      return newImages;
+    });
+
+    URL.revokeObjectURL(url);
   };
 
   const createPostReqeust = async () => {
@@ -140,10 +150,11 @@ export default function Write() {
           setValue={setAddress}
         />
 
-        {isUpdating ? (
-          ""
-        ) : (
+        {!isUpdating && (
           <Input type="file" name="image" handleUpload={handleChangeImage} />
+        )}
+        {!isUpdating && images.length > 0 && (
+          <Preview images={images} handleRemoveImage={handleRemoveImage} />
         )}
 
         {isUpdating ? (
