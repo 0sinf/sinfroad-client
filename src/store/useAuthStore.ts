@@ -9,7 +9,7 @@ const useAuthStore = create<AuthStore>((set) => ({
     const savedToken = localStorage.getItem("access-token");
     const cookieToken = parseCookie()["access-token"];
 
-    if ((!savedToken && !!cookieToken) || savedToken !== cookieToken) {
+    if (!savedToken && !!cookieToken) {
       localStorage.setItem("access-token", cookieToken);
     }
 
@@ -17,7 +17,7 @@ const useAuthStore = create<AuthStore>((set) => ({
       return;
     }
 
-    getUser(savedToken, cookieToken)
+    getUser(cookieToken, savedToken)
       .then((data) => set((x) => ({ ...x, user: data.user })))
       .catch(() => {});
   },
