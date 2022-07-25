@@ -2,6 +2,7 @@ import { useEffect, useState, useRef, useCallback } from "react";
 import { IPost } from "../@types/posts";
 import { getPosts } from "../api/posts";
 import Postcard from "../components/Postcard";
+import Loading from "./Loading";
 
 export default function Home() {
   const [posts, setPosts] = useState<Array<IPost>>([]);
@@ -54,19 +55,17 @@ export default function Home() {
   return (
     <main className="main">
       <div className="container">
-        {loading ? (
-          <p>Loading ... </p>
-        ) : (
-          posts.map(({ id, title, created, images }) => (
-            <Postcard
-              key={id}
-              id={id}
-              title={title}
-              created={created}
-              image={images[0].url}
-            />
-          ))
-        )}
+        {loading
+          ? Loading()
+          : posts.map(({ id, title, created, images }) => (
+              <Postcard
+                key={id}
+                id={id}
+                title={title}
+                created={created}
+                image={images[0].url}
+              />
+            ))}
       </div>
       <div ref={loader}></div>
     </main>
