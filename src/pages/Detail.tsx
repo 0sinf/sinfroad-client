@@ -4,6 +4,7 @@ import { IPost } from "../@types/posts";
 import { getPost } from "../api/posts";
 import Post from "../components/Post";
 import toast from "../utils/toast";
+import Loading from "./Loading";
 
 export default function Detail() {
   const { id } = useParams();
@@ -31,7 +32,5 @@ export default function Detail() {
     callPost();
   }, []);
 
-  return (
-    <main className="main">{loading ? <p>Loading ... </p> : writePost()}</main>
-  );
+  return <main className="main">{loading ? Loading() : writePost()}</main>;
 }
