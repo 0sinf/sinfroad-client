@@ -22,7 +22,7 @@ export default async function fetcher(url: string, config: FetchConfig = {}) {
 
   if (!accessToken) {
     const response = await fetch(url, config);
-    const data = await response.json();
+    const data = response.json();
     return { response, data };
   }
 
@@ -34,7 +34,7 @@ export default async function fetcher(url: string, config: FetchConfig = {}) {
   }
 
   config["headers"] = {
-    Authorization: `Beaer ${localStorage.getItem("access-token")}`,
+    Authorization: `Bearer ${localStorage.getItem("access-token")}`,
   };
 
   const response = await fetch(url, config);
