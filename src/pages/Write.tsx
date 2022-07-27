@@ -96,10 +96,10 @@ export default function Write() {
     }
 
     const body = { title, contents, address };
-    const response = await updatePost(id, body, token);
+    const { response, data } = await updatePost(id, body);
 
     if (!response.ok) {
-      toast((await response.json()).message);
+      toast(data.message);
       return;
     }
 
