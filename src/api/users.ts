@@ -1,9 +1,9 @@
-export async function getUser(cookieToken: string, savedToken: string | null) {
-  const data = await (
-    await fetch(`${import.meta.env.VITE_API_SERVER_URI}/users`, {
-      headers: { Authorization: `Bearer ${savedToken || cookieToken}` },
-    })
-  ).json();
+import fetcher from "../utils/fetcher";
+
+export async function getUser() {
+  const { data } = await fetcher(
+    `${import.meta.env.VITE_API_SERVER_URI}/users`
+  );
 
   return data;
 }

@@ -17,7 +17,7 @@ const useAuthStore = create<AuthStore>((set) => ({
       return;
     }
 
-    getUser(cookieToken, savedToken)
+    getUser()
       .then((data) => set((x) => ({ ...x, user: data.user })))
       .catch(() => {});
   },

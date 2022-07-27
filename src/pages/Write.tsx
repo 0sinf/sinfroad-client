@@ -79,10 +79,10 @@ export default function Write() {
     formData.set("address", address);
     images.forEach((image) => formData.append("images", image));
 
-    const response = await createPost(formData, token);
+    const { response, data } = await createPost(formData);
 
     if (!response.ok) {
-      toast((await response.json()).message);
+      toast(data.message);
       return;
     }
 
@@ -96,10 +96,10 @@ export default function Write() {
     }
 
     const body = { title, contents, address };
-    const response = await updatePost(id, body, token);
+    const { response, data } = await updatePost(id, body);
 
     if (!response.ok) {
-      toast((await response.json()).message);
+      toast(data.message);
       return;
     }
 

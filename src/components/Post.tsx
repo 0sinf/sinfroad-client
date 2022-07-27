@@ -5,14 +5,14 @@ import Carousel from "./Carousel";
 import Button from "./Button";
 import useAuthStore from "../store/useAuthStore";
 import { deletePost } from "../api/posts";
-import "./Post.css";
 import toast from "../utils/toast";
+import "./Post.css";
 
 export default function Post({ post }: { post: IPost }) {
-  const { token, user } = useAuthStore();
+  const { user } = useAuthStore();
   const go = useNavigate();
 
-  const { id, title, contents, address, created, updated, images } = post;
+  const { id, title, contents, address, created, images } = post;
   const date = new Date(created).toLocaleDateString("ko-KR");
 
   const handleDelete = async (event: FormEvent) => {
@@ -22,10 +22,9 @@ export default function Post({ post }: { post: IPost }) {
       return;
     }
 
-    const response = await deletePost(id, token);
+    const { response, data } = await deletePost(id);
 
     if (!response.ok) {
-      const data = await response.json();
       toast(data.message);
       return;
     }
