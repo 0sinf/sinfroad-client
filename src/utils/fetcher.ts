@@ -34,6 +34,7 @@ export default async function fetcher(url: string, config: FetchConfig = {}) {
   }
 
   config["headers"] = {
+    ...config.headers,
     Authorization: `Bearer ${localStorage.getItem("access-token")}`,
   };
 
