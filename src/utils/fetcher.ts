@@ -1,5 +1,6 @@
 import jwtDecode from "jwt-decode";
 import dayjs from "dayjs";
+import parseCookie from "./parse-cookie";
 
 interface Token {
   id: string;
@@ -17,6 +18,25 @@ interface FetchConfig {
   body?: any;
 }
 
+async function refresh() {
+  const refreshToken = parseCookie()["refresh-token"];
+  console.log(refreshToken);
+  const response = await fetch(
+    `${import.meta.env.VITE_API_SERVER_URI}/auth/refresh`,
+    {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${refreshToken}`,
+      },
+    }
+  );
+
+  const data = await response.json();
+
+  document.cookie = `access-token=${data.accessToken};`;
+  localStorage.setItem("access-token", data.accessToken);
+}
+
 export default async function fetcher(url: string, config: FetchConfig = {}) {
   const accessToken = localStorage.getItem("access-token");
 
@@ -30,7 +50,7 @@ export default async function fetcher(url: string, config: FetchConfig = {}) {
   const isExpired = dayjs.unix(user.exp).diff(dayjs()) < 1;
 
   if (isExpired) {
-    // TODO: refresh token
+    await refresh();
   }
 
   config["headers"] = {

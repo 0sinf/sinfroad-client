@@ -8,7 +8,7 @@ export default function parseCookie() {
   return Object.fromEntries(
     cookie
       .split(";")
-      .map((x) => x.split("="))
+      .map((x) => x.trim().split("="))
       .map(([key, value]) => [
         decodeURIComponent(key),
         decodeURIComponent(value),
