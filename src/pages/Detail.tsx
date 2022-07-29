@@ -4,7 +4,7 @@ import { IPost } from "../@types/posts";
 import { getPost } from "../api/posts";
 import Post from "../components/Post";
 import toast from "../utils/toast";
-import Loading from "./Loading";
+import Loading from "../components/Loading";
 
 export default function Detail() {
   const { id } = useParams();
