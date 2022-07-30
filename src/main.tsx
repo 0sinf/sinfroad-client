@@ -7,10 +7,10 @@ import useAuthStore from "./store/useAuthStore";
 import "./css/index.css";
 
 async function prepare() {
-  if (import.meta.env.DEV) {
-    const { worker } = await import("./mocks/browser");
-    worker.start();
-  }
+  // if (import.meta.env.DEV) {
+  //   const { worker } = await import("./mocks/browser");
+  //   worker.start();
+  // }
 
   return Promise.resolve();
 }
