@@ -4,7 +4,7 @@
   left: 100%;
   z-index: 1;
   height: 100vh;
-  width: 280px;
+  width: 100%;
   transition: transform 0.25s ease;
   background-color: white;
 
@@ -14,7 +14,7 @@
 }
 
 .drawer--reveal {
-  transform: translateX(-280px);
+  transform: translateX(-100%);
 }
 
 .drawer__close {
