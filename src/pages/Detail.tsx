@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { IPost } from "../@types/posts";
 import { getPost } from "../api/posts";
 import Post from "../components/Post";
@@ -8,6 +8,7 @@ import Loading from "../components/Loading";
 
 export default function Detail() {
   const { id } = useParams();
+  const go = useNavigate();
   const [post, setPost] = useState<IPost>();
   const [loading, setLoading] = useState(true);
 
@@ -23,6 +24,11 @@ export default function Detail() {
     }
 
     const data = await getPost(id);
+
+    if (!data.post) {
+      toast("Doesn't exist post!");
+      go("/");
+    }
 
     setPost(data.post);
     setLoading(false);
