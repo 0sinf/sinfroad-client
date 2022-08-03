@@ -2,7 +2,7 @@ import "./NotFound.css";
 
 export default function NotFound() {
   return (
-    <div className="container">
+    <div className="notfound">
       <p>Not Found</p>
     </div>
   );
