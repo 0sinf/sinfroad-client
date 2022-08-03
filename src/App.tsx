@@ -6,6 +6,7 @@ import Detail from "./pages/Detail";
 import Login from "./pages/Login";
 import Write from "./pages/Write";
 import Drawer from "./components/Drawer";
+import NotFound from "./pages/NotFound";
 
 function App() {
   const [showDrawer, setShowDrawer] = useState<boolean>(false);
@@ -20,6 +21,7 @@ function App() {
         <Route path="/posts" element={<Write />} />
         <Route path="/posts/update/:id" element={<Write />} />
         <Route path="/login" element={<Login />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
   );
