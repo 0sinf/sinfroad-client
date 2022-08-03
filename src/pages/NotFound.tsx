@@ -1,3 +1,9 @@
+import "./NotFound.css";
+
 export default function NotFound() {
-  return <p>Not Found</p>;
+  return (
+    <div className="container">
+      <p>Not Found</p>
+    </div>
+  );
 }
