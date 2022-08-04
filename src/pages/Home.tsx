@@ -58,15 +58,17 @@ export default function Home() {
   return (
     <main className="main">
       <div className="container">
-        {posts.map(({ id, title, created, images }) => (
-          <Postcard
-            key={id}
-            id={id}
-            title={title}
-            created={created}
-            image={images[0].url}
-          />
-        ))}
+        {0 < posts.length
+          ? posts.map(({ id, title, created, images }) => (
+              <Postcard
+                key={id}
+                id={id}
+                title={title}
+                created={created}
+                image={images[0].url}
+              />
+            ))
+          : "아직 등록된 글이 없습니다.😅"}
       </div>
       {loading ? Loading() : <div ref={loader}></div>}
     </main>

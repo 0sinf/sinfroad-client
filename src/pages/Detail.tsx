@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
 import { IPost } from "../@types/posts";
 import { getPost } from "../api/posts";
 import Post from "../components/Post";
@@ -26,8 +26,9 @@ export default function Detail() {
     const data = await getPost(id);
 
     if (!data.post) {
-      toast("Doesn't exist post!");
-      go("/");
+      toast("글이 존재하지 않아요.🥲");
+      go("/notfound");
+      return;
     }
 
     setPost(data.post);
