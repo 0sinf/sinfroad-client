@@ -8,7 +8,7 @@ import Loading from "../components/Loading";
 
 export default function Detail() {
   const { id } = useParams();
-  const go = useNavigate();
+
   const [post, setPost] = useState<IPost>();
   const [loading, setLoading] = useState(true);
 
@@ -26,8 +26,7 @@ export default function Detail() {
     const data = await getPost(id);
 
     if (!data.post) {
-      toast("Doesn't exist post!");
-      go("/");
+      return;
     }
 
     setPost(data.post);
