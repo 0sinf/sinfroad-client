@@ -41,6 +41,14 @@
   justify-content: flex-end;
 }
 
+.post__action {
+  width: 100%;
+  margin-bottom: var(--margin-s);
+
+  text-align: center;
+  font-size: var(--font-size-s);
+}
+
 .post__contents {
   font-size: var(--font-size-s);
   margin-bottom: var(--margin-s);
