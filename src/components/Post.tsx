@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
-import { FormEvent } from "react";
-import { Heart } from "react-bootstrap-icons";
+import { FormEvent, useState } from "react";
+import { Heart, HeartFill } from "react-bootstrap-icons";
 import { IPost } from "../@types/posts";
 import Carousel from "./Carousel";
 import Button from "./Button";
@@ -13,8 +13,22 @@ export default function Post({ post }: { post: IPost }) {
   const { user } = useAuthStore();
   const go = useNavigate();
 
-  const { id, title, contents, address, created, images } = post;
+  const { id, title, contents, address, created, images, beliked, likes } =
+    post;
   const date = new Date(created).toLocaleDateString("ko-KR");
+
+  const [liked, setLiked] = useState(beliked);
+  const [count, setCount] = useState(likes);
+
+  const handleClickLike = async () => {
+    if (liked) {
+      setCount((prev) => prev + 1);
+    } else {
+      setCount((prev) => prev - 1);
+    }
+
+    setLiked((prev) => !prev);
+  };
 
   const handleDelete = async (event: FormEvent) => {
     event.preventDefault();
@@ -57,8 +71,8 @@ export default function Post({ post }: { post: IPost }) {
         )}
         <h1 className="post__title">{title}</h1>
         <div className="post__date">{date}</div>
-        <div className="post__action">
-          <Heart />
+        <div className="post__action" onClick={handleClickLike}>
+          {liked ? <Heart /> : <HeartFill />} {count}
         </div>
         <div className="post__address">{address}</div>
         <div className="post__contents">{contents}</div>

@@ -8,6 +8,8 @@ export interface IPost {
   title: string;
   contents: string;
   address: string;
+  likes: number;
+  beliked: boolean;
   images: Image[];
   created: string;
   updated: string;
