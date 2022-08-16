@@ -18,6 +18,17 @@ export default function Post({ post }: { post: IPost }) {
   const date = new Date(created).toLocaleDateString("ko-KR");
 
   const [liked, setLiked] = useState(beliked);
+  const [count, setCount] = useState(likes);
+
+  const handleClickLike = async () => {
+    if (liked) {
+      setCount((prev) => prev + 1);
+    } else {
+      setCount((prev) => prev - 1);
+    }
+
+    setLiked((prev) => !prev);
+  };
 
   const handleDelete = async (event: FormEvent) => {
     event.preventDefault();
@@ -60,8 +71,8 @@ export default function Post({ post }: { post: IPost }) {
         )}
         <h1 className="post__title">{title}</h1>
         <div className="post__date">{date}</div>
-        <div className="post__action">
-          {liked ? <Heart /> : <HeartFill />} {likes}
+        <div className="post__action" onClick={handleClickLike}>
+          {liked ? <Heart /> : <HeartFill />} {count}
         </div>
         <div className="post__address">{address}</div>
         <div className="post__contents">{contents}</div>
