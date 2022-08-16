@@ -1,5 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { FormEvent } from "react";
+import { Heart } from "react-bootstrap-icons";
 import { IPost } from "../@types/posts";
 import Carousel from "./Carousel";
 import Button from "./Button";
@@ -56,6 +57,9 @@ export default function Post({ post }: { post: IPost }) {
         )}
         <h1 className="post__title">{title}</h1>
         <div className="post__date">{date}</div>
+        <div className="post__action">
+          <Heart />
+        </div>
         <div className="post__address">{address}</div>
         <div className="post__contents">{contents}</div>
       </article>
