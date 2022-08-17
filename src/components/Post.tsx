@@ -5,14 +5,14 @@ import { IPost } from "../@types/posts";
 import Carousel from "./Carousel";
 import Button from "./Button";
 import useAuthStore from "../store/useAuthStore";
-import { deletePost } from "../api/posts";
+import { addLike, deletePost, removeLike } from "../api/posts";
 import toast from "../utils/toast";
 import "./Post.css";
 
 export default function Post({ post }: { post: IPost }) {
   const { user } = useAuthStore();
   const go = useNavigate();
-
+  console.log(post);
   const { id, title, contents, address, created, images, beliked, likes } =
     post;
   const date = new Date(created).toLocaleDateString("ko-KR");
@@ -72,7 +72,7 @@ export default function Post({ post }: { post: IPost }) {
         <h1 className="post__title">{title}</h1>
         <div className="post__date">{date}</div>
         <div className="post__action" onClick={handleClickLike}>
-          {liked ? <Heart /> : <HeartFill />} {count}
+          {liked ? <HeartFill /> : <Heart />} {count}
         </div>
         <div className="post__address">{address}</div>
         <div className="post__contents">{contents}</div>
