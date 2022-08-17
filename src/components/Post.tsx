@@ -5,7 +5,7 @@ import { IPost } from "../@types/posts";
 import Carousel from "./Carousel";
 import Button from "./Button";
 import useAuthStore from "../store/useAuthStore";
-import { deletePost } from "../api/posts";
+import { addLike, deletePost, removeLike } from "../api/posts";
 import toast from "../utils/toast";
 import "./Post.css";
 
@@ -22,9 +22,21 @@ export default function Post({ post }: { post: IPost }) {
 
   const handleClickLike = async () => {
     if (liked) {
-      setCount((prev) => prev + 1);
-    } else {
+      const { response, data } = await removeLike(id);
+
+      if (!response.ok) {
+        toast(data);
+      }
+
       setCount((prev) => prev - 1);
+    } else {
+      const { response, data } = await addLike(id);
+
+      if (!response.ok) {
+        toast(data);
+      }
+
+      setCount((prev) => prev + 1);
     }
 
     setLiked((prev) => !prev);
@@ -72,7 +84,7 @@ export default function Post({ post }: { post: IPost }) {
         <h1 className="post__title">{title}</h1>
         <div className="post__date">{date}</div>
         <div className="post__action" onClick={handleClickLike}>
-          {liked ? <Heart /> : <HeartFill />} {count}
+          {liked ? <HeartFill /> : <Heart />} {count}
         </div>
         <div className="post__address">{address}</div>
         <div className="post__contents">{contents}</div>
