@@ -12,7 +12,7 @@ import "./Post.css";
 export default function Post({ post }: { post: IPost }) {
   const { user } = useAuthStore();
   const go = useNavigate();
-  console.log(post);
+
   const { id, title, contents, address, created, images, beliked, likes } =
     post;
   const date = new Date(created).toLocaleDateString("ko-KR");
@@ -22,9 +22,21 @@ export default function Post({ post }: { post: IPost }) {
 
   const handleClickLike = async () => {
     if (liked) {
-      setCount((prev) => prev + 1);
-    } else {
+      const { response, data } = await removeLike(id);
+
+      if (!response.ok) {
+        toast(data);
+      }
+
       setCount((prev) => prev - 1);
+    } else {
+      const { response, data } = await addLike(id);
+
+      if (!response.ok) {
+        toast(data);
+      }
+
+      setCount((prev) => prev + 1);
     }
 
     setLiked((prev) => !prev);
