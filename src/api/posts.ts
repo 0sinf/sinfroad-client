@@ -66,9 +66,12 @@ export async function addLike(id: string) {
     `${import.meta.env.VITE_API_SERVER_URI}/likes`,
     {
       method: "POST",
-      body: {
-        postId: id,
+      headers: {
+        "Content-Type": "application/json",
       },
+      body: JSON.stringify({
+        postId: id,
+      }),
     }
   );
 
@@ -80,9 +83,12 @@ export async function removeLike(id: string) {
     `${import.meta.env.VITE_API_SERVER_URI}/likes`,
     {
       method: "DELETE",
-      body: {
-        postId: id,
+      headers: {
+        "Content-Type": "application/json",
       },
+      body: JSON.stringify({
+        postId: id,
+      }),
     }
   );
 
