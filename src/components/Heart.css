@@ -1,0 +1,14 @@
+.heart {
+  cursor: pointer;
+  fill: none;
+  stroke: black;
+}
+
+.heart:hover {
+  stroke: var(--light-blue);
+}
+
+.heart--fill {
+  fill: var(--green);
+  stroke: var(--green);
+}

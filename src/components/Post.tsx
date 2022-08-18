@@ -7,6 +7,7 @@ import useAuthStore from "../store/useAuthStore";
 import { addLike, deletePost, removeLike } from "../api/posts";
 import toast from "../utils/toast";
 import "./Post.css";
+import { Heart } from "./Heart";
 
 export default function Post({ post }: { post: IPost }) {
   const { user } = useAuthStore();
@@ -83,14 +84,7 @@ export default function Post({ post }: { post: IPost }) {
         <h1 className="post__title">{title}</h1>
         <div className="post__date">{date}</div>
         <div className="post__action">
-          <svg
-            width="20"
-            height="20"
-            className={liked ? "post__heart post__heart--fill" : "post__heart"}
-            onClick={handleClickLike}
-          >
-            <path d="M 10 7.55 L 7.5 4.925 L 5 4.925 L 2.5 7.55 L 2.5 10.175 L 2.5 11.75 L 5 14.375 L 7.5 17 L 10 19.625 L 12.5 17 L 15 14.375 L 17.5 11.75 L 17.5 10.175 L 17.5 7.55 L 15 4.925 L 12.5 4.925 L 10 7.55" />
-          </svg>
+          <Heart liked={liked} handleClickLike={handleClickLike} />
           <span>{count}</span>
         </div>
         <div className="post__address">{address}</div>

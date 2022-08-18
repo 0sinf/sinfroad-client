@@ -49,21 +49,6 @@
   font-size: var(--font-size-s);
 }
 
-.post__heart {
-  cursor: pointer;
-  fill: none;
-  stroke: black;
-}
-
-.post__heart:hover {
-  stroke: var(--light-blue);
-}
-
-.post__heart--fill {
-  fill: var(--green);
-  stroke: var(--green);
-}
-
 .post__contents {
   font-size: var(--font-size-s);
   margin-bottom: var(--margin-s);
