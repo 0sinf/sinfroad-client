@@ -9,7 +9,7 @@ export function Heart({
 }) {
   return (
     <svg
-      width="20"
+      width="30"
       height="20"
       className={liked ? "heart heart--fill" : "heart heart--unfill"}
       onClick={handleClickLike}

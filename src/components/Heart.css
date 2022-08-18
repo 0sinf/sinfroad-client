@@ -2,6 +2,12 @@
   cursor: pointer;
   fill: none;
   stroke: black;
+
+  transition: transform 1s ease;
+}
+
+.heart:hover {
+  transform: scale(1.4, 1.4);
 }
 
 .heart--unfill:hover {
