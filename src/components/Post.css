@@ -51,14 +51,17 @@
 
 .post__heart {
   cursor: pointer;
+  fill: none;
+  stroke: black;
 }
 
 .post__heart:hover {
-  color: var(--light-blue);
+  stroke: var(--light-blue);
 }
 
 .post__heart--fill {
-  color: var(--green);
+  fill: var(--green);
+  stroke: var(--green);
 }
 
 .post__contents {
