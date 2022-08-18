@@ -42,11 +42,19 @@
 }
 
 .post__action {
+  text-align: center;
+
   width: 100%;
   margin-bottom: var(--margin-s);
-
-  text-align: center;
   font-size: var(--font-size-s);
+}
+
+.post__heart {
+  cursor: pointer;
+}
+
+.post__heart:hover {
+  color: gray;
 }
 
 .post__contents {
