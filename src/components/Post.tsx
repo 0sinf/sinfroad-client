@@ -79,7 +79,7 @@ export default function Post({ post }: { post: IPost }) {
         <div className="post__date">{date}</div>
         <div className="post__action" onClick={handleClickLike}>
           {liked ? (
-            <HeartFill className="post__heart" />
+            <HeartFill className="post__heart post__heart--fill" />
           ) : (
             <Heart className="post__heart" />
           )}

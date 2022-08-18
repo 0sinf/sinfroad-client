@@ -54,7 +54,11 @@
 }
 
 .post__heart:hover {
-  color: gray;
+  color: var(--light-blue);
+}
+
+.post__heart--fill {
+  color: var(--green);
 }
 
 .post__contents {
