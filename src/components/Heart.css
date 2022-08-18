@@ -4,7 +4,7 @@
   stroke: black;
 }
 
-.heart:hover {
+.heart--unfill:hover {
   stroke: var(--light-blue);
 }
 
