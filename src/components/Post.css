@@ -42,10 +42,10 @@
 }
 
 .post__action {
+  text-align: center;
+
   width: 100%;
   margin-bottom: var(--margin-s);
-
-  text-align: center;
   font-size: var(--font-size-s);
 }
 

@@ -1,6 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
 import { FormEvent, useState } from "react";
-import { Heart, HeartFill } from "react-bootstrap-icons";
 import { IPost } from "../@types/posts";
 import Carousel from "./Carousel";
 import Button from "./Button";
@@ -8,6 +7,7 @@ import useAuthStore from "../store/useAuthStore";
 import { addLike, deletePost, removeLike } from "../api/posts";
 import toast from "../utils/toast";
 import "./Post.css";
+import { Heart } from "./Heart";
 
 export default function Post({ post }: { post: IPost }) {
   const { user } = useAuthStore();
@@ -83,8 +83,9 @@ export default function Post({ post }: { post: IPost }) {
         )}
         <h1 className="post__title">{title}</h1>
         <div className="post__date">{date}</div>
-        <div className="post__action" onClick={handleClickLike}>
-          {liked ? <HeartFill /> : <Heart />} {count}
+        <div className="post__action">
+          <Heart liked={liked} handleClickLike={handleClickLike} />
+          <span>{count}</span>
         </div>
         <div className="post__address">{address}</div>
         <div className="post__contents">{contents}</div>
