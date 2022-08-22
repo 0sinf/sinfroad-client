@@ -84,8 +84,11 @@ export default function Post({ post }: { post: IPost }) {
         <h1 className="post__title">{title}</h1>
         <div className="post__date">{date}</div>
         <div className="post__action">
-          <Heart liked={liked} handleClickLike={handleClickLike} />
-          <span>{count}</span>
+          <Heart
+            liked={liked}
+            count={count}
+            handleClickLike={handleClickLike}
+          />
         </div>
         <div className="post__address">{address}</div>
         <div className="post__contents">{contents}</div>
