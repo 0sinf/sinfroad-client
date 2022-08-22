@@ -1,5 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { FormEvent, useState } from "react";
+import { BoxArrowUpRight } from "react-bootstrap-icons";
 import { IPost } from "../@types/posts";
 import Carousel from "./Carousel";
 import Button from "./Button";
@@ -89,6 +90,7 @@ export default function Post({ post }: { post: IPost }) {
             count={count}
             handleClickLike={handleClickLike}
           />
+          <BoxArrowUpRight />
         </div>
         <div className="post__address">{address}</div>
         <div className="post__contents">{contents}</div>
