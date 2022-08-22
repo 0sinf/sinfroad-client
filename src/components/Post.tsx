@@ -1,19 +1,46 @@
 import { Link, useNavigate } from "react-router-dom";
-import { FormEvent } from "react";
+import { FormEvent, useState } from "react";
 import { IPost } from "../@types/posts";
 import Carousel from "./Carousel";
 import Button from "./Button";
 import useAuthStore from "../store/useAuthStore";
-import { deletePost } from "../api/posts";
+import { addLike, deletePost, removeLike } from "../api/posts";
 import toast from "../utils/toast";
 import "./Post.css";
+import { Heart } from "./Heart";
 
 export default function Post({ post }: { post: IPost }) {
   const { user } = useAuthStore();
   const go = useNavigate();
 
-  const { id, title, contents, address, created, images } = post;
+  const { id, title, contents, address, created, images, beliked, likes } =
+    post;
   const date = new Date(created).toLocaleDateString("ko-KR");
+
+  const [liked, setLiked] = useState(beliked);
+  const [count, setCount] = useState(likes);
+
+  const handleClickLike = async () => {
+    if (liked) {
+      const { response, data } = await removeLike(id);
+
+      if (!response.ok) {
+        toast(data);
+      }
+
+      setCount((prev) => prev - 1);
+    } else {
+      const { response, data } = await addLike(id);
+
+      if (!response.ok) {
+        toast(data);
+      }
+
+      setCount((prev) => prev + 1);
+    }
+
+    setLiked((prev) => !prev);
+  };
 
   const handleDelete = async (event: FormEvent) => {
     event.preventDefault();
@@ -56,6 +83,10 @@ export default function Post({ post }: { post: IPost }) {
         )}
         <h1 className="post__title">{title}</h1>
         <div className="post__date">{date}</div>
+        <div className="post__action">
+          <Heart liked={liked} handleClickLike={handleClickLike} />
+          <span>{count}</span>
+        </div>
         <div className="post__address">{address}</div>
         <div className="post__contents">{contents}</div>
       </article>

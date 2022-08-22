@@ -60,3 +60,37 @@ export async function deletePost(id: string) {
 
   return { response, data };
 }
+
+export async function addLike(id: string) {
+  const { response, data } = await fetcher(
+    `${import.meta.env.VITE_API_SERVER_URI}/likes`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        postId: id,
+      }),
+    }
+  );
+
+  return { response, data };
+}
+
+export async function removeLike(id: string) {
+  const { response, data } = await fetcher(
+    `${import.meta.env.VITE_API_SERVER_URI}/likes`,
+    {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        postId: id,
+      }),
+    }
+  );
+
+  return { response, data };
+}

@@ -1,0 +1,29 @@
+.heart__container {
+  background-color: transparent;
+  transition: transform 0.1s ease;
+}
+
+.heart__container:active {
+  transform: scale(1.2, 1.2);
+}
+
+.heart {
+  cursor: pointer;
+  fill: none;
+  stroke: black;
+
+  transition: transform 0.5s ease;
+}
+
+.heart:hover {
+  transform: scale(1.4, 1.4);
+}
+
+.heart--unfill:hover {
+  stroke: var(--light-blue);
+}
+
+.heart--fill {
+  fill: var(--green);
+  stroke: var(--green);
+}
