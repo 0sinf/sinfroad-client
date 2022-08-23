@@ -44,7 +44,7 @@ export default function Post({ post }: { post: IPost }) {
   };
 
   const handleClickLink = async () => {
-    const link = window.location.href;
+    const link = document.URL;
 
     await navigator.clipboard.writeText(link);
 
