@@ -43,6 +43,14 @@ export default function Post({ post }: { post: IPost }) {
     setLiked((prev) => !prev);
   };
 
+  const handleClickLink = async () => {
+    const link = window.location.href;
+
+    await navigator.clipboard.writeText(link);
+
+    toast("Copied it!");
+  };
+
   const handleDelete = async (event: FormEvent) => {
     event.preventDefault();
 
@@ -90,7 +98,7 @@ export default function Post({ post }: { post: IPost }) {
             count={count}
             handleClickLike={handleClickLike}
           />
-          <BoxArrowUpRight className="post__link" />
+          <BoxArrowUpRight className="post__link" onClick={handleClickLink} />
         </div>
         <div className="post__address">{address}</div>
         <div className="post__contents">{contents}</div>
