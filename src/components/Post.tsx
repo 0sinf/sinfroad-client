@@ -1,5 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { FormEvent, useState } from "react";
+import { BoxArrowUpRight } from "react-bootstrap-icons";
 import { IPost } from "../@types/posts";
 import Carousel from "./Carousel";
 import Button from "./Button";
@@ -40,6 +41,14 @@ export default function Post({ post }: { post: IPost }) {
     }
 
     setLiked((prev) => !prev);
+  };
+
+  const handleClickLink = async () => {
+    const link = window.location.href;
+
+    await navigator.clipboard.writeText(link);
+
+    toast("Copied it!");
   };
 
   const handleDelete = async (event: FormEvent) => {
@@ -84,8 +93,12 @@ export default function Post({ post }: { post: IPost }) {
         <h1 className="post__title">{title}</h1>
         <div className="post__date">{date}</div>
         <div className="post__action">
-          <Heart liked={liked} handleClickLike={handleClickLike} />
-          <span>{count}</span>
+          <Heart
+            liked={liked}
+            count={count}
+            handleClickLike={handleClickLike}
+          />
+          <BoxArrowUpRight className="post__link" onClick={handleClickLink} />
         </div>
         <div className="post__address">{address}</div>
         <div className="post__contents">{contents}</div>

@@ -42,11 +42,18 @@
 }
 
 .post__action {
-  text-align: center;
+  display: flex;
+  justify-content: space-around;
+
+  align-items: baseline;
 
   width: 100%;
   margin-bottom: var(--margin-s);
   font-size: var(--font-size-s);
+}
+
+.post__link {
+  cursor: pointer;
 }
 
 .post__contents {
