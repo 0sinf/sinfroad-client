@@ -52,6 +52,10 @@
   font-size: var(--font-size-s);
 }
 
+.post__link {
+  cursor: pointer;
+}
+
 .post__contents {
   font-size: var(--font-size-s);
   margin-bottom: var(--margin-s);

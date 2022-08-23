@@ -90,7 +90,7 @@ export default function Post({ post }: { post: IPost }) {
             count={count}
             handleClickLike={handleClickLike}
           />
-          <BoxArrowUpRight />
+          <BoxArrowUpRight className="post__link" />
         </div>
         <div className="post__address">{address}</div>
         <div className="post__contents">{contents}</div>
