@@ -21,6 +21,8 @@ export default function Post({ post }: { post: IPost }) {
   const [liked, setLiked] = useState(beliked);
   const [count, setCount] = useState(likes);
 
+  const [show, setShow] = useState(false);
+
   const handleClickLike = async () => {
     if (liked) {
       const { response, data } = await removeLike(id);
@@ -90,7 +92,16 @@ export default function Post({ post }: { post: IPost }) {
         </div>
         <div className="post__address">{address}</div>
         {/* // TODO: When contenst length over than 50, use toggle for hide */}
-        <div className="post__contents">{contents}</div>
+        <div className="post__contents">
+          <span>{contents.slice(0, 30)}</span>
+          <span>
+            {show ? (
+              contents.slice(30)
+            ) : (
+              <div className="post__contents--more">... 더보기</div>
+            )}
+          </span>
+        </div>
       </article>
     </div>
   );
