@@ -1,14 +1,14 @@
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { FormEvent, useState } from "react";
 import { BoxArrowUpRight } from "react-bootstrap-icons";
 import { IPost } from "../@types/posts";
 import Carousel from "./Carousel";
-import Button from "./Button";
 import useAuthStore from "../store/useAuthStore";
 import { addLike, deletePost, removeLike } from "../api/posts";
 import toast from "../utils/toast";
-import "./Post.css";
 import { Heart } from "./Heart";
+import { PostControl } from "./PostControl";
+import "./Post.css";
 
 export default function Post({ post }: { post: IPost }) {
   const { user } = useAuthStore();
@@ -74,19 +74,7 @@ export default function Post({ post }: { post: IPost }) {
 
       <article className="post__description">
         {user?.role === "ADMIN" ? (
-          <div className="post__control">
-            <Link to={`/posts/update/${id}`} state={post}>
-              <Button value="수정하기" size="small" />
-            </Link>
-            <form method="DETELE" onSubmit={handleDelete}>
-              <Button
-                type="submit"
-                value="삭제하기"
-                btnStyle="secondary"
-                size="small"
-              />
-            </form>
-          </div>
+          <PostControl id={id} post={post} handleDelete={handleDelete} />
         ) : (
           ""
         )}
