@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { FormEvent, useState, useEffect } from "react";
+import { FormEvent, useState } from "react";
 import { BoxArrowUpRight } from "react-bootstrap-icons";
 import { IPost } from "../@types/posts";
 import Carousel from "./Carousel";
@@ -11,6 +11,7 @@ import { PostControl } from "./PostControl";
 import "./Post.css";
 
 export default function Post({ post }: { post: IPost }) {
+  const MAX_PREVIOUS_SHOW = 50;
   const { user } = useAuthStore();
   const go = useNavigate();
 
@@ -95,12 +96,11 @@ export default function Post({ post }: { post: IPost }) {
           <BoxArrowUpRight className="post__link" onClick={handleClickLink} />
         </div>
         <div className="post__address">{address}</div>
-        {/* // TODO: When contenst length over than 50, use toggle for hide */}
         <div className="post__contents">
-          <span>{contents.slice(0, 30)}</span>
+          <span>{contents.slice(0, MAX_PREVIOUS_SHOW)}</span>
           <span>
-            {contents.length < 30 || show ? (
-              contents.slice(30)
+            {contents.length < MAX_PREVIOUS_SHOW || show ? (
+              contents.slice(MAX_PREVIOUS_SHOW)
             ) : (
               <span
                 className="post__contents--more"
