@@ -1,10 +1,9 @@
-import { useNavigate } from "react-router-dom";
-import { FormEvent, useState } from "react";
+import { useState } from "react";
 import { BoxArrowUpRight } from "react-bootstrap-icons";
 import { IPost } from "../@types/posts";
 import Carousel from "./Carousel";
 import useAuthStore from "../store/useAuthStore";
-import { addLike, deletePost, removeLike } from "../api/posts";
+import { addLike, removeLike } from "../api/posts";
 import toast from "../utils/toast";
 import { Heart } from "./Heart";
 import { PostControl } from "./PostControl";
@@ -13,7 +12,6 @@ import { PostContents } from "./PostContents";
 
 export default function Post({ post }: { post: IPost }) {
   const { user } = useAuthStore();
-  const go = useNavigate();
 
   const { id, title, contents, address, created, images, beliked, likes } =
     post;
@@ -52,33 +50,12 @@ export default function Post({ post }: { post: IPost }) {
     toast("Copied it!");
   };
 
-  const handleDelete = async (event: FormEvent) => {
-    event.preventDefault();
-
-    if (!confirm("정말 삭제하시겠습니까?")) {
-      return;
-    }
-
-    const { response, data } = await deletePost(id);
-
-    if (!response.ok) {
-      toast(data.message);
-      return;
-    }
-
-    go("/");
-  };
-
   return (
     <div className="post">
       <Carousel title={title} images={images} />
 
       <article className="post__description">
-        {user?.role === "ADMIN" ? (
-          <PostControl id={id} post={post} handleDelete={handleDelete} />
-        ) : (
-          ""
-        )}
+        {user?.role === "ADMIN" ? <PostControl id={id} post={post} /> : ""}
         <h1 className="post__title">{title}</h1>
         <div className="post__date">{date}</div>
         <div className="post__action">
