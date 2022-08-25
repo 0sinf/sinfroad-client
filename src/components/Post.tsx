@@ -9,9 +9,9 @@ import toast from "../utils/toast";
 import { Heart } from "./Heart";
 import { PostControl } from "./PostControl";
 import "./Post.css";
+import { PostContents } from "./PostContents";
 
 export default function Post({ post }: { post: IPost }) {
-  const MAX_PREVIOUS_SHOW = 50;
   const { user } = useAuthStore();
   const go = useNavigate();
 
@@ -21,8 +21,6 @@ export default function Post({ post }: { post: IPost }) {
 
   const [liked, setLiked] = useState(beliked);
   const [count, setCount] = useState(likes);
-
-  const [show, setShow] = useState(false);
 
   const handleClickLike = async () => {
     if (liked) {
@@ -52,10 +50,6 @@ export default function Post({ post }: { post: IPost }) {
     await navigator.clipboard.writeText(link);
 
     toast("Copied it!");
-  };
-
-  const handleClickToggle = () => {
-    setShow((prev) => !prev);
   };
 
   const handleDelete = async (event: FormEvent) => {
@@ -96,21 +90,7 @@ export default function Post({ post }: { post: IPost }) {
           <BoxArrowUpRight className="post__link" onClick={handleClickLink} />
         </div>
         <div className="post__address">{address}</div>
-        <div className="post__contents">
-          <span>{contents.slice(0, MAX_PREVIOUS_SHOW)}</span>
-          <span>
-            {contents.length < MAX_PREVIOUS_SHOW || show ? (
-              contents.slice(MAX_PREVIOUS_SHOW)
-            ) : (
-              <span
-                className="post__contents--more"
-                onClick={handleClickToggle}
-              >
-                ... 더보기
-              </span>
-            )}
-          </span>
-        </div>
+        <PostContents contents={contents} />
       </article>
     </div>
   );

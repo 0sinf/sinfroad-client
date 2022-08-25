@@ -1,0 +1,11 @@
+.post__contents {
+  font-size: var(--font-size-xs);
+  margin-bottom: var(--margin-s);
+
+  white-space: pre-line;
+}
+
+.post__contents--more {
+  margin-top: var(--margin-xs);
+  cursor: pointer;
+}
