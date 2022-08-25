@@ -89,6 +89,7 @@ export default function Post({ post }: { post: IPost }) {
           <BoxArrowUpRight className="post__link" onClick={handleClickLink} />
         </div>
         <div className="post__address">{address}</div>
+        {/* // TODO: When contenst length over than 50, use toggle for hide */}
         <div className="post__contents">{contents}</div>
       </article>
     </div>
