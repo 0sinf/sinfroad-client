@@ -36,11 +36,6 @@
   text-align: right;
 }
 
-.post__control {
-  display: flex;
-  justify-content: flex-end;
-}
-
 .post__action {
   display: flex;
   justify-content: space-around;
@@ -54,13 +49,6 @@
 
 .post__link {
   cursor: pointer;
-}
-
-.post__contents {
-  font-size: var(--font-size-s);
-  margin-bottom: var(--margin-s);
-
-  white-space: pre-line;
 }
 
 @media screen and (max-width: 900px) {
