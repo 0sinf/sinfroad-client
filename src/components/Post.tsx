@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { FormEvent, useState } from "react";
+import { FormEvent, useState, useEffect } from "react";
 import { BoxArrowUpRight } from "react-bootstrap-icons";
 import { IPost } from "../@types/posts";
 import Carousel from "./Carousel";
@@ -53,6 +53,10 @@ export default function Post({ post }: { post: IPost }) {
     toast("Copied it!");
   };
 
+  const handleClickToggle = () => {
+    setShow((prev) => !prev);
+  };
+
   const handleDelete = async (event: FormEvent) => {
     event.preventDefault();
 
@@ -95,10 +99,15 @@ export default function Post({ post }: { post: IPost }) {
         <div className="post__contents">
           <span>{contents.slice(0, 30)}</span>
           <span>
-            {show ? (
+            {contents.length < 30 || show ? (
               contents.slice(30)
             ) : (
-              <div className="post__contents--more">... 더보기</div>
+              <span
+                className="post__contents--more"
+                onClick={handleClickToggle}
+              >
+                ... 더보기
+              </span>
             )}
           </span>
         </div>
