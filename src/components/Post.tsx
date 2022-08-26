@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { BoxArrowUpRight } from "react-bootstrap-icons";
+import { BoxArrowUpRight, Chat } from "react-bootstrap-icons";
 import { IPost } from "../@types/posts";
 import Carousel from "./Carousel";
 import useAuthStore from "../store/useAuthStore";
@@ -64,6 +64,7 @@ export default function Post({ post }: { post: IPost }) {
             count={count}
             handleClickLike={handleClickLike}
           />
+          <Chat className="post__chat" />
           <BoxArrowUpRight className="post__link" onClick={handleClickLink} />
         </div>
         <div className="post__address">{address}</div>

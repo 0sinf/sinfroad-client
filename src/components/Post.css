@@ -47,7 +47,8 @@
   font-size: var(--font-size-s);
 }
 
-.post__link {
+.post__link,
+.post__chat {
   cursor: pointer;
 }
 
