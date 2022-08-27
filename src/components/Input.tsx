@@ -9,6 +9,7 @@ export function Input({
   placeholder,
   setValue,
   handleUpload,
+  withLabel = true,
 }: InputProps) {
   const isUploading = type === "file";
 
@@ -23,9 +24,13 @@ export function Input({
 
   return (
     <div className="input__container">
-      <label htmlFor={name}>
-        <h2>{name}</h2>
-      </label>
+      {withLabel ? (
+        <label htmlFor={name}>
+          <h2>{name}</h2>
+        </label>
+      ) : (
+        ""
+      )}
       {isUploading ? (
         <input
           className="input-image"

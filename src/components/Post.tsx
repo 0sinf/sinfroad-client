@@ -9,6 +9,7 @@ import { Heart } from "./Heart";
 import { PostControl } from "./PostControl";
 import "./Post.css";
 import { PostContents } from "./PostContents";
+import { Comment } from "./Comment";
 
 export default function Post({ post }: { post: IPost }) {
   const { user } = useAuthStore();
@@ -69,6 +70,7 @@ export default function Post({ post }: { post: IPost }) {
         </div>
         <div className="post__address">{address}</div>
         <PostContents contents={contents} />
+        <Comment />
       </article>
     </div>
   );
