@@ -2,16 +2,25 @@ import { useState, FormEvent } from "react";
 import { Input } from "./Input";
 import Button from "./Button";
 import "./Comment.css";
+import { createComment } from "../api/comments";
+import toast from "../utils/toast";
 
-export function Comment() {
+export function Comment({ postId }: { postId: string }) {
   // TODO: Comment form
   // TODO: Comment list
   // TODO: Comment more
 
-  const [comment, setComment] = useState<string>("");
-  const handleSubmit = (event: FormEvent) => {
+  const [contents, setContents] = useState<string>("");
+  const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
-    console.log(comment);
+    const { response } = await createComment(postId, contents);
+
+    if (!response.ok) {
+      toast("댓글이 작성되지 못했어요. 🥲");
+      return;
+    }
+
+    setContents("");
   };
 
   return (
@@ -19,10 +28,10 @@ export function Comment() {
       <Input
         type="text"
         name="comment"
-        value={comment}
+        value={contents}
         className="comment__input"
         placeholder="댓글을 입력해주세요! 👏🏻"
-        setValue={setComment}
+        setValue={setContents}
         withLabel={false}
       />
       <Button
