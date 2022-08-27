@@ -7,6 +7,7 @@ export function Input({
   name,
   value,
   placeholder,
+  className,
   setValue,
   handleUpload,
   withLabel = true,
@@ -33,14 +34,14 @@ export function Input({
       )}
       {isUploading ? (
         <input
-          className="input-image"
+          className={className}
           type={type}
           id={name}
           onChange={handleUpload}
         />
       ) : (
         <input
-          className="input"
+          className={className}
           type={type}
           id={name}
           name={name}

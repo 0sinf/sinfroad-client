@@ -130,6 +130,7 @@ export default function Write() {
         <Input
           type="text"
           name="title"
+          className="input"
           placeholder="Write title"
           value={title}
           setValue={setTitle}
@@ -145,13 +146,19 @@ export default function Write() {
         <Input
           type="text"
           name="address"
+          className="input"
           placeholder="Write address"
           value={address}
           setValue={setAddress}
         />
 
         {!isUpdating && (
-          <Input type="file" name="image" handleUpload={handleChangeImage} />
+          <Input
+            type="file"
+            name="image"
+            className="input-image"
+            handleUpload={handleChangeImage}
+          />
         )}
         {!isUpdating && images.length > 0 && (
           <Preview images={images} handleRemoveImage={handleRemoveImage} />
