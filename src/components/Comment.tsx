@@ -3,7 +3,7 @@ import { Input } from "./Input";
 import Button from "./Button";
 import "./Comment.css";
 
-export function Comment() {
+export function Comment({ postId }: { postId: string }) {
   // TODO: Comment form
   // TODO: Comment list
   // TODO: Comment more
@@ -11,7 +11,6 @@ export function Comment() {
   const [comment, setComment] = useState<string>("");
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault();
-    console.log(comment);
   };
 
   return (

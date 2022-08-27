@@ -7,9 +7,9 @@ import { addLike, removeLike } from "../api/posts";
 import toast from "../utils/toast";
 import { Heart } from "./Heart";
 import { PostControl } from "./PostControl";
-import "./Post.css";
 import { PostContents } from "./PostContents";
 import { Comment } from "./Comment";
+import "./Post.css";
 
 export default function Post({ post }: { post: IPost }) {
   const { user } = useAuthStore();
@@ -70,7 +70,7 @@ export default function Post({ post }: { post: IPost }) {
         </div>
         <div className="post__address">{address}</div>
         <PostContents contents={contents} />
-        <Comment />
+        <Comment postId={id} />
       </article>
     </div>
   );
