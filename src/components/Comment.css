@@ -1,0 +1,19 @@
+.comment__form {
+  display: flex;
+  flex-direction: row;
+
+  margin-top: var(--margin-s);
+  width: 100%;
+}
+
+.comment__input {
+  font-size: var(--font-size-xs);
+  padding: var(--padding-s);
+
+  border: 1px solid var(--light-blue);
+  border-radius: var(--border-radius-s);
+}
+
+.comment__button {
+  width: 20%;
+}
