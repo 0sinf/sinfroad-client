@@ -1,15 +1,14 @@
 .input__container {
   display: flex;
   flex-direction: column;
-
-  margin-bottom: var(--margin-l);
+  width: 100%;
 }
 
 .textarea,
 .input {
   font-size: var(--font-size-s);
   padding: var(--padding-s);
-  margin-top: var(--margin-s);
+  margin: var(--margin-s) 0;
 
   border: 1px solid var(--light-blue);
   border-radius: var(--border-radius-s);
