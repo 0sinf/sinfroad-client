@@ -10,6 +10,8 @@ export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   setValue?: Dispatch<SetStateAction<string>>;
 
   handleUpload?: (event) => void;
+
+  withLabel?: boolean;
 }
 export interface TextAreaProps
   extends TextareaHTMLAttributes<HTMLTextAreaElement> {

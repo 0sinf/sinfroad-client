@@ -8,10 +8,11 @@ export default function Button({
   disabled,
   size = "medium",
   onClick,
+  className,
 }: ButtonProps) {
   return (
     <button
-      className={`button button--${btnStyle} button--${size}`}
+      className={`button button--${btnStyle} button--${size} ${className}`}
       type={type}
       disabled={disabled}
       onClick={onClick}
