@@ -1,9 +1,9 @@
 interface Query {
-  [key: string]: unknown;
+  [key: string]: string | number | boolean;
 }
 
 export function getQuery(querys: Query) {
   return `?${Object.entries(querys)
-    .map(([key, value]) => `${key}=${value}`)
+    .map((pair) => pair.map(encodeURIComponent).join("="))
     .join("&")}`;
 }
