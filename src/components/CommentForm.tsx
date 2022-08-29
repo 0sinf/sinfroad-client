@@ -3,6 +3,7 @@ import { Input } from "./Input";
 import Button from "./Button";
 import { createComment } from "../api/comments";
 import toast from "../utils/toast";
+import "./CommentForm.css";
 
 export function CommentForm({ postId }: { postId: string }) {
   const [contents, setContents] = useState<string>("");
