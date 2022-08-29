@@ -1,8 +1,8 @@
-import { useState, FormEvent, useEffect } from "react";
+import { useState, FormEvent } from "react";
 import { Input } from "./Input";
 import Button from "./Button";
 import "./Comment.css";
-import { createComment, getComments } from "../api/comments";
+import { createComment } from "../api/comments";
 import toast from "../utils/toast";
 
 export function Comment({ postId }: { postId: string }) {
