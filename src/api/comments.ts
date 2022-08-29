@@ -1,4 +1,5 @@
 import fetcher from "../utils/fetcher";
+import { getQuery } from "../utils/query";
 
 export async function createComment(postId: string, contents: string) {
   const body = {
@@ -15,6 +16,16 @@ export async function createComment(postId: string, contents: string) {
       },
       body: JSON.stringify(body),
     }
+  );
+
+  return { response, data };
+}
+
+export async function getComments(postId: string, page: number) {
+  const query = getQuery({ postId, page });
+
+  const { response, data } = await fetcher(
+    `${import.meta.env.VITE_API_SERVER_URI}/comments${query}`
   );
 
   return { response, data };
