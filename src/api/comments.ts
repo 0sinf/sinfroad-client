@@ -19,3 +19,13 @@ export async function createComment(postId: string, contents: string) {
 
   return { response, data };
 }
+
+export async function getComments(postId: string, page: number) {
+  const query = `?postId=${postId}&page=${page}`;
+
+  const { response, data } = await fetcher(
+    `${import.meta.env.VITE_API_SERVER_URI}/comments${query}`
+  );
+
+  return { response, data };
+}
