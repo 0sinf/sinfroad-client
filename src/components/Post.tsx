@@ -8,7 +8,7 @@ import toast from "../utils/toast";
 import { Heart } from "./Heart";
 import { PostControl } from "./PostControl";
 import { PostContents } from "./PostContents";
-import { Comment } from "./Comment";
+import { CommentList } from "./CommentList";
 import "./Post.css";
 
 export default function Post({ post }: { post: IPost }) {
@@ -70,7 +70,7 @@ export default function Post({ post }: { post: IPost }) {
         </div>
         <div className="post__address">{address}</div>
         <PostContents contents={contents} />
-        <Comment postId={id} />
+        <CommentList postId={id} />
       </article>
     </div>
   );
