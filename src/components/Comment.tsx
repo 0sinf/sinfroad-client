@@ -1,14 +1,22 @@
 import { FormEvent } from "react";
 import { IComment } from "../@types/comments";
+import { deleteComment } from "../api/comments";
 import getDatetime from "../utils/get-date";
 import "./Comment.css";
+import toast from "../utils/toast";
 
 export function Comment({ comment }: { comment: IComment }) {
   const { id, contents, author, isOwner, created } = comment;
 
-  // TODO: Add delete form
   const handleDelete = async (event: FormEvent) => {
     event.preventDefault();
+
+    const { response } = await deleteComment(id);
+
+    if (!response.ok) {
+      toast("댓글이 삭제되지 않았습니다.");
+      return;
+    }
   };
 
   const date = getDatetime(created);
