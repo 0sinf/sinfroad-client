@@ -1,5 +1,5 @@
 .comment__container {
-  background-color: var(--ivory);
+  /* background-color: var(--ivory); */
   border-radius: var(--border-radius-s);
 
   margin-top: var(--margin-xs);
