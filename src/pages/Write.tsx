@@ -126,7 +126,7 @@ export default function Write() {
   return (
     <main className="write__container">
       <h1>새 글 작성하기</h1>
-      <form className="form" method="POST" onSubmit={handleSubmit}>
+      <form className="write" method="POST" onSubmit={handleSubmit}>
         <Input
           type="text"
           name="title"
@@ -165,9 +165,9 @@ export default function Write() {
         )}
 
         {isUpdating ? (
-          <Button value="수정하기" type="submit" />
+          <Button value="수정하기" type="submit" className="write__button" />
         ) : (
-          <Button value="작성하기" type="submit" />
+          <Button value="작성하기" type="submit" className="write__button" />
         )}
         <Button
           value="취소하기"
@@ -176,6 +176,7 @@ export default function Write() {
           onClick={() => {
             go(id ? `/posts/${id}` : "/");
           }}
+          className="write__button"
         />
       </form>
     </main>

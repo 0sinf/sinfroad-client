@@ -4,6 +4,11 @@
   align-items: center;
 }
 
-.form {
+.write {
   width: 80%;
+}
+
+.write__button {
+  margin-top: var(--margin-xs);
+  margin-right: var(--margin-xs);
 }
