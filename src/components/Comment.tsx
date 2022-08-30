@@ -2,7 +2,9 @@ import { IComment } from "../@types/comments";
 import "./Comment.css";
 
 export function Comment({ comment }: { comment: IComment }) {
-  const { id, contents, author, isOwner, created, updated } = comment;
+  const { id, contents, author, isOwner, created } = comment;
+
+  const createdDate = new Date(created);
 
   return (
     <div className="comment__container">
@@ -11,7 +13,9 @@ export function Comment({ comment }: { comment: IComment }) {
         <div className="comment__contents">{contents}</div>
       </div>
       <div className="comment__meta">
-        <div className="comment__date">{created}</div>
+        <div className="comment__date">
+          {createdDate.toLocaleString("ko-KR")}
+        </div>
       </div>
     </div>
   );
