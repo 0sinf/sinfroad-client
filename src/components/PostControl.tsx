@@ -29,7 +29,11 @@ export function PostControl({ id, post }: { id: string; post: IPost }) {
   return (
     <div className="post__control">
       <Link to={`/posts/update/${id}`} state={post}>
-        <Button value="수정하기" size="small" />
+        <Button
+          value="수정하기"
+          size="small"
+          className="post__control-button"
+        />
       </Link>
       <form method="DETELE" onSubmit={handleDelete}>
         <Button
@@ -37,6 +41,7 @@ export function PostControl({ id, post }: { id: string; post: IPost }) {
           value="삭제하기"
           btnStyle="secondary"
           size="small"
+          className="post__control-button"
         />
       </form>
     </div>
