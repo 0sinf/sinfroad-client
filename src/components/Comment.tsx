@@ -4,6 +4,8 @@ import "./Comment.css";
 export function Comment({ comment }: { comment: IComment }) {
   const { id, contents, author, isOwner, created } = comment;
 
+  // FIXME: Fix time format
+  // TODO: Add delete form
   const createdDate = new Date(created);
 
   return (

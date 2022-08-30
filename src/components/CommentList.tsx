@@ -6,8 +6,8 @@ import { CommentForm } from "./CommentForm";
 import { Comment } from "./Comment";
 
 export function CommentList({ postId }: { postId: string }) {
-  // TODO: Comment list
-  // TODO: Comment more
+  // TODO: comment more
+  // TODO: Control  overflow
   const [comments, setComments] = useState<IComment[]>([]);
   const [page, setPage] = useState<number>(1);
 
