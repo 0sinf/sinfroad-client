@@ -4,7 +4,6 @@ import toast from "../utils/toast";
 import { IComment } from "../@types/comments";
 import { CommentForm } from "./CommentForm";
 import { Comment } from "./Comment";
-import "./Comment.css";
 
 export function CommentList({ postId }: { postId: string }) {
   // TODO: Comment list
