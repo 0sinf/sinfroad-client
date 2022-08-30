@@ -1,11 +1,10 @@
 const MILLI_SEC = 1000;
 const SEC = 60;
-const MINUTE = 60;
-const HOUR = 24;
+const MINUTE = SEC * 60;
 const DAY = 30;
-const MONTH = 12;
+const MONTH = DAY * 12;
 
-export default function getDate(dateString: string) {
+export default function getDatetime(dateString: string) {
   // TODO: Think using moment.js
 
   const date = new Date(dateString);
@@ -17,18 +16,18 @@ export default function getDate(dateString: string) {
   if (diffOfDate) {
     if (diffOfDate < DAY) {
       return `${diffOfDate}일 전`;
-    } else if (diffOfDate < MONTH * DAY) {
+    } else if (diffOfDate < MONTH) {
       return `${Math.floor(diffOfDate / DAY)}달 전`;
     } else {
-      return `${Math.floor(diffOfDate / (DAY * MONTH))}년 전`;
+      return `${Math.floor(diffOfDate / MONTH)}년 전`;
     }
   }
 
   if (diffOfTime < SEC) {
     return `${diffOfTime}초 전`;
-  } else if (diffOfTime < SEC * MINUTE) {
+  } else if (diffOfTime < MINUTE) {
     return `${Math.floor(diffOfTime / SEC)}분 전`;
   } else {
-    return `${Math.floor(diffOfTime / (SEC * HOUR))}시간 전`;
+    return `${Math.floor(diffOfTime / MINUTE)}시간 전`;
   }
 }

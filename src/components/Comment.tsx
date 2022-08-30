@@ -1,12 +1,12 @@
 import { IComment } from "../@types/comments";
 import "./Comment.css";
-import getDate from "../utils/get-date";
+import getDatetime from "../utils/get-date";
 
 export function Comment({ comment }: { comment: IComment }) {
   const { id, contents, author, isOwner, created } = comment;
 
   // TODO: Add delete form
-  const date = getDate(created);
+  const date = getDatetime(created);
 
   return (
     <div className="comment__container">
