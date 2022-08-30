@@ -30,3 +30,12 @@ export async function getComments(postId: string, page: number) {
 
   return { response, data };
 }
+
+export async function deleteComment(commentId: string) {
+  const { response, data } = await fetcher(
+    `${import.meta.env.VITE_API_SERVER_URI}/comments/${commentId}`,
+    { method: "DELETE" }
+  );
+
+  return { response, data };
+}
