@@ -1,22 +1,30 @@
-import { FormEvent, useState } from "react";
+import { Dispatch, FormEvent, SetStateAction, useState } from "react";
 import { Input } from "./Input";
 import Button from "./Button";
 import { createComment } from "../api/comments";
 import toast from "../utils/toast";
 import "./CommentForm.css";
+import { IComment } from "../@types/comments";
 
-export function CommentForm({ postId }: { postId: string }) {
+export function CommentForm({
+  postId,
+  setComments,
+}: {
+  postId: string;
+  setComments: Dispatch<SetStateAction<IComment[]>>;
+}) {
   const [contents, setContents] = useState<string>("");
 
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
-    const { response } = await createComment(postId, contents);
+    const { response, data } = await createComment(postId, contents);
 
     if (!response.ok) {
       toast("댓글이 작성되지 못했어요. 🥲");
       return;
     }
-
+    console.log(data.comment);
+    setComments((prev) => [data.comment, ...prev]);
     setContents("");
   };
 

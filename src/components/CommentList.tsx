@@ -30,7 +30,7 @@ export function CommentList({ postId }: { postId: string }) {
 
   return (
     <>
-      <CommentForm postId={postId} />
+      <CommentForm postId={postId} setComments={setComments} />
       {comments.map((comment) => {
         return <Comment key={comment.id} comment={comment} />;
       })}
