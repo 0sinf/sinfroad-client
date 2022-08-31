@@ -32,8 +32,6 @@ export function CommentList({ postId }: { postId: string }) {
     getCommentsRequest();
   }, []);
 
-  // TODO: When create/delete comment, UI/UX
-
   return (
     <>
       <CommentForm postId={postId} setComments={setComments} />
