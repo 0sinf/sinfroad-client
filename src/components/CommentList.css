@@ -1,0 +1,13 @@
+.comment__more {
+  width: 100%;
+
+  padding: var(--padding-xs);
+  margin-top: var(--margin-xs);
+  border-radius: var(--border-radius-s);
+
+  font-size: var(--font-size-xs);
+
+  background-color: var(--light-blue);
+
+  cursor: pointer;
+}

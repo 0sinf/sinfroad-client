@@ -23,7 +23,7 @@ export function CommentForm({
       toast("댓글이 작성되지 못했어요. 🥲");
       return;
     }
-    console.log(data.comment);
+
     setComments((prev) => [data.comment, ...prev]);
     setContents("");
   };
