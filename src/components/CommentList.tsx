@@ -4,6 +4,7 @@ import toast from "../utils/toast";
 import { IComment } from "../@types/comments";
 import { CommentForm } from "./CommentForm";
 import { Comment } from "./Comment";
+import "./CommentList.css";
 
 export function CommentList({ postId }: { postId: string }) {
   // TODO: comment more
@@ -44,6 +45,7 @@ export function CommentList({ postId }: { postId: string }) {
           />
         );
       })}
+      <button className="comment__more">더보기</button>
     </>
   );
 }
