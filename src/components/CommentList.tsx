@@ -11,6 +11,7 @@ export function CommentList({ postId }: { postId: string }) {
   // TODO: Control  overflow
   const [comments, setComments] = useState<IComment[]>([]);
   const [page, setPage] = useState<number>(1);
+  const [hasNext, setHasNext] = useState<boolean>(false);
 
   const getCommentsRequest = async () => {
     const { response, data } = await getComments(postId, page);
@@ -20,7 +21,10 @@ export function CommentList({ postId }: { postId: string }) {
       return;
     }
 
-    setComments((prev) => [...prev, ...data.comments]);
+    const { comments, pagination } = data;
+
+    setHasNext(pagination.hasNext);
+    setComments((prev) => [...prev, ...comments]);
   };
 
   const refreshComments = (commentId: string) => {
@@ -29,9 +33,13 @@ export function CommentList({ postId }: { postId: string }) {
     );
   };
 
+  const handleClick = () => {
+    setPage((prev) => prev + 1);
+  };
+
   useEffect(() => {
     getCommentsRequest();
-  }, []);
+  }, [page]);
 
   return (
     <>
@@ -45,7 +53,11 @@ export function CommentList({ postId }: { postId: string }) {
           />
         );
       })}
-      <button className="comment__more">더보기</button>
+      {hasNext && (
+        <button className="comment__more" onClick={handleClick}>
+          더보기
+        </button>
+      )}
     </>
   );
 }
