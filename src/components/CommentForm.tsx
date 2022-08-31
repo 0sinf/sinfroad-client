@@ -17,6 +17,12 @@ export function CommentForm({
 
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
+
+    if (contents.length < 2) {
+      toast("댓글은 최소 2글자 이상 입력해주세요!");
+      return;
+    }
+
     const { response, data } = await createComment(postId, contents);
 
     if (!response.ok) {
