@@ -7,7 +7,6 @@ import { Comment } from "./Comment";
 import "./CommentList.css";
 
 export function CommentList({ postId }: { postId: string }) {
-  // TODO: comment more
   // TODO: Control  overflow
   const [comments, setComments] = useState<IComment[]>([]);
   const [page, setPage] = useState<number>(1);
