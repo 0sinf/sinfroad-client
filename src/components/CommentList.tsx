@@ -22,6 +22,12 @@ export function CommentList({ postId }: { postId: string }) {
     setComments((prev) => [...prev, ...data.comments]);
   };
 
+  const refreshComments = (commentId: string) => {
+    setComments((comments) =>
+      comments.filter((comment) => comment.id !== commentId)
+    );
+  };
+
   useEffect(() => {
     getCommentsRequest();
   }, []);
@@ -32,7 +38,13 @@ export function CommentList({ postId }: { postId: string }) {
     <>
       <CommentForm postId={postId} setComments={setComments} />
       {comments.map((comment) => {
-        return <Comment key={comment.id} comment={comment} />;
+        return (
+          <Comment
+            key={comment.id}
+            comment={comment}
+            refreshComments={refreshComments}
+          />
+        );
       })}
     </>
   );

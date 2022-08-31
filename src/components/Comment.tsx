@@ -5,7 +5,13 @@ import getDatetime from "../utils/get-date";
 import "./Comment.css";
 import toast from "../utils/toast";
 
-export function Comment({ comment }: { comment: IComment }) {
+export function Comment({
+  comment,
+  refreshComments,
+}: {
+  comment: IComment;
+  refreshComments: (commentId: string) => void;
+}) {
   const { id, contents, author, isOwner, created } = comment;
 
   const handleDelete = async (event: FormEvent) => {
@@ -17,6 +23,8 @@ export function Comment({ comment }: { comment: IComment }) {
       toast("댓글이 삭제되지 않았습니다.");
       return;
     }
+
+    refreshComments(id);
   };
 
   const date = getDatetime(created);
