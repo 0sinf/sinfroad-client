@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { getComments } from "../api/comments";
 import toast from "../utils/toast";
 import { IComment } from "../@types/comments";
@@ -12,7 +12,7 @@ export function CommentList({ postId }: { postId: string }) {
   const [page, setPage] = useState<number>(1);
   const [hasNext, setHasNext] = useState<boolean>(false);
 
-  const getCommentsRequest = async () => {
+  const getCommentsRequest = useCallback(async () => {
     const { response, data } = await getComments(postId, page);
 
     if (!response.ok) {
@@ -24,7 +24,7 @@ export function CommentList({ postId }: { postId: string }) {
 
     setHasNext(pagination.hasNext);
     setComments((prev) => [...prev, ...comments]);
-  };
+  }, [page]);
 
   const refreshComments = (commentId: string) => {
     setComments((comments) =>
