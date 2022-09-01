@@ -10,6 +10,7 @@ export function Input({
   className,
   setValue,
   handleUpload,
+  disabled = true,
   withLabel = true,
 }: InputProps) {
   const isUploading = type === "file";
@@ -48,6 +49,7 @@ export function Input({
           placeholder={placeholder}
           value={value}
           onChange={onChange}
+          disabled
         />
       )}
     </div>

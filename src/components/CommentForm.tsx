@@ -5,6 +5,7 @@ import { createComment } from "../api/comments";
 import toast from "../utils/toast";
 import "./CommentForm.css";
 import { IComment } from "../@types/comments";
+import useAuthStore from "../store/useAuthStore";
 
 export function CommentForm({
   postId,
@@ -14,6 +15,7 @@ export function CommentForm({
   setComments: Dispatch<SetStateAction<IComment[]>>;
 }) {
   const [contents, setContents] = useState<string>("");
+  const { user } = useAuthStore();
 
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
@@ -44,6 +46,7 @@ export function CommentForm({
         placeholder="댓글을 입력해주세요! 👏🏻"
         setValue={setContents}
         withLabel={false}
+        disabled={!!user}
       />
       <Button
         value="작성"
