@@ -42,7 +42,7 @@ export default async function fetcher(url: string, config: FetchConfig = {}) {
 
   if (!accessToken) {
     const response = await fetch(url, config);
-    const data = response.json();
+    const data = await response.json();
     return { response, data };
   }
 
