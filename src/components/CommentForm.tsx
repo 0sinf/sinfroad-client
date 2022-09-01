@@ -46,7 +46,7 @@ export function CommentForm({
         placeholder="댓글을 입력해주세요! 👏🏻"
         setValue={setContents}
         withLabel={false}
-        disabled={!!user}
+        disabled={!!user ? false : true}
       />
       <Button
         value="작성"
