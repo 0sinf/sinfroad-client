@@ -1,33 +1,35 @@
 const MILLI_SEC = 1000;
-const SEC = 60;
+const SEC = 1;
 const MINUTE = SEC * 60;
-const DAY = 30;
-const MONTH = DAY * 12;
+const HOUR = MINUTE * 60;
+const DAY = HOUR * 24;
+const MONTH = DAY * 30;
+const YEAR = MONTH * 12;
 
 export default function getDatetime(dateString: string) {
   // TODO: Think using moment.js
 
-  const date = new Date(dateString);
-  const now = new Date();
+  const date = new Date(dateString).getTime() / MILLI_SEC;
+  const now = new Date().getTime() / MILLI_SEC;
 
-  const diffOfTime = Math.floor((now.getTime() - date.getTime()) / MILLI_SEC);
-  const diffOfDate = Math.floor(now.getDate() - date.getDate());
+  const diff = now - date;
+  const inOneDay = diff < DAY;
 
-  if (diffOfDate) {
-    if (diffOfDate < DAY) {
-      return `${diffOfDate}일 전`;
-    } else if (diffOfDate < MONTH) {
-      return `${Math.floor(diffOfDate / DAY)}달 전`;
+  if (inOneDay) {
+    if (diff < MINUTE) {
+      return `${Math.floor(diff)}초 전`;
+    } else if (diff < HOUR) {
+      return `${Math.floor(diff / MINUTE)}분 전`;
     } else {
-      return `${Math.floor(diffOfDate / MONTH)}년 전`;
+      return `${Math.floor(diff / HOUR)}시간 전`;
     }
   }
 
-  if (diffOfTime < SEC) {
-    return `${diffOfTime}초 전`;
-  } else if (diffOfTime < MINUTE) {
-    return `${Math.floor(diffOfTime / SEC)}분 전`;
+  if (diff < MONTH) {
+    return `${Math.floor(diff / DAY)}일 전`;
+  } else if (diff < YEAR) {
+    return `${Math.floor(diff / MONTH)}달 전`;
   } else {
-    return `${Math.floor(diffOfTime / MINUTE)}시간 전`;
+    return `${Math.floor(diff / YEAR)}년 전`;
   }
 }
