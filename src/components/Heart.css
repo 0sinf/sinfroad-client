@@ -27,3 +27,8 @@
   fill: var(--green);
   stroke: var(--green);
 }
+
+.heart--disabled {
+  fill: none;
+  stroke: black;
+}

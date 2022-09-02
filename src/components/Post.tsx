@@ -96,6 +96,7 @@ export default function Post({ post }: { post: IPost }) {
           <Heart
             liked={liked}
             count={count}
+            disabled={!user}
             handleClickLike={handleClickLike}
           />
           <BoxArrowUpRight className="post__link" onClick={handleClickLink} />
