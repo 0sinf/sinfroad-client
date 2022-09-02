@@ -63,6 +63,7 @@ export default function Post({ post }: { post: IPost }) {
           <Heart
             liked={liked}
             count={count}
+            disabled={!user}
             handleClickLike={handleClickLike}
           />
           <Chat className="post__chat" />
