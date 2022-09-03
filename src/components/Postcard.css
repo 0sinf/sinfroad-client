@@ -1,6 +1,7 @@
 .postcard {
   width: 30%;
   padding: var(--padding-s);
+  margin-bottom: var(--margin-xs);
 }
 
 .postcard > a {
