@@ -66,7 +66,9 @@ export default function Post({ post }: { post: IPost }) {
             disabled={!user}
             handleClickLike={handleClickLike}
           />
-          <Chat className="post__chat" />
+          <label htmlFor="comment">
+            <Chat className="post__chat" />
+          </label>
           <BoxArrowUpRight className="post__link" onClick={handleClickLink} />
         </div>
         <div className="post__address">{address}</div>
