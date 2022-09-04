@@ -43,7 +43,9 @@ export function CommentForm({
         name="comment"
         value={contents}
         className="comment__input"
-        placeholder="댓글을 입력해주세요! 👏🏻"
+        placeholder={
+          !!user ? "댓글을 입력해주세요! 👏🏻" : "로그인이 필요합니다."
+        }
         setValue={setContents}
         withLabel={false}
         disabled={!!user ? false : true}
