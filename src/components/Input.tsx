@@ -10,7 +10,7 @@ export function Input({
   className,
   setValue,
   handleUpload,
-  disabled = true,
+  disabled = false,
   withLabel = true,
 }: InputProps) {
   const isUploading = type === "file";
