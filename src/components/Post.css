@@ -21,7 +21,7 @@
   width: 330px;
   padding: var(--padding-s);
 
-  height: 70vh;
+  height: 75vh;
   overflow: scroll;
 }
 
@@ -33,14 +33,17 @@
   font-size: var(--font-size-l);
 }
 
-.post__address,
-.post__date {
-  font-size: var(--font-size-s);
+.post__address {
   margin-bottom: var(--margin-xs);
+  font-size: var(--font-size-s);
 }
 
 .post__date {
+  margin-bottom: var(--margin-xs);
   text-align: right;
+
+  font-size: var(--font-size-xs);
+  color: var(--light-black);
 }
 
 .post__action {
@@ -68,5 +71,9 @@
   .post__description {
     box-sizing: border-box;
     width: 100%;
+  }
+
+  .post__description {
+    height: auto;
   }
 }
