@@ -4,6 +4,7 @@ import { deleteComment } from "../api/comments";
 import getDatetime from "../utils/get-date";
 import "./Comment.css";
 import toast from "../utils/toast";
+import useAuthStore from "../store/useAuthStore";
 
 export function Comment({
   comment,
@@ -12,6 +13,7 @@ export function Comment({
   comment: IComment;
   refreshComments: (commentId: string) => void;
 }) {
+  const { user } = useAuthStore();
   const { id, contents, author, isOwner, created } = comment;
 
   const handleDelete = async (event: FormEvent) => {
@@ -37,7 +39,7 @@ export function Comment({
       </div>
       <div className="comment__meta">
         <div className="comment__date">{date}</div>
-        {isOwner && (
+        {(isOwner || user?.role === "ADMIN") && (
           <form
             className="comment__form"
             method="DELETE"
