@@ -69,4 +69,8 @@
     box-sizing: border-box;
     width: 100%;
   }
+
+  .post__description {
+    height: auto;
+  }
 }
