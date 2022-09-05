@@ -33,14 +33,17 @@
   font-size: var(--font-size-l);
 }
 
-.post__address,
-.post__date {
-  font-size: var(--font-size-s);
+.post__address {
   margin-bottom: var(--margin-xs);
+  font-size: var(--font-size-s);
 }
 
 .post__date {
+  margin-bottom: var(--margin-xs);
   text-align: right;
+
+  font-size: var(--font-size-xs);
+  color: var(--light-black);
 }
 
 .post__action {
