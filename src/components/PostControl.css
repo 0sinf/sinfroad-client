@@ -1,0 +1,8 @@
+.post__control {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.post__control-button {
+  margin-left: var(--margin-xs);
+}

@@ -20,6 +20,13 @@
 .post__description {
   width: 330px;
   padding: var(--padding-s);
+
+  height: 70vh;
+  overflow: scroll;
+}
+
+.post__description::-webkit-scrollbar {
+  display: none;
 }
 
 .post__title {
@@ -36,11 +43,6 @@
   text-align: right;
 }
 
-.post__control {
-  display: flex;
-  justify-content: flex-end;
-}
-
 .post__action {
   display: flex;
   justify-content: space-around;
@@ -52,15 +54,9 @@
   font-size: var(--font-size-s);
 }
 
-.post__link {
+.post__link,
+.post__chat {
   cursor: pointer;
-}
-
-.post__contents {
-  font-size: var(--font-size-s);
-  margin-bottom: var(--margin-s);
-
-  white-space: pre-line;
 }
 
 @media screen and (max-width: 900px) {

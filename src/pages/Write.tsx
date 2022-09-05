@@ -126,10 +126,11 @@ export default function Write() {
   return (
     <main className="write__container">
       <h1>새 글 작성하기</h1>
-      <form className="form" method="POST" onSubmit={handleSubmit}>
+      <form className="write" method="POST" onSubmit={handleSubmit}>
         <Input
           type="text"
           name="title"
+          className="input"
           placeholder="Write title"
           value={title}
           setValue={setTitle}
@@ -145,22 +146,28 @@ export default function Write() {
         <Input
           type="text"
           name="address"
+          className="input"
           placeholder="Write address"
           value={address}
           setValue={setAddress}
         />
 
         {!isUpdating && (
-          <Input type="file" name="image" handleUpload={handleChangeImage} />
+          <Input
+            type="file"
+            name="image"
+            className="input-image"
+            handleUpload={handleChangeImage}
+          />
         )}
         {!isUpdating && images.length > 0 && (
           <Preview images={images} handleRemoveImage={handleRemoveImage} />
         )}
 
         {isUpdating ? (
-          <Button value="수정하기" type="submit" />
+          <Button value="수정하기" type="submit" className="write__button" />
         ) : (
-          <Button value="작성하기" type="submit" />
+          <Button value="작성하기" type="submit" className="write__button" />
         )}
         <Button
           value="취소하기"
@@ -169,6 +176,7 @@ export default function Write() {
           onClick={() => {
             go(id ? `/posts/${id}` : "/");
           }}
+          className="write__button"
         />
       </form>
     </main>

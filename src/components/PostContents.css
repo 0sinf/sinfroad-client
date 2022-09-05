@@ -1,0 +1,17 @@
+.post__contents {
+  font-size: var(--font-size-xs);
+
+  height: calc(var(--font-size-xs) * 3);
+  overflow: hidden;
+
+  white-space: pre-line;
+}
+
+.post__contents--more {
+  margin-top: var(--margin-xs);
+  height: auto;
+}
+
+.post__toggle {
+  cursor: pointer;
+}
