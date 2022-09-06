@@ -29,3 +29,15 @@ export function Postcard({
     </div>
   );
 }
+
+export function PostcardSkeleton() {
+  return (
+    <div className="postcard postcard-skeleton">
+      <div className="postcard__img postcard__img-skeleton"></div>
+      <div className="postcard__description-skeleton">
+        <div className="postcard__title-skeleton"></div>
+        <div className="postcard__created-skeleton"></div>
+      </div>
+    </div>
+  );
+}
