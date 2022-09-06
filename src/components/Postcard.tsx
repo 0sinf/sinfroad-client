@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import "./Postcard.css";
 
-export default function Postcard({
+export function Postcard({
   id,
   title,
   created,
@@ -26,6 +26,16 @@ export default function Postcard({
           <div className="postcard__created">{date}</div>
         </article>
       </Link>
+    </div>
+  );
+}
+
+export function PostcardSkeleton() {
+  return (
+    <div className="postcard">
+      <div className="postcard__img postcard__img-skeleton postcard-skeleton"></div>
+      <div className="postcard__title-skeleton postcard-skeleton"></div>
+      <div className="postcard__created-skeleton postcard-skeleton"></div>
     </div>
   );
 }
