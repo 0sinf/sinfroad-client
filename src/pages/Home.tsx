@@ -1,8 +1,10 @@
 import { useEffect, useState, useRef, useCallback, useMemo } from "react";
 import { IPost } from "../@types/posts";
 import { getPosts } from "../api/posts";
-import Postcard from "../components/Postcard";
+import { Postcard, PostcardSkeleton } from "../components/Postcard";
 import Loading from "../components/Loading";
+
+const SKELETON_LENGTH = 6;
 
 export default function Home() {
   const [posts, setPosts] = useState<Array<IPost>>([]);
@@ -58,8 +60,11 @@ export default function Home() {
   return (
     <main className="main">
       <div className="container">
-        {0 < posts.length
-          ? posts.map(({ id, title, created, images }) => (
+        {loading
+          ? Array.from({ length: SKELETON_LENGTH }).map((_, idx) => (
+              <PostcardSkeleton key={idx} />
+            ))
+          : posts.map(({ id, title, created, images }) => (
               <Postcard
                 key={id}
                 id={id}
@@ -67,8 +72,7 @@ export default function Home() {
                 created={created}
                 image={images[0].url}
               />
-            ))
-          : "아직 등록된 글이 없습니다.😅"}
+            ))}
       </div>
       {loading ? Loading() : <div ref={loader}></div>}
     </main>

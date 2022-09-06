@@ -39,3 +39,27 @@
     width: 100%;
   }
 }
+
+@keyframes postcard-loading {
+  0% {
+    background-color: rgb(238, 234, 234);
+  }
+  100% {
+    background-color: gainsboro;
+  }
+}
+
+.postcard-skeleton {
+  animation: postcard-loading 1s alternate infinite;
+}
+
+.postcard__img-skeleton {
+  height: 400px;
+}
+
+.postcard__title-skeleton,
+.postcard__created-skeleton {
+  height: var(--font-size-l);
+  border-radius: var(--border-radius-s);
+  margin-top: 6px;
+}
