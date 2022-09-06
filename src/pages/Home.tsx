@@ -4,6 +4,8 @@ import { getPosts } from "../api/posts";
 import { Postcard, PostcardSkeleton } from "../components/Postcard";
 import Loading from "../components/Loading";
 
+const SKELETON_LENGTH = 6;
+
 export default function Home() {
   const [posts, setPosts] = useState<Array<IPost>>([]);
   const [loading, setLoading] = useState(false);
@@ -58,19 +60,19 @@ export default function Home() {
   return (
     <main className="main">
       <div className="container">
-        {loading ? (
-          <PostcardSkeleton />
-        ) : (
-          posts.map(({ id, title, created, images }) => (
-            <Postcard
-              key={id}
-              id={id}
-              title={title}
-              created={created}
-              image={images[0].url}
-            />
-          ))
-        )}
+        {loading
+          ? Array.from({ length: SKELETON_LENGTH }).map((_, idx) => (
+              <PostcardSkeleton key={idx} />
+            ))
+          : posts.map(({ id, title, created, images }) => (
+              <Postcard
+                key={id}
+                id={id}
+                title={title}
+                created={created}
+                image={images[0].url}
+              />
+            ))}
       </div>
       {loading ? Loading() : <div ref={loader}></div>}
     </main>
