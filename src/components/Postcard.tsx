@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import "./Postcard.css";
 
-export default function Postcard({
+export function Postcard({
   id,
   title,
   created,

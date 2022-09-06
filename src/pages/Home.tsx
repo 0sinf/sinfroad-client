@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef, useCallback, useMemo } from "react";
 import { IPost } from "../@types/posts";
 import { getPosts } from "../api/posts";
-import Postcard from "../components/Postcard";
+import { Postcard } from "../components/Postcard";
 import Loading from "../components/Loading";
 
 export default function Home() {
