@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef, useCallback, useMemo } from "react";
 import { IPost } from "../@types/posts";
 import { getPosts } from "../api/posts";
-import { Postcard } from "../components/Postcard";
+import { Postcard, PostcardSkeleton } from "../components/Postcard";
 import Loading from "../components/Loading";
 
 export default function Home() {
@@ -58,17 +58,19 @@ export default function Home() {
   return (
     <main className="main">
       <div className="container">
-        {0 < posts.length
-          ? posts.map(({ id, title, created, images }) => (
-              <Postcard
-                key={id}
-                id={id}
-                title={title}
-                created={created}
-                image={images[0].url}
-              />
-            ))
-          : "아직 등록된 글이 없습니다.😅"}
+        {loading ? (
+          <PostcardSkeleton />
+        ) : (
+          posts.map(({ id, title, created, images }) => (
+            <Postcard
+              key={id}
+              id={id}
+              title={title}
+              created={created}
+              image={images[0].url}
+            />
+          ))
+        )}
       </div>
       {loading ? Loading() : <div ref={loader}></div>}
     </main>

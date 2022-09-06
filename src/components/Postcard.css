@@ -39,3 +39,20 @@
     width: 100%;
   }
 }
+
+.postcard-skeleton {
+  height: 400px;
+}
+
+.postcard__img-skeleton {
+  background-color: gainsboro;
+  height: 90%;
+}
+
+.postcard__title-skeleton,
+.postcard__created-skeleton {
+  height: var(--font-size-l);
+  border-radius: var(--border-radius-s);
+  background-color: gainsboro;
+  margin-top: 6px;
+}
