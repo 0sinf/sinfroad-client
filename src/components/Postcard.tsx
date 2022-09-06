@@ -32,12 +32,10 @@ export function Postcard({
 
 export function PostcardSkeleton() {
   return (
-    <div className="postcard postcard-skeleton">
-      <div className="postcard__img postcard__img-skeleton"></div>
-      <div className="postcard__description-skeleton">
-        <div className="postcard__title-skeleton"></div>
-        <div className="postcard__created-skeleton"></div>
-      </div>
+    <div className="postcard">
+      <div className="postcard__img postcard__img-skeleton postcard-skeleton"></div>
+      <div className="postcard__title-skeleton postcard-skeleton"></div>
+      <div className="postcard__created-skeleton postcard-skeleton"></div>
     </div>
   );
 }
