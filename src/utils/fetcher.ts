@@ -20,7 +20,7 @@ interface FetchConfig {
 
 async function refresh() {
   const refreshToken = parseCookie()["refresh-token"];
-  console.log(refreshToken);
+
   const response = await fetch(
     `${import.meta.env.VITE_API_SERVER_URI}/auth/refresh`,
     {
