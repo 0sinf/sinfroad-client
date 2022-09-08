@@ -5,6 +5,7 @@ import {
   BoxArrowInRight,
   List,
   PencilSquare,
+  PersonCircle,
 } from "react-bootstrap-icons";
 import useAuthStore from "../store/useAuthStore";
 import deleteCookie from "../utils/delete-cookie";
@@ -68,9 +69,14 @@ export default function GlobalNav({ setShowDrawer }: GlobalNavProps) {
                 </Link>
               )}
               {user ? (
-                <Link className="nav__item" to="/" onClick={handleLogout}>
-                  <BoxArrowRight />
-                </Link>
+                <>
+                  <Link className="nav__item" to="/users">
+                    <PersonCircle />
+                  </Link>
+                  <Link className="nav__item" to="/" onClick={handleLogout}>
+                    <BoxArrowRight />
+                  </Link>
+                </>
               ) : (
                 <Link className="nav__item" to="/login">
                   <BoxArrowInRight />
