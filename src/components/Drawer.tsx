@@ -30,9 +30,14 @@ export default function Drawer({ showDrawer, setShowDrawer }: DrawerProps) {
           </Link>
         )}
         {user ? (
-          <Link className="drawer__item" to="/" onClick={handleLogout}>
-            Logout
-          </Link>
+          <>
+            <Link className="drawer__item" to="/users">
+              내 정보
+            </Link>
+            <Link className="drawer__item" to="/" onClick={handleLogout}>
+              Logout
+            </Link>
+          </>
         ) : (
           <Link className="drawer__item" to="/login">
             Login
