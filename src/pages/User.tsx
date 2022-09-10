@@ -12,8 +12,10 @@ export default function User() {
     return <Loading />;
   }
 
+  const { name, email } = user;
+
   const [isUpdating, setIsUpdating] = useState<boolean>(false);
-  const [username, setUsername] = useState<string>(user.name);
+  const [username, setUsername] = useState<string>(name);
 
   // TODO: Update username
 
@@ -22,15 +24,15 @@ export default function User() {
       <form className="user__container">
         <Input
           name="email"
-          value={user?.email}
+          value={email}
           className="input user__email"
           disabled
         />
         <Input
           name="username"
-          defaultValue={username}
+          value={username}
           className="input user__username"
-          onChange={(event) => setUsername(event.target.value)}
+          setValue={setUsername}
           disabled={!isUpdating}
         />
         {isUpdating ? (
@@ -44,7 +46,10 @@ export default function User() {
               value="취소하기"
               className="user__button-delete"
               btnStyle="secondary"
-              onClick={() => setIsUpdating(false)}
+              onClick={() => {
+                setIsUpdating(false);
+                setUsername(username);
+              }}
             />
           </>
         ) : (
