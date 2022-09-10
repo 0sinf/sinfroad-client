@@ -1,4 +1,4 @@
-import { FormEvent, useState } from "react";
+import { FormEvent, useState, useEffect } from "react";
 import Button from "../components/Button";
 import { Input } from "../components/Input";
 import useAuthStore from "../store/useAuthStore";
@@ -8,17 +8,15 @@ import toast from "../utils/toast";
 import "./User.css";
 
 export default function User() {
-  const { user, setUser } = useAuthStore();
-
   // FIXME: when refresh page, Render error
+  const { user, setUser } = useAuthStore();
 
   if (!user) {
     return <Loading />;
   }
 
-  const { name, email } = user;
-
   const [isUpdating, setIsUpdating] = useState<boolean>(false);
+  const { name, email } = user;
   const [username, setUsername] = useState<string>(name);
 
   const handleSubmit = async (event: FormEvent) => {
@@ -63,7 +61,7 @@ export default function User() {
               btnStyle="secondary"
               onClick={() => {
                 setIsUpdating(false);
-                setUsername(username);
+                setUsername(user.name);
               }}
             />
           </>
