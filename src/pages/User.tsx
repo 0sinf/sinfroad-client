@@ -19,7 +19,7 @@ export default function User() {
 
   return (
     <main role="main" className="main">
-      <div className="user__container">
+      <form className="user__container">
         <Input
           name="email"
           value={user?.email}
@@ -35,7 +35,11 @@ export default function User() {
         />
         {isUpdating ? (
           <>
-            <Button value="수정하기" className="user__button-modify" />
+            <Button
+              type="submit"
+              value="수정하기"
+              className="user__button-modify"
+            />
             <Button
               value="취소하기"
               className="user__button-delete"
@@ -52,7 +56,7 @@ export default function User() {
             }}
           />
         )}
-      </div>
+      </form>
     </main>
   );
 }
