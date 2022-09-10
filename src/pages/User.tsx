@@ -23,13 +23,25 @@ export default function User() {
           className="input user__username"
           disabled={!isUpdating}
         />
-        <Button
-          value="수정하기"
-          className="user__button-modify"
-          onClick={() => {
-            setIsUpdating(() => true);
-          }}
-        />
+        {isUpdating ? (
+          <>
+            <Button value="수정하기" className="user__button-modify" />
+            <Button
+              value="취소하기"
+              className="user__button-delete"
+              btnStyle="secondary"
+              onClick={() => setIsUpdating(false)}
+            />
+          </>
+        ) : (
+          <Button
+            value="수정하기"
+            className="user__button-modify"
+            onClick={() => {
+              setIsUpdating(true);
+            }}
+          />
+        )}
       </div>
     </main>
   );
