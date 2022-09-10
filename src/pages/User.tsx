@@ -1,14 +1,20 @@
+import { useState } from "react";
 import Button from "../components/Button";
 import { Input } from "../components/Input";
 import useAuthStore from "../store/useAuthStore";
+import Loading from "../components/Loading";
 import "./User.css";
-import { useState } from "react";
 
 export default function User() {
   const { user } = useAuthStore();
-  const [isUpdating, setIsUpdating] = useState<boolean>(false);
 
-  // FIXME: Manage state for username
+  if (!user) {
+    return <Loading />;
+  }
+
+  const [isUpdating, setIsUpdating] = useState<boolean>(false);
+  const [username, setUsername] = useState<string>(user.name);
+
   // TODO: Update username
 
   return (
@@ -22,8 +28,9 @@ export default function User() {
         />
         <Input
           name="username"
-          value={user?.name}
+          defaultValue={username}
           className="input user__username"
+          onChange={(event) => setUsername(event.target.value)}
           disabled={!isUpdating}
         />
         {isUpdating ? (
