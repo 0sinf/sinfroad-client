@@ -1,12 +1,16 @@
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 import Button from "../components/Button";
 import { Input } from "../components/Input";
 import useAuthStore from "../store/useAuthStore";
 import Loading from "../components/Loading";
+import { updateUsername } from "../api/users";
+import toast from "../utils/toast";
 import "./User.css";
 
 export default function User() {
-  const { user } = useAuthStore();
+  const { user, setUser } = useAuthStore();
+
+  // FIXME: when refresh page, Render error
 
   if (!user) {
     return <Loading />;
@@ -17,11 +21,22 @@ export default function User() {
   const [isUpdating, setIsUpdating] = useState<boolean>(false);
   const [username, setUsername] = useState<string>(name);
 
-  // TODO: Update username
+  const handleSubmit = async (event: FormEvent) => {
+    event.preventDefault();
+
+    const { response } = await updateUsername(username);
+
+    if (!response.ok) {
+      toast("유저 정보를 수정할 수 없습니다.");
+    }
+
+    setUser({ ...user, name: username });
+    setIsUpdating(false);
+  };
 
   return (
     <main role="main" className="main">
-      <form className="user__container">
+      <form className="user__container" onSubmit={handleSubmit}>
         <Input
           name="email"
           value={email}
