@@ -8,6 +8,9 @@ export default function User() {
   const { user } = useAuthStore();
   const [isUpdating, setIsUpdating] = useState<boolean>(false);
 
+  // FIXME: Manage state for username
+  // TODO: Update username
+
   return (
     <main role="main" className="main">
       <div className="user__container">

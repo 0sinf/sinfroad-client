@@ -1,3 +1,7 @@
 .user__container {
   width: 80%;
 }
+
+.user__button-modify {
+  margin-right: var(--margin-xs);
+}
