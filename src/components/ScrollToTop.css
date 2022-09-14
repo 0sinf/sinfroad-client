@@ -1,0 +1,19 @@
+.scrollToTop {
+  position: fixed;
+
+  font-size: var(--font-size-l);
+  color: var(--light-blue);
+
+  bottom: 1%;
+  left: 1%;
+
+  cursor: pointer;
+}
+
+.scrollToTop-cover {
+  visibility: hidden;
+}
+
+.scrollToTop-reveal {
+  visibility: visible;
+}
