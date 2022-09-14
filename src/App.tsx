@@ -8,6 +8,7 @@ import Write from "./pages/Write";
 import Drawer from "./components/Drawer";
 import NotFound from "./pages/NotFound";
 import User from "./pages/User";
+import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
   const [showDrawer, setShowDrawer] = useState<boolean>(false);
@@ -25,6 +26,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
+      <ScrollToTop />
     </div>
   );
 }

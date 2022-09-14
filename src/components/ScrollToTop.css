@@ -1,0 +1,11 @@
+.scrollToTop {
+  position: fixed;
+
+  font-size: var(--font-size-l);
+  color: var(--light-blue);
+
+  bottom: 1%;
+  left: 1%;
+
+  cursor: pointer;
+}
