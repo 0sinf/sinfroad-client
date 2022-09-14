@@ -3,6 +3,7 @@ import { IPost } from "../@types/posts";
 import { getPosts } from "../api/posts";
 import { Postcard, PostcardSkeleton } from "../components/Postcard";
 import Loading from "../components/Loading";
+import ScrollToTop from "../components/ScrollToTop";
 
 const SKELETON_LENGTH = 6;
 
@@ -75,6 +76,7 @@ export default function Home() {
             ))}
       </div>
       {loading ? Loading() : <div ref={loader}></div>}
+      <ScrollToTop />
     </main>
   );
 }
