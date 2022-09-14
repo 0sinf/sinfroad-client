@@ -9,3 +9,11 @@
 
   cursor: pointer;
 }
+
+.scrollToTop-cover {
+  visibility: hidden;
+}
+
+.scrollToTop-reveal {
+  visibility: visible;
+}
