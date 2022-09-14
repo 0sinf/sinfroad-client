@@ -2,9 +2,9 @@ import { ArrowUpCircleFill } from "react-bootstrap-icons";
 import "./ScrollToTop.css";
 
 export default function ScrollToTop() {
-  const handleClick = () => {
-    const root = document.documentElement;
+  const root = document.documentElement;
 
+  const handleClick = () => {
     root.scrollTo({
       top: 0,
       behavior: "smooth",
