@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { XSquare } from "react-bootstrap-icons";
 import useAuthStore from "../store/useAuthStore";
 import deleteCookie from "../utils/delete-cookie";
 import { DrawerProps } from "../@types/Drawer";
@@ -23,6 +24,7 @@ export default function Drawer({ showDrawer, setShowDrawer }: DrawerProps) {
       className={`drawer ${showDrawer ? "drawer--reveal" : ""}`}
       onClick={handleClick}
     >
+      <XSquare className="drawer__close" />
       <ul className="drawer__items">
         {user?.role === "ADMIN" && (
           <Link className="drawer__item" to="/posts">
