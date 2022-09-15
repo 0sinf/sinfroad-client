@@ -19,12 +19,15 @@
 
 .drawer__close {
   font-size: var(--font-size-m);
-  margin: var(--margin-m) var(--margin-s);
+
+  margin: 0 var(--margin-s);
+  margin-top: var(--margin-l);
+
+  cursor: pointer;
 }
 
 .drawer__items {
   width: 100%;
-  margin-top: var(--margin-xl);
 }
 
 .drawer__item {
