@@ -26,11 +26,13 @@
   position: absolute;
   top: 0;
 
-  opacity: 0.3;
+  opacity: 0.5;
   width: 10%;
   height: 100%;
 
   cursor: pointer;
+
+  filter: drop-shadow(1px 0px 4px rgb(255, 255, 255));
 }
 
 .carousel__btn-right {
