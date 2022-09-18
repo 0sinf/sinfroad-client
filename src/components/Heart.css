@@ -19,7 +19,7 @@
   transform: scale(1.4, 1.4);
 }
 
-.heart--unfill:hover {
+.heart--empty:hover {
   stroke: var(--light-blue);
 }
 

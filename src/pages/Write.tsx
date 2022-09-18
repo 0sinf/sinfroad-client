@@ -30,7 +30,7 @@ export default function Write() {
       return;
     }
 
-    createPostReqeust();
+    createPostRequest();
   };
 
   const handleChangeImage = (event: ChangeEvent<HTMLInputElement>) => {
@@ -38,13 +38,13 @@ export default function Write() {
       return;
     }
 
-    const file = event.target.files.item(0) as File;
+    const file = event.target.files.item(0);
 
     if (!file) {
       return;
     }
 
-    if (!file.type.match(/\/(jpg|jpeg|png)$/)) {
+    if (!file.type.match(/\/(jpe?g|png)$/)) {
       toast("Check your images ext name");
       return;
     }
@@ -61,7 +61,7 @@ export default function Write() {
     URL.revokeObjectURL(url);
   };
 
-  const createPostReqeust = async () => {
+  const createPostRequest = async () => {
     const formData = new FormData();
 
     if (images.length < 1) {

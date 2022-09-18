@@ -31,17 +31,13 @@ export default function Home() {
   }, [page]);
 
   useEffect(() => {
-    if (!loader.current) {
-      return;
-    }
-
-    if (!hasNext) {
+    if (!loader.current || !hasNext) {
       return;
     }
 
     const observer = new IntersectionObserver(
       (entries: IntersectionObserverEntry[]) => {
-        const target = entries[0];
+        const [target] = entries;
 
         if (!target.isIntersecting) {
           return;

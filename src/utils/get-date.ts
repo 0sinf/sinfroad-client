@@ -18,18 +18,18 @@ export default function getDatetime(dateString: string) {
   if (inOneDay) {
     if (diff < MINUTE) {
       return `${Math.floor(diff)}초 전`;
-    } else if (diff < HOUR) {
-      return `${Math.floor(diff / MINUTE)}분 전`;
-    } else {
-      return `${Math.floor(diff / HOUR)}시간 전`;
     }
+    if (diff < HOUR) {
+      return `${Math.floor(diff / MINUTE)}분 전`;
+    }
+    return `${Math.floor(diff / HOUR)}시간 전`;
   }
 
   if (diff < MONTH) {
     return `${Math.floor(diff / DAY)}일 전`;
-  } else if (diff < YEAR) {
-    return `${Math.floor(diff / MONTH)}달 전`;
-  } else {
-    return `${Math.floor(diff / YEAR)}년 전`;
   }
+  if (diff < YEAR) {
+    return `${Math.floor(diff / MONTH)}달 전`;
+  }
+  return `${Math.floor(diff / YEAR)}년 전`;
 }
