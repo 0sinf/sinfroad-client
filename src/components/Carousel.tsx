@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useCallback, useMemo, useState } from "react";
+import { CaretLeftFill, CaretRightFill } from "react-bootstrap-icons";
 import { Image } from "../@types/posts";
 import "./Carousel.css";
-import { CaretLeftFill, CaretRightFill } from "react-bootstrap-icons";
 
 export default function Carousel({
   images,
@@ -10,59 +10,57 @@ export default function Carousel({
   images: Image[];
   title: string;
 }) {
-  const containerWidth = 100 * images.length;
-  const itemWidth = 100 / images.length;
-
   const [index, setIndex] = useState(0);
-  const [leftMargin, setLeftMargin] = useState(0);
+  const max = useMemo(() => images.length - 1, [images.length]);
+  const leftButtonDisabled = useMemo(() => index <= 0, [index]);
+  const rightButtonDisabled = useMemo(() => max <= index, [max, index]);
 
-  const handleClick = (direction: "prev" | "next") => {
-    if (direction === "prev" && index <= 0) {
-      return;
-    }
+  const handleClick = useCallback(
+    (direction: "prev" | "next") => {
+      setIndex((currentIndex) => {
+        const directionInNumber = direction === "prev" ? -1 : 1;
+        const nextIndex = currentIndex + directionInNumber;
 
-    if (direction === "next" && images.length - 1 <= index) {
-      return;
-    }
+        if (nextIndex < 0 || max < nextIndex) {
+          return currentIndex;
+        }
 
-    if (direction === "next") {
-      setIndex((x) => x + 1);
-      setLeftMargin((x) => x - 100);
-      return;
-    }
-
-    setIndex((x) => x - 1);
-    setLeftMargin((x) => x + 100);
-  };
+        return nextIndex;
+      });
+    },
+    [max]
+  );
 
   return (
     <div className="carousel">
       <div
         className="carousel__container"
-        style={{ width: `${containerWidth}%`, marginLeft: `${leftMargin}%` }}
+        style={{ transform: `translate3d(${-index * 100}%, 0, 0)` }}
       >
-        {images.map((image) => (
-          <figure
-            key={image.url}
-            className="carousel__item"
-            style={{ width: `${itemWidth}%` }}
-          >
-            <img className="carousel__img" src={image.url} alt={title} />
+        {images.map(({ url }) => (
+          <figure key={url} className="carousel__item">
+            <img className="carousel__img" src={url} alt={title} />
           </figure>
         ))}
       </div>
 
-      <CaretLeftFill
-        className={`carousel__btn${index < 1 ? "--disabled" : ""}`}
+      <button
+        type="button"
+        className="carousel__btn"
+        disabled={leftButtonDisabled}
         onClick={() => handleClick("prev")}
-      />
+      >
+        <CaretLeftFill />
+      </button>
 
-      <CaretRightFill
-        className={`carousel__btn${
-          index >= images.length - 1 ? "--disabled" : ""
-        } carousel__btn-right`}
+      <button
+        type="button"
+        className="carousel__btn carousel__btn--right"
+        disabled={rightButtonDisabled}
         onClick={() => handleClick("next")}
-      />
+      >
+        <CaretRightFill />
+      </button>
     </div>
   );
 }

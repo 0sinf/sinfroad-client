@@ -6,6 +6,11 @@
   padding: var(--padding-s) 0;
 }
 
+.post__carousel {
+  width: clamp(0px, 100%, 740px);
+  margin: 0 auto;
+}
+
 .post > figure {
   height: 100%;
   background-color: black;
