@@ -79,4 +79,6 @@ textarea {
   flex-wrap: wrap;
 
   width: clamp(0px, 100%, 1100px);
+  /* Consider scroll-to-top button */
+  padding-bottom: calc(max(env(safe-area-inset-bottom), 16px) + 16px);
 }

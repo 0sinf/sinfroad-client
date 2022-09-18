@@ -1,5 +1,8 @@
-.scrollToTop {
+.scroll-to-top {
   position: fixed;
+
+  bottom: max(env(safe-area-inset-bottom), 16px);
+  left: max(env(safe-area-inset-left), 16px);
 
   font-size: var(--font-size-l);
   color: var(--light-blue);
@@ -8,12 +11,17 @@
   left: 1%;
 
   cursor: pointer;
+  background: none;
 }
 
-.scrollToTop-cover {
+.scroll-to-top > svg {
+  display: block;
+}
+
+.scroll-to-top--cover {
   visibility: hidden;
 }
 
-.scrollToTop-reveal {
+.scroll-to-top--reveal {
   visibility: visible;
 }

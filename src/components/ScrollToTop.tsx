@@ -26,13 +26,17 @@ export default function ScrollToTop() {
   }, [handleScroll]);
 
   return (
-    <ArrowUpCircleFill
+    <button
+      type="button"
       className={
         isTop
-          ? "scrollToTop scrollToTop-cover"
-          : "scrollToTop scrollToTop-reveal"
+          ? "scroll-to-top scroll-to-top--cover"
+          : "scroll-to-top scroll-to-top--reveal"
       }
       onClick={handleClick}
-    />
+    >
+      {" "}
+      <ArrowUpCircleFill />
+    </button>
   );
 }
