@@ -53,7 +53,9 @@ export default function Post({ post }: { post: IPost }) {
 
   return (
     <div className="post">
-      <Carousel title={title} images={images} />
+      <div className="post__carousel">
+        <Carousel title={title} images={images} />
+      </div>
 
       <article className="post__description">
         {user?.role === "ADMIN" ? <PostControl id={id} post={post} /> : ""}

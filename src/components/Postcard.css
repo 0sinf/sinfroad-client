@@ -5,7 +5,10 @@
 }
 
 .postcard > a {
+  display: inline-flex;
+  width: 100%;
   height: 100%;
+  flex-direction: column;
 }
 
 .postcard > a > figure {
@@ -14,14 +17,17 @@
 
 .postcard__img {
   box-sizing: border-box;
+  display: block;
   width: 100%;
   height: 100%;
 
   border-radius: var(--border-radius-s);
+  object-fit: cover;
 }
 
 .postcard__title {
   font-size: var(--font-size-l);
+  word-break: break-all;
 }
 
 .postcard__created {

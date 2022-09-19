@@ -1,5 +1,5 @@
 import { ArrowUpCircleFill } from "react-bootstrap-icons";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import "./ScrollToTop.css";
 
 export default function ScrollToTop() {
@@ -13,31 +13,30 @@ export default function ScrollToTop() {
     });
   };
 
-  const handleScroll = () => {
-    if (window.scrollY < 400) {
-      setIsTop(true);
-      return;
-    }
-
-    setIsTop(false);
-  };
+  const handleScroll = useCallback(() => {
+    setIsTop(window.scrollY < 400);
+  }, []);
 
   useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  }, [handleScroll]);
 
   return (
-    <ArrowUpCircleFill
+    <button
+      type="button"
       className={
         isTop
-          ? "scrollToTop scrollToTop-cover"
-          : "scrollToTop scrollToTop-reveal"
+          ? "scroll-to-top scroll-to-top--cover"
+          : "scroll-to-top scroll-to-top--reveal"
       }
       onClick={handleClick}
-    />
+    >
+      {" "}
+      <ArrowUpCircleFill />
+    </button>
   );
 }

@@ -35,7 +35,7 @@ export function PostControl({ id, post }: { id: string; post: IPost }) {
           className="post__control-button"
         />
       </Link>
-      <form method="DETELE" onSubmit={handleDelete}>
+      <form method="DELETE" onSubmit={handleDelete}>
         <Button
           type="submit"
           value="삭제하기"
