@@ -57,6 +57,7 @@ export default function Home() {
   return (
     <main className="main">
       <div className="container">
+        {!loading && !posts.length && <div>아직 글이 없습니다.</div>}
         {loading && !posts.length
           ? Array.from({ length: SKELETON_LENGTH }).map((_, idx) => (
               <PostcardSkeleton key={idx} />
