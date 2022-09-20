@@ -7,14 +7,36 @@
 
 ## 기술 스택
 
-| Part    | Skills                      |
-| ------- | --------------------------- |
-| Front   | React                       |
-| Back    | Express (To be Nest.js)     |
-| DB      | Mongo DB (To be Postgresql) |
-| Server  | Ubuntu, Nginx               |
-| Version | Git                         |
+| Part    | Skills        |
+| ------- | ------------- |
+| Front   | React         |
+| Back    | NestJS        |
+| DB      | Postgresql    |
+| Server  | Ubuntu, Nginx |
+| Version | Git           |
 
-## Page
+## 기능 구현
 
-[씬프로드](https://sinf.dev)
+### Post 작성
+
+- 관리자에게 글 작성 권한 부여
+- 사진 포함한 글 작성
+
+### Post 조회
+
+- Post list 조회 (Infinite scroll)
+- Post detail, Carousel 형식으로 사진 조회
+
+### Post 수정 및 삭제
+
+- Post 사진을 제외한 제목, 내용, 주소 수정
+- Post 삭제 기능
+
+### Like 기능, 링크 공유
+
+- Post 별 Like 기능
+- 링크 클립보드 복사
+
+### Comment 기능
+
+- Post 내 Comment 추가 및 삭제
