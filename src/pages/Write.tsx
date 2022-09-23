@@ -44,7 +44,7 @@ export default function Write() {
       return;
     }
 
-    if (!file.type.match(/\/(jpe?g|png)$/)) {
+    if (!file.type.match(/\/(jpe?g|png|heic)$/)) {
       toast("Check your images ext name");
       return;
     }
