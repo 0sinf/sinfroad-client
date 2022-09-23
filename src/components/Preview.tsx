@@ -9,6 +9,7 @@ export default function Preview({
   handleRemoveImage: (i: File, url: string) => void;
 }) {
   return (
+    // TODO: heic file preview
     <div className="preview">
       {images.map((image) => {
         const url = URL.createObjectURL(image);
@@ -23,7 +24,6 @@ export default function Preview({
           </figure>
         );
       })}
-      {/* TODO: Add remove button, and handleClick  */}
     </div>
   );
 }

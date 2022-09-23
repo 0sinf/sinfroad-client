@@ -4,7 +4,7 @@ import useAuthStore from "../store/useAuthStore";
 import { createPost, updatePost } from "../api/posts";
 import { Input, Textarea } from "../components/Input";
 import Button from "../components/Button";
-import Preview from "../components/Preivew";
+import Preview from "../components/Preview";
 import { IPost } from "../@types/posts";
 import toast from "../utils/toast";
 import "./Write.css";
@@ -44,7 +44,7 @@ export default function Write() {
       return;
     }
 
-    if (!file.type.match(/\/(jpe?g|png)$/)) {
+    if (!file.type.match(/\/(jpe?g|png|heic)$/)) {
       toast("Check your images ext name");
       return;
     }
